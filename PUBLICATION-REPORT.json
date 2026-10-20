@@ -1,0 +1,16 @@
+{
+  "format": "roi-publication-audit",
+  "version": 1,
+  "source_baseline": "library-text-v25",
+  "literal_ip_findings": 0,
+  "private_value_findings": 0,
+  "image_metadata_findings": 0,
+  "configuration_tests_passed": 25,
+  "history_copied": false,
+  "services_started": false,
+  "limitations": [
+    "Pattern scanning is not a guarantee against every possible secret.",
+    "Third-party game artwork/text redistribution rights require separate review.",
+    "No real container was deployed and no game was launched from this snapshot."
+  ]
+}

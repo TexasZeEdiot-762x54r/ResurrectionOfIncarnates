@@ -1,0 +1,42 @@
+services:
+  public-lobby:
+    build:
+      context: .
+      dockerfile: Dockerfile.public
+      args:
+        PYTHON_BASE: "${PYTHON_BASE:?Set the reviewed official Python image digest}"
+    image: localhost/roi-lobby-public
+    container_name: roi-lobby-public
+    restart: unless-stopped
+    ports:
+      - "${ROI_PUBLIC_BIND_HOST:?Run configure.py --mode public}:${ROI_PUBLIC_PORT:?Run configure.py --mode public}:52714/tcp"
+    init: true
+    user: "10001:10001"
+    read_only: true
+    volumes:
+      - public-data:/app/data
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: "0.75"
+    pids_limit: 64
+    tmpfs:
+      - /app/logs:rw,noexec,nosuid,nodev,size=16m,mode=0700,uid=10001,gid=10001
+    secrets:
+      - source: public-cert
+        target: public-cert.pem
+      - source: public-key
+        target: public-key.pem
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+secrets:
+  public-cert:
+    file: ./private/public-cert.pem
+  public-key:
+    file: ./private/public-key.pem
+volumes:
+  public-data:

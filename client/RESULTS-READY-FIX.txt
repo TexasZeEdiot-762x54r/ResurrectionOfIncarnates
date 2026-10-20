@@ -1,0 +1,33 @@
+RESULTS-READY HANDOFF - 2026-10-19
+
+Observed battle-counter submission at 17:02:30 EDT and collecting getItemMail
+at 17:03:18. The latter HTTP reply completed in the same second. Native controller
+0x140101d00 waits 3000 updates in state 0 unless an E60D success event arrives.
+That event calls 0x140103620, immediately queuing the same normal getItemMail
+request, then waiting for the existing type-18 callback. The old replacement
+server ignored the E60C battle report and never produced E60D.
+
+The fix does not change the client timeout, skip cutscenes, force API completion,
+invent progression, or broadcast another player's results. A successful E608
+arms one connection-local pending result with its 16-byte match key. A complete
+356-byte E60C with that key produces one E60D addressed only to that connection.
+Duplicates, wrong keys, malformed lengths and reports without a pending battle
+are ignored. A new battle rearms; leaving cancels. No report bodies are logged.
+
+E60D is 278 payload bytes. Its native parser skips 10, reads two u64 values
+(retaining low 32 bits), then advances 44 and four times 54. The current no-award
+response uses zero for the two values and skipped tail. Their original semantic
+names and original server record contents remain unrecovered. Profile XP,
+currency, levels, existing skill grids and outfits are not written by this fix.
+The local getItemMail sv_mails:[] correction remains required on each client.
+
+Verification: bounded original-EXE inspection; live cached report key matched the
+room-derived server match key without printing it; unit tests cover native layout,
+one-shot completion, invalid/repeated reports, rearm/cancel and connection isolation.
+Public protocol smoke test and another real multiplayer match are separate checks.
+Do not claim the shorter user-visible wait confirmed before that match completes.
+
+Public users need the server update, not another game-executable rebuild.
+Local/direct Steam discovery hosts also need the updated nrt_logic.py/nrt_rooms.py.
+Normal Play tracing reserves a separate budget for results and logs ready/collect
+events; background metadata callbacks can no longer exhaust that budget first.

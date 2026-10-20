@@ -1,0 +1,126 @@
+PUBLIC LOBBY - ANONYMIZED SOURCE SNAPSHOT
+
+First copy deployment.example.json to deployment.local.json. See the root README.
+Use client.internet_host, client.lan_host, client.port and your own TLS fingerprint.
+The server operator uses server/configure.py to generate ignored Compose settings.
+No address or certificate pin from the previous deployment is shipped.
+
+Players
+1. Install this version of the client patch using your own licensed Steam game.
+   For a fresh patch directory run Setup.bat. Keep existing profiles backed up.
+   Python 3.10+ is required for the Windows client; Steam must be running/logged in.
+2. Close the old game and its local services before changing lobby transport.
+3. Internet players: run Online - Steam.bat. It selects the public service at
+   <internet_host>:52714, then starts Play Rise of Incarnates.bat.
+4. Players on the server's LAN: use Online - Steam (LAN).bat instead. It selects
+   <public_bind_host>:52714. Both addresses reach the SAME room list and profile cache.
+5. Create a room under Play > Custom Match. The other player uses Search Lobby >
+   Advanced Search > Search. Everyone must use this package and shared directory.
+
+No WireGuard, invitation key, or Steam-ID allowlist is required for this public
+service. Only the server operator forwards a port; ordinary players do not.
+Online - Steam Discovery.bat retains the separate direct Steam-directory mode.
+It selects that mode only; run Play afterward. Its room list is NOT the public
+server's room list. Existing Online - Join is the private WireGuard alternative.
+
+Transport and trust
+The local profile API remains loopback:52710 on EACH player's PC. The launcher
+starts a loopback-only tunnel on 52711 and 52713 and uses TLS 1.2+ to the server.
+The ignored deployment.local.json pins your chosen server certificate by SHA-256; a
+wrong/missing pin fails closed before application traffic. Do not disable the
+pin check or copy an unverified certificate fingerprint from a network error.
+Old private invitation keys are retained locally but not sent in public mode.
+
+POST-BATTLE 10053 / QUIET-STREAM UPDATE
+The first public TLS release incorrectly expired each stream direction separately
+after 90 seconds. A quiet server-reply direction could therefore close a lobby
+connection while the client was still sending valid one-way keepalives. The
+updated tunnel and gateway use ONE shared inactivity clock: traffic in either
+direction keeps the stream alive. Completely idle connections still expire;
+write, handshake, frame and resource limits remain in place.
+Both players need the updated tools/tls_transport.py and tools/public_tunnel.py,
+with the old game/tunnel closed before replacement. Updating only the server
+cannot fix an old client tunnel's own timeout. Server operators also update
+tls_transport.py and public_gateway.py, rebuild and restart the public container
+only after players exit. Certificate pins and private account data do not change.
+Native disconnect diagnostics record reasons/counts/timing, not payloads or keys.
+This corrects a reproduced transport bug; another completed multiplayer match
+is still required to validate results. It does not establish that the older
+post-match 9008 / missing statistics issue is resolved.
+
+POST-BATTLE 9008 / MAIL RESPONSE UPDATE
+The collecting getItemMail request uses native type 18 and parser 0x1400cf370.
+It requires data.sv_mails, an array, before setting the results API state to 2.
+The earlier handler supplied only legacy sv_messages/sv_itemMails fields, so it
+left this callback incomplete until the results controller timed out with 9008.
+The current LOCAL profile server adds sv_mails:[] without inventing rewards.
+Every player needs the updated tools/roi_server_data.py; no public-container
+restart or game-executable rebuild is required. Normal Play launches now include
+bounded native completion/error diagnostics. Source/HTTP verification passes;
+another real multiplayer results screen is still needed for confirmation.
+
+RESULTS-READY HANDOFF UPDATE
+A valid E60C battle report now produces the native E60D completion event for
+that player, so the client can request getItemMail without waiting for its
+3000-update fallback (about 50 seconds at 60 updates/s). See RESULTS-READY-FIX.txt.
+Public players receive this from the shared server; no executable rebuild is
+needed. Local/direct-discovery hosts need the updated nrt_logic.py/nrt_rooms.py.
+The no-award policy and normal error timeout remain unchanged. A real completed
+match must still confirm the shorter visible wait after deployment.
+
+The service is deliberately ANONYMOUS. TLS authenticates the pinned server and
+encrypts traffic; it does NOT authenticate players or their claimed Steam IDs.
+Anonymous users can spoof lobby/profile identities, overwrite cached claimed
+profiles or disrupt rooms. Profiles exchanged here are untrusted cosmetic/game
+metadata, not an authoritative account database. Do not send sensitive fields.
+Do not use this experimental open service for money, passwords, real inventory,
+or trusted account progression. Steam login/ownership is not bypassed; native
+matches still use the game's own Steam connectivity, not a VPN battle relay.
+Connection/request/time/memory limits reduce abuse, not volumetric DDoS attacks.
+
+Operator: current deployment
+Container: roi-lobby-public, in a directory separate from the private service.
+Only TCP 52714 is published, bound to <public_bind_host> on the Rocky host.
+Router mapping: public TCP 52714 -> <public_bind_host> TCP 52714.
+Do NOT forward TCP 52710, 52711 or 52713, and do not open a UDP port for this gateway.
+The native lobby/profile listeners bind to container loopback, not the host.
+The container is non-root/read-only/no capabilities, limited to 256 MiB RAM,
+0.75 CPU, 64 PIDs, bounded connection counts and rotating logs. No private auth
+file, existing account files, host directories or Docker socket are mounted.
+
+Operator: setting up a different public server
+Use a NEW server directory, not the existing private Compose project. The public
+variant requires Python 3.11+ (the pinned container uses 3.12). Keep SELinux on.
+Set PYTHON_BASE in .env to a reviewed official docker.io/library/python digest.
+The supplied compose.public.yaml LAN binding is deployment-specific; change it
+only for your host. Create private/ mode 0700 and generate a separate TLS key:
+
+  openssl req -x509 -newkey rsa:3072 -sha256 -nodes -days 365 \
+    -subj '/CN=Rise of Incarnates Public Lobby' \
+    -keyout private/public-key.pem -out private/public-cert.pem
+  sudo chown 10001:10001 private/public-key.pem
+  sudo chmod 0400 private/public-key.pem
+  chmod 0644 private/public-cert.pem
+  docker compose -p roi-public -f compose.public.yaml up -d --build
+
+Generate/distribute ONLY the public certificate fingerprint, never the private key:
+  openssl x509 -in private/public-cert.pem -outform DER | sha256sum
+Set that 64-hex fingerprint and your own addresses in EVERY client's
+deployment.local.json (client section), never in the public Git tree. Confirm the pin through a trusted
+channel. A changed certificate requires a coordinated pin update in clients;
+there is no silent fallback to unencrypted/raw lobby traffic. Generate your own
+certificate and rotate it before its expiry; protect the key.
+Exact pin matching is the trust check, not public-CA/hostname/date validation.
+
+The default compose.yaml remains the separate private WireGuard service.
+No invitation file belongs in the PUBLIC container. Never remove credentials
+from the private service to turn it public. Do not disable SELinux/firewall or
+trust an entire interface to resolve a port-specific access issue.
+
+Checks and remaining validation
+Pinned TLS health and synthetic native create/search/join/leave passed via the
+forwarded public address from inside the host LAN. That checks the configured
+route/hairpin path, not a genuinely external ISP. An outside friend still needs
+to validate discovery, native Steam battle loading and a completed match.
+Previous multiplayer post-match 9008/audio faults are not claimed fixed here.
+No new XP rates, balance values, character fixes or reward grants are included.

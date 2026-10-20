@@ -1,0 +1,16 @@
+private
+.env
+logs
+__pycache__
+*.pyc
+deployment.local.json
+deployment.local.*
+.env.*
+.deployment-*
+data
+*.key
+*.pem
+*.crt
+*.sqlite*
+*.db
+*.log

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "client": {
+    "steam_path": "",
+    "depot_path": "",
+    "game_path": "",
+    "internet_host": "",
+    "lan_host": "",
+    "port": 52714,
+    "certificate_sha256": "",
+    "vpn_lobby_host": "",
+    "vpn_lobby_port": 52711
+  },
+  "server": {
+    "public_bind_host": "",
+    "public_port": 52714,
+    "vpn_bind_host": "",
+    "vpn_interface": "",
+    "vpn_network": "",
+    "python_base": ""
+  }
+}

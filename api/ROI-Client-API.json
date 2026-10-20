@@ -1,0 +1,5063 @@
+{
+  "format": "roi-client-api-with-responses",
+  "format_version": 1,
+  "notes": [
+    "Native request shapes plus CURRENT replacement-server responses. This is not a recovered original production-server specification.",
+    "Request examples are shape templates, not successful live exchanges: IDs, prerequisites, feature flags and account state must be valid for a success response.",
+    "Response examples use synthetic accounts, fixed example timestamps, redacted credentials and representative array rows; no profiles, logs, config or running services are read.",
+    "Responses mostly encode numbers/IDs as decimal strings; native requests often use JSON integers. Preserve this distinction and uint64 precision.",
+    "Unknown original response contracts remain null. The generic empty OK fallback is documented separately and is NOT evidence that a feature works.",
+    "Empty reward/mail arrays do not recover their historical element schemas. Known policy-gated reward fields are documented separately without inventing original values.",
+    "Request variant types and original builder addresses remain in ROI-Client-Calls.json."
+  ],
+  "transport": {
+    "authorize": "POST /Dragon/authorize",
+    "calls": "POST /Dragon/game",
+    "master_loads": "POST /Dragon/game"
+  },
+  "coverage": {
+    "native_call_names": 80,
+    "native_request_variants": 107,
+    "implemented_handler_names": 35,
+    "unknown_original_call_responses": 45,
+    "master_loads": 21,
+    "native_lobby_types": 34,
+    "profile_relay_endpoints": 5
+  },
+  "authorize": {
+    "request": {
+      "os": "steam",
+      "api_version": "0.8",
+      "steamId": 1,
+      "region": "<string>",
+      "login": 1,
+      "ticket": "<STEAM_TICKET>"
+    },
+    "response": {
+      "when": "Local compatibility authorization; only steamId is consumed.",
+      "http_status": 200,
+      "body": {
+        "result": "OK",
+        "time": "1700000000",
+        "uid": "1",
+        "storageID": "local"
+      },
+      "headers": {
+        "oauth_token": "<LOCAL_COMPATIBILITY_MARKER>",
+        "oauth_token_secret": "<LOCAL_COMPATIBILITY_MARKER>"
+      }
+    },
+    "notes": [
+      "Only steamId is read; defaults to 1 if absent. Other request fields are ignored.",
+      "Authorizing sets process-wide player_id. This local service is one account per process, not a multi-tenant authenticated backend."
+    ]
+  },
+  "calls": {
+    "registerProfile": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "registerProfile",
+          "data": {
+            "charaId": 0,
+            "name": "<string>",
+            "sv_onlineId": 1,
+            "sv_gameRegion": "<string>"
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Current local profile; request fields are ignored.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "_id": "1",
+              "sv_uid": "1",
+              "sv_onlineId": "1",
+              "sv_userName": "Example Player",
+              "sv_userRegion": "SE",
+              "sv_gameRegion": "SE",
+              "sv_userTutorial": "2147483647",
+              "sv_tutorialMap": {},
+              "sv_rankPoint": "0",
+              "sv_rankId": "1",
+              "sv_playerLv": "1",
+              "sv_playerExp": "0",
+              "sv_playerStatus": "0",
+              "sv_virtualCurrency": "0",
+              "sv_userCountry": "SE",
+              "sv_userCountryState": "",
+              "sv_gamePoint": "0",
+              "sv_userCurrency": "EUR",
+              "sv_itemsHoldLimit": "9999",
+              "sv_allCharaFreeTerm": "0",
+              "sv_freeCharaGainTime": "0",
+              "sv_selectedStageId": "1",
+              "sv_skillgrids": [
+                {
+                  "sv_sgridId": "0",
+                  "sv_openedSlot": "4",
+                  "sv_unlockedSlotItem": "0",
+                  "sv_skillcubeHoldIds": [],
+                  "sv_gridStatus": "0",
+                  "sv_x0y0": "-1",
+                  "sv_x1y0": "-1",
+                  "sv_x2y0": "-1",
+                  "sv_x3y0": "-1",
+                  "sv_x0y1": "-1",
+                  "sv_x1y1": "0",
+                  "sv_x2y1": "0",
+                  "sv_x3y1": "-1",
+                  "sv_x0y2": "-1",
+                  "sv_x1y2": "0",
+                  "sv_x2y2": "0",
+                  "sv_x3y2": "-1",
+                  "sv_x0y3": "-1",
+                  "sv_x1y3": "-1",
+                  "sv_x2y3": "-1",
+                  "sv_x3y3": "-1"
+                }
+              ],
+              "sv_skillcubeHoldLimit": "100",
+              "sv_skillcubes": [
+                {
+                  "sv_skillcubeHoldId": "2",
+                  "sv_skillcubeId": "1200010021001000",
+                  "sv_triggerCount": "0",
+                  "sv_triggerLimit": "100",
+                  "sv_levelupCount": "0",
+                  "sv_evolutionCount": "0",
+                  "sv_modificationCount": "0",
+                  "sv_recoveryCount": "0",
+                  "sv_skillLevel": "1",
+                  "sv_skillExp": "0",
+                  "sv_status": "0"
+                }
+              ],
+              "sv_items": [],
+              "sv_disconnNum": "0",
+              "sv_circleId": "0",
+              "sv_activeCharaId": "1",
+              "sv_activeSupLamId": "1",
+              "sv_characters": [
+                {
+                  "sv_charaId": "1",
+                  "sv_charaLv": "1",
+                  "sv_charaEnabled": true,
+                  "sv_charaEnableTerm": "9999999999999",
+                  "sv_charaTutorial": "2147483647",
+                  "sv_charaExp": "0",
+                  "sv_charaUsage": "0",
+                  "sv_customItems": [
+                    {
+                      "sv_customItemHoldId": "1200000",
+                      "sv_customItemId": "1200000"
+                    }
+                  ],
+                  "sv_customSlots": [
+                    {
+                      "sv_customItemHoldIds": [
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "sv_activeCustomSlotNum": "0"
+                }
+              ],
+              "sv_supLams": [
+                {
+                  "sv_supLamId": "1",
+                  "sv_supLamLv": "1",
+                  "sv_supLamEnableTerm": "9999999999999",
+                  "sv_supLamExp": "0",
+                  "sv_customSlot": []
+                }
+              ],
+              "sv_enteredRoomId": "0",
+              "sv_tagPartner": "0",
+              "sv_recipes": [],
+              "sv_compositeStackLimit": "0",
+              "sv_compositeStacks": [],
+              "sv_battleRecords": [],
+              "sv_disconnectLog": "0",
+              "sv_disconnCriminal": "0"
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Request fields are ignored."
+      ]
+    },
+    "getLobbyList": {
+      "request_examples": [
+        {
+          "call": "getLobbyList",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Login bootstrap; sv_aid is not a room-list response.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_aid": "1"
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Login bootstrap only. This HTTP call does NOT enumerate rooms; NRT 0xE611 does."
+      ]
+    },
+    "enterLobby": {
+      "request_examples": [
+        {
+          "call": "enterLobby",
+          "data": {
+            "aid": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Local-lobby example; a configured remote endpoint/key replaces these synthetic values.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_token": "<REDACTED_32_HEX_CHAR_TOKEN>",
+              "sv_nrt_host": "<local-loopback-address>",
+              "sv_nrt_port": "52711"
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Returns a connection credential and configured native TCP endpoint.",
+        "External server mode requires an administrator-provisioned 16-byte key; invitation mode does not require pre-registering the player ID.",
+        "Example credential is deliberately nonfunctional. Never share real values in documentation."
+      ]
+    },
+    "load": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "load",
+          "data": {
+            "name": "player",
+            "query": {
+              "_id": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "load",
+          "data": {
+            "name": "itemBook",
+            "query": {
+              "sv_uid": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "load",
+          "data": {
+            "name": "itemBook",
+            "query": {
+              "sv_uid": 1,
+              "sv_itemId": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "load",
+          "data": {
+            "name": "circle",
+            "fields": {
+              "sv_circleIcon": 0,
+              "sv_leaveMembers": 0,
+              "sv_comment": 0
+            },
+            "query": {
+              "sv_invitings.sv_uid": 1,
+              "sv_status": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "load",
+          "data": {
+            "name": "<string>",
+            "query": {}
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "load",
+          "data": {
+            "name": "tag",
+            "query": {
+              "_id": "1T2"
+            }
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "data.name is player; returned IDs identify the current local account.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "_id": "1",
+              "sv_onlineId": "1"
+            }
+          }
+        },
+        {
+          "when": "Unknown collection name, including currently unsupported itemBook, circle or tag. Known masters are below.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": []
+          }
+        }
+      ],
+      "notes": [
+        "name=player returns only identity, not the full profile.",
+        "Other supported names and their complete row schemas are in master_data.",
+        "An unknown master name returns OK with data=[]; there is no missing-master error."
+      ]
+    },
+    "loadPlayer": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "_id": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "$in": [
+                {
+                  "_id": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "sv_onlineId": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "_id": 1
+            },
+            "fields": {
+              "sv_skillcubes": 0,
+              "sv_skillgrids": 0
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "sv_onlineId": 1
+            },
+            "fields": {
+              "sv_skillcubes": 0,
+              "sv_skillgrids": 0
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "_id": 1
+            },
+            "fields": {
+              "_id": 1,
+              "sv_onlineId": 1,
+              "sv_characters": 1,
+              "sv_rankId": 1,
+              "sv_rankPoint": 1,
+              "sv_gamePoint": 1,
+              "sv_skillcubes": 1,
+              "sv_skillgrids": 1,
+              "sv_activeCharaId": 1,
+              "sv_playerExp": 1
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "loadPlayer",
+          "data": {
+            "query": {
+              "_id": 1
+            },
+            "fields": {
+              "_id": 1,
+              "sv_onlineId": 1,
+              "sv_gamePoint": 1,
+              "sv_skillcubes": 1
+            }
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "query._id or query.sv_onlineId identifies the local player, a cached peer, or a synthetic guest fallback.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "_id": "1",
+              "sv_uid": "1",
+              "sv_onlineId": "1",
+              "sv_userName": "Example Player",
+              "sv_userRegion": "SE",
+              "sv_gameRegion": "SE",
+              "sv_userTutorial": "2147483647",
+              "sv_tutorialMap": {},
+              "sv_rankPoint": "0",
+              "sv_rankId": "1",
+              "sv_playerLv": "1",
+              "sv_playerExp": "0",
+              "sv_playerStatus": "0",
+              "sv_virtualCurrency": "0",
+              "sv_userCountry": "SE",
+              "sv_userCountryState": "",
+              "sv_gamePoint": "0",
+              "sv_userCurrency": "EUR",
+              "sv_itemsHoldLimit": "9999",
+              "sv_allCharaFreeTerm": "0",
+              "sv_freeCharaGainTime": "0",
+              "sv_selectedStageId": "1",
+              "sv_skillgrids": [
+                {
+                  "sv_sgridId": "0",
+                  "sv_openedSlot": "4",
+                  "sv_unlockedSlotItem": "0",
+                  "sv_skillcubeHoldIds": [],
+                  "sv_gridStatus": "0",
+                  "sv_x0y0": "-1",
+                  "sv_x1y0": "-1",
+                  "sv_x2y0": "-1",
+                  "sv_x3y0": "-1",
+                  "sv_x0y1": "-1",
+                  "sv_x1y1": "0",
+                  "sv_x2y1": "0",
+                  "sv_x3y1": "-1",
+                  "sv_x0y2": "-1",
+                  "sv_x1y2": "0",
+                  "sv_x2y2": "0",
+                  "sv_x3y2": "-1",
+                  "sv_x0y3": "-1",
+                  "sv_x1y3": "-1",
+                  "sv_x2y3": "-1",
+                  "sv_x3y3": "-1"
+                }
+              ],
+              "sv_skillcubeHoldLimit": "100",
+              "sv_skillcubes": [
+                {
+                  "sv_skillcubeHoldId": "2",
+                  "sv_skillcubeId": "1200010021001000",
+                  "sv_triggerCount": "0",
+                  "sv_triggerLimit": "100",
+                  "sv_levelupCount": "0",
+                  "sv_evolutionCount": "0",
+                  "sv_modificationCount": "0",
+                  "sv_recoveryCount": "0",
+                  "sv_skillLevel": "1",
+                  "sv_skillExp": "0",
+                  "sv_status": "0"
+                }
+              ],
+              "sv_items": [],
+              "sv_disconnNum": "0",
+              "sv_circleId": "0",
+              "sv_activeCharaId": "1",
+              "sv_activeSupLamId": "1",
+              "sv_characters": [
+                {
+                  "sv_charaId": "1",
+                  "sv_charaLv": "1",
+                  "sv_charaEnabled": true,
+                  "sv_charaEnableTerm": "9999999999999",
+                  "sv_charaTutorial": "2147483647",
+                  "sv_charaExp": "0",
+                  "sv_charaUsage": "0",
+                  "sv_customItems": [
+                    {
+                      "sv_customItemHoldId": "1200000",
+                      "sv_customItemId": "1200000"
+                    }
+                  ],
+                  "sv_customSlots": [
+                    {
+                      "sv_customItemHoldIds": [
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "sv_activeCustomSlotNum": "0"
+                }
+              ],
+              "sv_supLams": [
+                {
+                  "sv_supLamId": "1",
+                  "sv_supLamLv": "1",
+                  "sv_supLamEnableTerm": "9999999999999",
+                  "sv_supLamExp": "0",
+                  "sv_customSlot": []
+                }
+              ],
+              "sv_enteredRoomId": "0",
+              "sv_tagPartner": "0",
+              "sv_recipes": [],
+              "sv_compositeStackLimit": "0",
+              "sv_compositeStacks": [],
+              "sv_battleRecords": [],
+              "sv_disconnectLog": "0",
+              "sv_disconnCriminal": "0"
+            }
+          }
+        },
+        {
+          "when": "No scalar query identity; in particular the native query.$in array variant is not implemented.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "query._id takes precedence over query.sv_onlineId.",
+        "Own ID returns own profile; another decimal ID is fetched from the relay.",
+        "Remote outfit slots are copied/normalized using that character/profile own hold-ID map; empty slots and zero base selections become explicit default head/costume/weapon holds when present in its inventory. Zero accessories remain none.",
+        "On relay miss/failure, retains a legacy placeholder profile with guest identity and character 1, but resets all equipped outfits to base items and no accessories. Never copies local equipped cosmetics into a remote fallback.",
+        "An absent/nondecimal identity returns data={}. This fallback is not authentic partner data.",
+        "Native fields projections are ignored; full profile returned for scalar identity. query.$in is unsupported and returns data={}.",
+        "Optional remote appearance reads are bounded to eight starts per ten seconds, two in flight and 32 cached entries. Valid snapshots expire after two seconds; missing/unavailable profiles after five. Deferred reads use the existing explicit-default guest response and may retry later; this is not an authoritative remote profile or online-presence result."
+      ]
+    },
+    "updateCustomize": {
+      "request_examples": [
+        {
+          "call": "updateCustomize",
+          "data": {
+            "sv_charaId": 0,
+            "sv_slotNum": 0,
+            "sv_customItemHoldIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Outfit update completed.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native outfit order: head, costume, weapon, three accessories, then three reserved entries.",
+        "The current handler casts hold IDs but does not fully validate ownership, length or slot range.",
+        "Use IDs returned by that character profile; do not invent equipment IDs."
+      ]
+    },
+    "updateSupLamCustomize": {
+      "request_examples": [
+        {
+          "call": "updateSupLamCustomize",
+          "data": {
+            "sv_supLamId": 0,
+            "sv_slotNum": 0,
+            "sv_customItemHoldIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "changeActiveCustomizeSlot": {
+      "request_examples": [
+        {
+          "call": "changeActiveCustomizeSlot",
+          "data": {
+            "sv_charaId": 0,
+            "sv_activeCustomSlotNum": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Active outfit-slot update completed.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "sv_slotNum takes precedence over sv_activeCustomSlotNum; default is 0.",
+        "The current handler does not enforce a slot or character range."
+      ]
+    },
+    "changeSupLamActiveCustomizeSlot": {
+      "request_examples": [
+        {
+          "call": "changeSupLamActiveCustomizeSlot",
+          "data": {
+            "sv_supLamId": 0,
+            "sv_activeCustomSlotNum": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "updateProfile": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "updateProfile",
+          "data": {
+            "name": "<string>",
+            "steamRegion": "<string>",
+            "steamLang": "<string>"
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "updateProfile",
+          "data": {
+            "charaId": 1,
+            "sv_tutorialMap": {
+              "chara": 0
+            }
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "updateProfile",
+          "data": {
+            "stageId": 0
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "updateProfile",
+          "data": {
+            "supLamId": 1
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Current profile after recognized name, region, character or tutorial updates.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "_id": "1",
+              "sv_uid": "1",
+              "sv_onlineId": "1",
+              "sv_userName": "Example Player",
+              "sv_userRegion": "SE",
+              "sv_gameRegion": "SE",
+              "sv_userTutorial": "2147483647",
+              "sv_tutorialMap": {},
+              "sv_rankPoint": "0",
+              "sv_rankId": "1",
+              "sv_playerLv": "1",
+              "sv_playerExp": "0",
+              "sv_playerStatus": "0",
+              "sv_virtualCurrency": "0",
+              "sv_userCountry": "SE",
+              "sv_userCountryState": "",
+              "sv_gamePoint": "0",
+              "sv_userCurrency": "EUR",
+              "sv_itemsHoldLimit": "9999",
+              "sv_allCharaFreeTerm": "0",
+              "sv_freeCharaGainTime": "0",
+              "sv_selectedStageId": "1",
+              "sv_skillgrids": [
+                {
+                  "sv_sgridId": "0",
+                  "sv_openedSlot": "4",
+                  "sv_unlockedSlotItem": "0",
+                  "sv_skillcubeHoldIds": [],
+                  "sv_gridStatus": "0",
+                  "sv_x0y0": "-1",
+                  "sv_x1y0": "-1",
+                  "sv_x2y0": "-1",
+                  "sv_x3y0": "-1",
+                  "sv_x0y1": "-1",
+                  "sv_x1y1": "0",
+                  "sv_x2y1": "0",
+                  "sv_x3y1": "-1",
+                  "sv_x0y2": "-1",
+                  "sv_x1y2": "0",
+                  "sv_x2y2": "0",
+                  "sv_x3y2": "-1",
+                  "sv_x0y3": "-1",
+                  "sv_x1y3": "-1",
+                  "sv_x2y3": "-1",
+                  "sv_x3y3": "-1"
+                }
+              ],
+              "sv_skillcubeHoldLimit": "100",
+              "sv_skillcubes": [
+                {
+                  "sv_skillcubeHoldId": "2",
+                  "sv_skillcubeId": "1200010021001000",
+                  "sv_triggerCount": "0",
+                  "sv_triggerLimit": "100",
+                  "sv_levelupCount": "0",
+                  "sv_evolutionCount": "0",
+                  "sv_modificationCount": "0",
+                  "sv_recoveryCount": "0",
+                  "sv_skillLevel": "1",
+                  "sv_skillExp": "0",
+                  "sv_status": "0"
+                }
+              ],
+              "sv_items": [],
+              "sv_disconnNum": "0",
+              "sv_circleId": "0",
+              "sv_activeCharaId": "1",
+              "sv_activeSupLamId": "1",
+              "sv_characters": [
+                {
+                  "sv_charaId": "1",
+                  "sv_charaLv": "1",
+                  "sv_charaEnabled": true,
+                  "sv_charaEnableTerm": "9999999999999",
+                  "sv_charaTutorial": "2147483647",
+                  "sv_charaExp": "0",
+                  "sv_charaUsage": "0",
+                  "sv_customItems": [
+                    {
+                      "sv_customItemHoldId": "1200000",
+                      "sv_customItemId": "1200000"
+                    }
+                  ],
+                  "sv_customSlots": [
+                    {
+                      "sv_customItemHoldIds": [
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "sv_activeCustomSlotNum": "0"
+                }
+              ],
+              "sv_supLams": [
+                {
+                  "sv_supLamId": "1",
+                  "sv_supLamLv": "1",
+                  "sv_supLamEnableTerm": "9999999999999",
+                  "sv_supLamExp": "0",
+                  "sv_customSlot": []
+                }
+              ],
+              "sv_enteredRoomId": "0",
+              "sv_tagPartner": "0",
+              "sv_recipes": [],
+              "sv_compositeStackLimit": "0",
+              "sv_compositeStacks": [],
+              "sv_battleRecords": [],
+              "sv_disconnectLog": "0",
+              "sv_disconnCriminal": "0"
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Only recognized charaId values are persisted; invalid character selections are ignored.",
+        "name and steamRegion update process memory; tutorial flags are bitwise OR-merged.",
+        "The country/currency fields are compatibility values, not payment/account verification.",
+        "Native stageId, supLamId and steamLang fields are currently ignored; the handler still returns the profile."
+      ]
+    },
+    "getItemMail": {
+      "request_examples": [
+        {
+          "call": "getItemMail",
+          "data": {
+            "sv_isReadOnly": 1
+          }
+        },
+        {
+          "call": "getItemMail",
+          "data": {
+            "sv_isReadOnly": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Current compatibility mailbox; both arrays present but empty.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_mails": [],
+              "sv_messages": [],
+              "sv_itemMails": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Empty compatibility result; no mailbox rewards or mail delivery are implemented.",
+        "Native types 17/18 use parser 0x1400cf370 and require data.sv_mails to be an array.",
+        "Type 18 (sv_isReadOnly=0) sets results API state 2 only after parsing sv_mails; missing it can time out as 9008.",
+        "sv_messages and sv_itemMails are retained legacy compatibility fields, not sufficient for post-match completion."
+      ]
+    },
+    "composeSkillCube": {
+      "request_examples": [
+        {
+          "call": "composeSkillCube",
+          "data": {
+            "stackNum": 0,
+            "mode": 0,
+            "mainMaterial": 1,
+            "subMaterials": [
+              1
+            ],
+            "recipe": 1,
+            "isTest": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "verifyComposing": {
+      "request_examples": [
+        {
+          "call": "verifyComposing",
+          "data": {
+            "sv_stackNum": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "cutCompositeTime": {
+      "request_examples": [
+        {
+          "call": "cutCompositeTime",
+          "data": {
+            "sv_isQuery": 0,
+            "sv_stackNum": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "removeSkillcubes": {
+      "request_examples": [
+        {
+          "call": "removeSkillcubes",
+          "data": {
+            "sv_skillcubeHoldIds": [
+              1
+            ]
+          }
+        },
+        {
+          "call": "removeSkillcubes",
+          "data": {
+            "sv_skillcubeHoldIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "extendSkillGrid": {
+      "request_examples": [
+        {
+          "call": "extendSkillGrid",
+          "data": {
+            "openGrids": [
+              {
+                "sv_sgridId": 0,
+                "sv_slotKeys": [
+                  "sv_x0y1"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Selected cells validated and available expansion rights were spent.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_grids": [
+                {
+                  "sv_sgridId": "0",
+                  "sv_openedSlot": "4",
+                  "sv_unlockedSlotItem": "0",
+                  "sv_skillcubeHoldIds": [],
+                  "sv_gridStatus": "0",
+                  "sv_x0y0": "-1",
+                  "sv_x1y0": "-1",
+                  "sv_x2y0": "-1",
+                  "sv_x3y0": "-1",
+                  "sv_x0y1": "-1",
+                  "sv_x1y1": "0",
+                  "sv_x2y1": "0",
+                  "sv_x3y1": "-1",
+                  "sv_x0y2": "-1",
+                  "sv_x1y2": "0",
+                  "sv_x2y2": "0",
+                  "sv_x3y2": "-1",
+                  "sv_x0y3": "-1",
+                  "sv_x1y3": "-1",
+                  "sv_x2y3": "-1",
+                  "sv_x3y3": "-1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "ERROR",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Requires skillGridProgression and sufficient server-computed expansion rights.",
+        "Each grid may occur once. Cell keys must be unique valid sv_xNyN coordinates (0..3).",
+        "Cells must be locked and adjacent to an already open cell; requests are applied in list order.",
+        "Example shows the wire shape; it fails without an available earned/preserved right.",
+        "No authentic per-level expansion schedule is shipped; do not assume leveling automatically grants rights."
+      ]
+    },
+    "updateSkillGrid": {
+      "request_examples": [
+        {
+          "call": "updateSkillGrid",
+          "data": {
+            "sv_grids": [
+              {
+                "sv_sgridId": 0,
+                "sv_openedSlot": 0,
+                "sv_unlockedSlotItem": 0,
+                "sv_x0y0": 0,
+                "sv_x1y0": 0,
+                "sv_x2y0": 0,
+                "sv_x3y0": 0,
+                "sv_x0y1": 0,
+                "sv_x1y1": 0,
+                "sv_x2y1": 0,
+                "sv_x3y1": 0,
+                "sv_x0y2": 0,
+                "sv_x1y2": 0,
+                "sv_x2y2": 0,
+                "sv_x3y2": 0,
+                "sv_x0y3": 0,
+                "sv_x1y3": 0,
+                "sv_x2y3": 0,
+                "sv_x3y3": 0,
+                "sv_skillcubeHoldIds": [
+                  1
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Submitted layouts passed validation and were saved.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_grids": [
+                {
+                  "sv_sgridId": "0",
+                  "sv_openedSlot": "4",
+                  "sv_unlockedSlotItem": "0",
+                  "sv_skillcubeHoldIds": [],
+                  "sv_gridStatus": "0",
+                  "sv_x0y0": "-1",
+                  "sv_x1y0": "-1",
+                  "sv_x2y0": "-1",
+                  "sv_x3y0": "-1",
+                  "sv_x0y1": "-1",
+                  "sv_x1y1": "0",
+                  "sv_x2y1": "0",
+                  "sv_x3y1": "-1",
+                  "sv_x0y2": "-1",
+                  "sv_x1y2": "0",
+                  "sv_x2y2": "0",
+                  "sv_x3y2": "-1",
+                  "sv_x0y3": "-1",
+                  "sv_x1y3": "-1",
+                  "sv_x2y3": "-1",
+                  "sv_x3y3": "-1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "ERROR",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Requires diagnosticSkillCube or originalSkillCubes feature.",
+        "May send only dirty grids; omitted owned loadouts are preserved.",
+        "Response sv_grids contains the merged saved layouts; its array type releases the native pending-profile gate.",
+        "Every submitted grid must include all 16 native cell keys.",
+        "Cannot add/delete grids, alter locked cells, invent owned cubes or change expansion credit.",
+        "Each original cube must occupy its complete block count; all-zero cell tags may repeat. Mixed/nonzero legacy tags retain uniqueness checks. Hold list must match occupied cells.",
+        "Accepted quantities are integer values or ASCII decimal strings; bools are rejected by grid validation."
+      ]
+    },
+    "sendTutorialResult": {
+      "request_examples": [
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_userTutorial": 0,
+            "sv_tutorialMap": {
+              "management": 0
+            }
+          }
+        },
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_tutorialMap": {
+              "tutorial_second": 0
+            }
+          }
+        },
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_tutorialMap": {
+              "management": 0
+            }
+          }
+        },
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_charaTutorial": {
+              "sv_charaId": 0,
+              "sv_tutorialValue": 0
+            }
+          }
+        },
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_tutorialMap": {
+              "chara": 0
+            }
+          }
+        },
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_tutorialMap": {
+              "help": 0
+            }
+          }
+        },
+        {
+          "call": "sendTutorialResult",
+          "data": {
+            "sv_tutorialMap": {
+              "stateFlag": 0
+            }
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Recognized sv_tutorialMap flags merged; other tutorial fields are ignored.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "_id": "1",
+              "sv_uid": "1",
+              "sv_onlineId": "1",
+              "sv_userName": "Example Player",
+              "sv_userRegion": "SE",
+              "sv_gameRegion": "SE",
+              "sv_userTutorial": "2147483647",
+              "sv_tutorialMap": {},
+              "sv_rankPoint": "0",
+              "sv_rankId": "1",
+              "sv_playerLv": "1",
+              "sv_playerExp": "0",
+              "sv_playerStatus": "0",
+              "sv_virtualCurrency": "0",
+              "sv_userCountry": "SE",
+              "sv_userCountryState": "",
+              "sv_gamePoint": "0",
+              "sv_userCurrency": "EUR",
+              "sv_itemsHoldLimit": "9999",
+              "sv_allCharaFreeTerm": "0",
+              "sv_freeCharaGainTime": "0",
+              "sv_selectedStageId": "1",
+              "sv_skillgrids": [
+                {
+                  "sv_sgridId": "0",
+                  "sv_openedSlot": "4",
+                  "sv_unlockedSlotItem": "0",
+                  "sv_skillcubeHoldIds": [],
+                  "sv_gridStatus": "0",
+                  "sv_x0y0": "-1",
+                  "sv_x1y0": "-1",
+                  "sv_x2y0": "-1",
+                  "sv_x3y0": "-1",
+                  "sv_x0y1": "-1",
+                  "sv_x1y1": "0",
+                  "sv_x2y1": "0",
+                  "sv_x3y1": "-1",
+                  "sv_x0y2": "-1",
+                  "sv_x1y2": "0",
+                  "sv_x2y2": "0",
+                  "sv_x3y2": "-1",
+                  "sv_x0y3": "-1",
+                  "sv_x1y3": "-1",
+                  "sv_x2y3": "-1",
+                  "sv_x3y3": "-1"
+                }
+              ],
+              "sv_skillcubeHoldLimit": "100",
+              "sv_skillcubes": [
+                {
+                  "sv_skillcubeHoldId": "2",
+                  "sv_skillcubeId": "1200010021001000",
+                  "sv_triggerCount": "0",
+                  "sv_triggerLimit": "100",
+                  "sv_levelupCount": "0",
+                  "sv_evolutionCount": "0",
+                  "sv_modificationCount": "0",
+                  "sv_recoveryCount": "0",
+                  "sv_skillLevel": "1",
+                  "sv_skillExp": "0",
+                  "sv_status": "0"
+                }
+              ],
+              "sv_items": [],
+              "sv_disconnNum": "0",
+              "sv_circleId": "0",
+              "sv_activeCharaId": "1",
+              "sv_activeSupLamId": "1",
+              "sv_characters": [
+                {
+                  "sv_charaId": "1",
+                  "sv_charaLv": "1",
+                  "sv_charaEnabled": true,
+                  "sv_charaEnableTerm": "9999999999999",
+                  "sv_charaTutorial": "2147483647",
+                  "sv_charaExp": "0",
+                  "sv_charaUsage": "0",
+                  "sv_customItems": [
+                    {
+                      "sv_customItemHoldId": "1200000",
+                      "sv_customItemId": "1200000"
+                    }
+                  ],
+                  "sv_customSlots": [
+                    {
+                      "sv_customItemHoldIds": [
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "sv_activeCustomSlotNum": "0"
+                }
+              ],
+              "sv_supLams": [
+                {
+                  "sv_supLamId": "1",
+                  "sv_supLamLv": "1",
+                  "sv_supLamEnableTerm": "9999999999999",
+                  "sv_supLamExp": "0",
+                  "sv_customSlot": []
+                }
+              ],
+              "sv_enteredRoomId": "0",
+              "sv_tagPartner": "0",
+              "sv_recipes": [],
+              "sv_compositeStackLimit": "0",
+              "sv_compositeStacks": [],
+              "sv_battleRecords": [],
+              "sv_disconnectLog": "0",
+              "sv_disconnCriminal": "0"
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Map values are OR-merged with saved flags, not replaced; invalid entries are skipped.",
+        "Returns the current profile: native request types 98..103 require sv_onlineId to finish their profile-cache update.",
+        "Native sv_userTutorial and sv_charaTutorial are not processed by this handler; OK does not mean they were saved."
+      ]
+    },
+    "updateGameOption": {
+      "request_examples": [
+        {
+          "call": "updateGameOption",
+          "data": {
+            "sv_optDisplayMode": 0,
+            "sv_optWindowSize": 0,
+            "sv_optBrightness": 0,
+            "sv_optVSync": 0,
+            "sv_optShadow": 0,
+            "sv_optSSAO": 0,
+            "sv_optPostEffect": 0,
+            "sv_optParticleEffect": 0,
+            "sv_optMasterVol": 0,
+            "sv_optBgmVol": 0,
+            "sv_optSEVol": 0,
+            "sv_optVoiceVol": 0,
+            "sv_optVoiceChat": 0,
+            "sv_optVoiceTXVol": 0,
+            "sv_optVoiceRXVol": 0,
+            "sv_optAudioCh": 0,
+            "sv_optAudioOffOnInactive": 0,
+            "sv_os": "<string>",
+            "sv_ram": 1,
+            "sv_cpuSpeed": 1,
+            "sv_cpuNum": 1,
+            "sv_vram": 1,
+            "sv_graphicCard": "<string>",
+            "sv_existsMic": 0,
+            "sv_lang": "<string>",
+            "sv_cpuName": "<string>"
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "logWorstPing": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "logWorstPing",
+          "data": {
+            "srcAddr": "<string>",
+            "disconnectCode": 0,
+            "pings": [
+              {
+                "destAddr": "<string>",
+                "sv_onlineId": 1,
+                "maxTime": 0,
+                "relay": 0,
+                "connect": 0
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "logClientAction": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "logClientAction",
+          "data": {
+            "sv_logs": [
+              {
+                "sv_actionTime": 1,
+                "sv_actionId": 0,
+                "sv_place": "<string>",
+                "sv_remark": {
+                  "battleId": "<string>"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "logClientAction",
+          "data": {
+            "sv_logs": [
+              {
+                "sv_actionTime": 0,
+                "sv_actionId": 0,
+                "sv_place": "<string>",
+                "sv_remark": {
+                  "battleId": "<string>",
+                  "tagComboCount": 0,
+                  "dashCancelCount": 0,
+                  "attackPoint": 1,
+                  "damagePoint": 1,
+                  "killCount": 0,
+                  "deadCount": 0,
+                  "targetChangeCount": 0,
+                  "cancelComboCount": 0,
+                  "awakeCount": 0,
+                  "isTag": 0,
+                  "playerRank": 0,
+                  "playerLevel": 0,
+                  "charaId": 0,
+                  "charaLevel": 0,
+                  "isFriend": 0,
+                  "battleResult": 0,
+                  "shotCount": 0,
+                  "grapCount": 0,
+                  "specialOneCount": 0,
+                  "specialTwoCount": 0,
+                  "nativeSkillCount": 0,
+                  "guardCount": 0,
+                  "isVoiceChat": 0,
+                  "awakeAttackPoint": 0,
+                  "awakeDamagePoint": 0,
+                  "tagComboChance": 0,
+                  "doubleLockCount": 0,
+                  "cutDamage": 0,
+                  "cutCount": 0,
+                  "shotHitCount": 0,
+                  "grapHitCount": 0,
+                  "guardDoingCount": 0,
+                  "overHeatCount": 0,
+                  "chainAttack": 0,
+                  "vsBotBattleId": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "logClientAction",
+          "data": {
+            "sv_logs": [
+              {
+                "sv_actionTime": 0,
+                "sv_actionId": 0,
+                "sv_place": "stop error",
+                "sv_remark": 0
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "saveReplay": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "saveReplay",
+          "data": {
+            "sv_stageId": 0,
+            "sv_roomType": 0,
+            "sv_entries": [
+              {
+                "sv_uid": 1,
+                "sv_playerLv": 0,
+                "sv_charaId": 0,
+                "sv_userName": "<string>",
+                "sv_rankId": 0,
+                "sv_circleName": "<string>",
+                "sv_side": 0,
+                "sv_tagName": "<string>"
+              }
+            ],
+            "sv_replayData": "<string>",
+            "sv_replayVer": "<string>",
+            "sv_flag": 1
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "findReplay": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "findReplay",
+          "data": {
+            "sv_replayVer": "<string>",
+            "sv_stageId": 0,
+            "sv_roomType": 0,
+            "sv_uids": [
+              1
+            ],
+            "sv_minRankId": 0,
+            "sv_maxRankId": 0,
+            "sv_allyCharaIds": [
+              1
+            ],
+            "sv_foeCharaIds": [
+              1
+            ],
+            "sv_circleName": "<string>",
+            "sv_beginTime": 1,
+            "sv_endTime": 1
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "loadReplay": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "loadReplay",
+          "data": {
+            "sv_replayId": "<string>"
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getPurchaseItemList": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getPurchaseItemList",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "beginPurchase": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "beginPurchase",
+          "data": {
+            "sv_purchaseItemId": 1,
+            "sv_purchaseDescString": "<string>"
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "endPurchase": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "endPurchase",
+          "data": {
+            "sv_cancel": 0,
+            "sv_orderId": 1
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "queryPurchase": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "queryPurchase",
+          "data": {
+            "sv_orderId": 1
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getStoreItemList": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getStoreItemList",
+          "data": {
+            "sv_type": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "sv_type is not 0; synthetic example has one owned grid and an empty cart.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [],
+              "sv_storeItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_buyableCount": "4",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ],
+                  "sv_salesRank": "0"
+                }
+              ],
+              "sv_items": []
+            }
+          }
+        },
+        {
+          "when": "sv_type is numeric 0 or string \"0\".",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [],
+              "sv_storeItems": [],
+              "sv_items": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Alias of getMyCart in this implementation; sv_type=0 returns three empty arrays."
+      ]
+    },
+    "addToCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "addToCart",
+          "data": {
+            "sv_type": 0,
+            "sv_storeItems": [
+              {
+                "sv_storeItemId": 1,
+                "sv_storeItemCount": 0
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Valid revival Add Grid item, quantity 1, sv_type=1 and an available layout slot.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_storeOrderId": "1",
+                  "sv_resultCode": "0",
+                  "sv_storeItemDesc": "240118",
+                  "sv_storeItemCount": "1",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ]
+                }
+              ],
+              "sv_storeItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_buyableCount": "4",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ],
+                  "sv_salesRank": "0"
+                }
+              ],
+              "sv_items": []
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "ERROR",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Requires skills and progression; sv_type must equal 1.",
+        "Only the revival Add Grid store ID and quantity 1 are accepted; at most five grids.",
+        "A repeated add replaces the single cart entry instead of duplicating it."
+      ]
+    },
+    "getMyCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getMyCart",
+          "data": {
+            "sv_type": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "sv_type is not 0; synthetic example has one owned grid and an empty cart.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [],
+              "sv_storeItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_buyableCount": "4",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ],
+                  "sv_salesRank": "0"
+                }
+              ],
+              "sv_items": []
+            }
+          }
+        },
+        {
+          "when": "sv_type is numeric 0 or string \"0\".",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [],
+              "sv_storeItems": [],
+              "sv_items": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "sv_type=0 returns empty sv_cartItems/sv_storeItems/sv_items; other values return the grid-shop view.",
+        "Only Add Grid checkout is implemented, not a general store."
+      ]
+    },
+    "updateCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "updateCart",
+          "data": {
+            "sv_type": 0,
+            "sv_storeItems": [
+              {
+                "sv_storeItemId": 1,
+                "sv_storeItemCount": 0
+              }
+            ]
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "updateCart",
+          "data": {
+            "sv_type": 0,
+            "sv_storeItems": [
+              {
+                "sv_storeItemId": 1,
+                "sv_storeItemCount": 0
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "removeFromCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "removeFromCart",
+          "data": {
+            "sv_type": 0,
+            "sv_storeOrderIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Current grid-shop reply after optional removal; handler always returns this shop shape.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [],
+              "sv_storeItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_buyableCount": "4",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ],
+                  "sv_salesRank": "0"
+                }
+              ],
+              "sv_items": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Clears the Add Grid cart only when sv_type=1 and order ID 1 is present; otherwise a no-op."
+      ]
+    },
+    "buyItem": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "buyItem",
+          "data": {
+            "sv_type": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Valid Add Grid cart, sv_type=1 and sufficient LP; receipt returned and saved cart cleared.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_cartItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_storeOrderId": "1",
+                  "sv_resultCode": "0",
+                  "sv_storeItemDesc": "240118",
+                  "sv_storeItemCount": "1",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ]
+                }
+              ],
+              "sv_storeItems": [
+                {
+                  "sv_storeItemId": "1000000000001001",
+                  "sv_buyableCount": "4",
+                  "sv_items": [
+                    {
+                      "sv_itemId": "1000000020000001"
+                    }
+                  ],
+                  "sv_salesRank": "0"
+                }
+              ],
+              "sv_items": []
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "ERROR",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Requires skills, progression, sv_type=1, an existing Add Grid order and sufficient LP.",
+        "LP is read from gamePoint. Default price is 1 LP; configurable and NOT recovered original pricing.",
+        "Response sv_cartItems contains the receipt rows; the saved cart is cleared.",
+        "Not replay-idempotent: a second request without a new cart fails rather than buying again."
+      ]
+    },
+    "exchangeProductItem": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "exchangeProductItem",
+          "data": {
+            "code": "<string>"
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "findPlayerByName": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "findPlayerByName",
+          "data": {
+            "sv_name": "<string>"
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "setMyState": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "setMyState",
+          "data": {
+            "sv_playerState": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getPlayerState": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getPlayerState",
+          "data": {
+            "sv_uids": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "No presence records tracked; sv_states is an explicit empty array, not an offline status for every queried user.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_states": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Empty typed compatibility result; online presence records are not tracked.",
+        "Native type 50 reads data.sv_states at 0x1400e21dd; no offline/online statuses are fabricated."
+      ]
+    },
+    "findCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "findCircle",
+          "data": {
+            "sv_name": "<string>",
+            "sv_inviteOnly": 0,
+            "sv_minRank": 0,
+            "sv_circleAreaId": 0,
+            "sv_page": 0
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "findCircle",
+          "data": {
+            "sv_circleIds": [
+              1
+            ],
+            "sv_page": 0,
+            "sv_enableMaxMember": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_totalPage": "1",
+              "sv_circles": [
+                {
+                  "sv_circleId": "1",
+                  "sv_createTime": "1700000000",
+                  "sv_circleName": "Example Circle",
+                  "sv_circleIcon": "====",
+                  "sv_comment": "",
+                  "sv_circleAreaId": "1",
+                  "sv_inviteOnly": "0",
+                  "sv_minRank": "0",
+                  "sv_maxMembers": "20",
+                  "sv_memberCount": "1",
+                  "sv_status": "1",
+                  "sv_gamePoint": "0",
+                  "sv_leaderUid": "1",
+                  "sv_leaderName": "Example Player",
+                  "sv_subLeaderMax": "0",
+                  "sv_subLeaderCount": "0",
+                  "sv_subLeaderUids": [],
+                  "sv_invitings": [],
+                  "sv_members": [
+                    {
+                      "sv_uid": "1",
+                      "sv_onlineId": "1",
+                      "sv_userName": "Example Player",
+                      "sv_rankId": "1",
+                      "sv_joinTime": "1700000000",
+                      "sv_joinMethod": "0",
+                      "sv_loginTime": "0",
+                      "sv_position": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "getCircleName": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getCircleName",
+          "data": {
+            "sv_circleIds": [
+              1
+            ],
+            "sv_enableMaxMember": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_circleNames": [
+                {
+                  "sv_circleId": "1",
+                  "sv_circleName": "Example Circle"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "setupCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "setupCircle",
+          "data": {
+            "sv_name": "<string>",
+            "sv_circleIcon": "<string>",
+            "sv_inviteOnly": 0,
+            "sv_minRank": 0,
+            "sv_circleAreaId": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_circle": {
+                "sv_circleId": "1",
+                "sv_createTime": "1700000000",
+                "sv_circleName": "Example Circle",
+                "sv_circleIcon": "====",
+                "sv_comment": "",
+                "sv_circleAreaId": "1",
+                "sv_inviteOnly": "0",
+                "sv_minRank": "0",
+                "sv_maxMembers": "20",
+                "sv_memberCount": "1",
+                "sv_status": "1",
+                "sv_gamePoint": "0",
+                "sv_leaderUid": "1",
+                "sv_leaderName": "Example Player",
+                "sv_subLeaderMax": "0",
+                "sv_subLeaderCount": "0",
+                "sv_subLeaderUids": [],
+                "sv_invitings": [],
+                "sv_members": [
+                  {
+                    "sv_uid": "1",
+                    "sv_onlineId": "1",
+                    "sv_userName": "Example Player",
+                    "sv_rankId": "1",
+                    "sv_joinTime": "1700000000",
+                    "sv_joinMethod": "0",
+                    "sv_loginTime": "0",
+                    "sv_position": "2"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "getCircleMemberList": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getCircleMemberList",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_members": [
+                {
+                  "sv_uid": "1",
+                  "sv_onlineId": "1",
+                  "sv_userName": "Example Player",
+                  "sv_rankId": "1",
+                  "sv_joinTime": "1700000000",
+                  "sv_joinMethod": "0",
+                  "sv_loginTime": "0",
+                  "sv_position": "2"
+                }
+              ],
+              "sv_tagNames": []
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "getCircleInfo": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getCircleInfo",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_leaderName": "Example Player",
+              "sv_circle": {
+                "sv_circleId": "1",
+                "sv_createTime": "1700000000",
+                "sv_circleName": "Example Circle",
+                "sv_circleIcon": "====",
+                "sv_comment": "",
+                "sv_circleAreaId": "1",
+                "sv_inviteOnly": "0",
+                "sv_minRank": "0",
+                "sv_maxMembers": "20",
+                "sv_memberCount": "1",
+                "sv_status": "1",
+                "sv_gamePoint": "0",
+                "sv_leaderUid": "1",
+                "sv_leaderName": "Example Player",
+                "sv_subLeaderMax": "0",
+                "sv_subLeaderCount": "0",
+                "sv_subLeaderUids": [],
+                "sv_invitings": [],
+                "sv_members": [
+                  {
+                    "sv_uid": "1",
+                    "sv_onlineId": "1",
+                    "sv_userName": "Example Player",
+                    "sv_rankId": "1",
+                    "sv_joinTime": "1700000000",
+                    "sv_joinMethod": "0",
+                    "sv_loginTime": "0",
+                    "sv_position": "2"
+                  }
+                ]
+              },
+              "sv_invitings": []
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "joinCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "joinCircle",
+          "data": {
+            "sv_circleId": 1,
+            "sv_cancel": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "replyToJoinCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "replyToJoinCircle",
+          "data": {
+            "sv_uid": 1,
+            "sv_accept": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "inviteCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "inviteCircle",
+          "data": {
+            "sv_uid": 1,
+            "sv_cancel": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "replyToInviteCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "replyToInviteCircle",
+          "data": {
+            "sv_circleId": 1,
+            "sv_accept": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "leaveCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "leaveCircle",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "breakUpCircle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "breakUpCircle",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "kickCircleMember": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "kickCircleMember",
+          "data": {
+            "sv_uids": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "changeCircleIcon": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "changeCircleIcon",
+          "data": {
+            "sv_circleIcon": "<string>"
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "changeComment": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "changeComment",
+          "data": {
+            "sv_comment": "<string>"
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_comment": "Example comment"
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "changeEntryQualifications": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "changeEntryQualifications",
+          "data": {
+            "sv_inviteOnly": 0,
+            "sv_minRank": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "incMaxNumOfSubLeaders": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "incMaxNumOfSubLeaders",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_subLeaderNum": "1",
+              "sv_gamePoint": "90000"
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential.",
+        "Revival Sub Leader allowance purchases cost 10000 local LP for one slot, matching native popup 0x14031abc3 and 0x14031ad40. Safety maximum 10 is revival policy, not a recovered historical limit.",
+        "Native request type 71 has empty data. Success requires data.sv_subLeaderNum (string), parsed at 0x14008ef7d; subsequent getCircleInfo uses sv_subLeaderMax. Buying does not promote anyone or change member capacity.",
+        "Uses the same durable reservation/reconciliation mechanism as member purchases, with kind=subleaders and separate circleSubLeaderCapacityPending / circleSubLeaderCapacityReceipt profile keys. Cross-kind operation reuse is rejected; immediate duplicate native requests are coalesced for two seconds.",
+        "Local LP is reserved before sending; uncertain replies retain the reservation until a matching receipt is recovered. Confirmed rejection refunds once. Public identities/local LP remain unverified, not a secure shared economy."
+      ]
+    },
+    "incMaxNumOfMembers": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "incMaxNumOfMembers",
+          "data": {}
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_maxMembers": "25",
+              "sv_gamePoint": "90000"
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential.",
+        "Explicitly user-approved revival policy: Circle leader buys 5 members for 10000 local LP, maximum 100 members. Native popup 0x14031ad34..0x14031ad40 contains step 5 and price 10000; final live-service balance is not claimed recovered.",
+        "Native request data is empty. The local adapter reserves LP durably and forwards an internal _purchase object containing operation (32 lowercase hex), uid, circle_id, previous capacity and price. Shared receipts bind operation/identity/Circle/capacity and deduplicate retries. The internal bridge is not an original native API.",
+        "A timeout retains the reservation for retry, rather than blindly refunding a possibly committed purchase. Valid rejection receipts refund once. Immediate native retries within two seconds share the last result; intentional further purchases should wait two seconds.",
+        "The LP ledger remains local to each installation. Public claimed identities and edited profiles are untrusted; this is not a secure shared economy. A permanently unavailable backend/pending journal needs operator reconciliation, not deletion.",
+        "Success data.sv_maxMembers is consumed by native request type 72 at 0x14008f01b. sv_gamePoint reports the updated local wallet; an already cached native wallet may need a profile refresh."
+      ]
+    },
+    "assignLeader": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "assignLeader",
+          "data": {
+            "sv_uid": 1
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "changeSubLeader": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "changeSubLeader",
+          "data": {
+            "sv_assignUids": [
+              1
+            ]
+          }
+        },
+        {
+          "version": 0.8,
+          "call": "changeSubLeader",
+          "data": {
+            "sv_castDownUids": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/circle_unavailable"
+    },
+    "changeCircleArea": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "changeCircleArea",
+          "data": {
+            "sv_circleAreaId": 1
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Supported Circle operation validated by the shared backend; synthetic example, not an original production capture.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {}
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "NG",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Native Circle response fields reconstructed from parser 0x14008acc0; historical server policies are not recovered.",
+        "Forwarded to POST /circle/{own uid} on the configured shared profile relay. Network/storage/validation failure returns result=NG, never empty success.",
+        "Shared durable Circle state; creation is idempotent for the same leader and identical settings. Duplicate case-folded names or existing different membership fail.",
+        "Revival limits: 1024 Circles, initially 20 members and a safety maximum of 100, names 64 UTF-8 bytes, comments 255 bytes; PNG emblems up to 96 KiB base64 and dimensions at most 512x512. Circle requests capped at 128 KiB and client replies at 2 MiB. These are NOT original pricing/limits.",
+        "Native search pages are one-based, 20 rows; zero is retained as a first-page alias for old diagnostic callers. Area/rank zero imposes no filter. enableMaxMember is currently ignored.",
+        "Native wire roles are 2=leader, 1=subleader, 0=member; parser 0x14008e8fa maps them to internal UI roles 1/2/3. No subleaders are created.",
+        "Join/invite delivery, role changes, Circle chat and rankings remain unsupported. No rewards invented.",
+        "Public service trusts claimed identities, NOT verified Steam tickets; private mode checks the per-identity credential."
+      ]
+    },
+    "updateFriends": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "updateFriends",
+          "data": {
+            "sv_onlineIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Synthetic request includes one other decimal identity, 2; actual friend array varies.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_friends": [
+                {
+                  "sv_uid": "2",
+                  "sv_onlineId": "2",
+                  "sv_userName": "Example Friend"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Returns decimal requested identities other than self, with available display names.",
+        "Does not prove ownership, login, presence or a current lobby; presence is a separate NRT event."
+      ]
+    },
+    "sync": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "sync",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "changeTagName": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "changeTagName",
+          "data": {
+            "sv_partnerUid": 1,
+            "sv_isCircle": 0,
+            "sv_tagName": "<string>"
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getTagName": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getTagName",
+          "data": {
+            "sv_uids": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "No named-team records implemented; sv_tagNames is an explicit empty array required by native type 53.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_tagNames": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Empty typed compatibility result, not a recovered named-team service.",
+        "Native type 53 unconditionally copies data.sv_tagNames at 0x140091205; data={} crashes.",
+        "No stored team tags are available; no names are fabricated and no profile is modified."
+      ]
+    },
+    "getGiftItemList": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getGiftItemList",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "addToGiftCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "addToGiftCart",
+          "data": {
+            "sv_giftItems": [
+              {
+                "sv_storeItemId": 1,
+                "sv_storeItemCount": 0,
+                "sv_toUid": 1,
+                "sv_message": "<string>"
+              }
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "removeFromGiftCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "removeFromGiftCart",
+          "data": {
+            "sv_storeOrderIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getMyGiftCart": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getMyGiftCart",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "buyGift": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "buyGift",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "beginBotBattle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "beginBotBattle",
+          "data": {
+            "sv_botBattleId": 0,
+            "sv_partnerCharaId": 0,
+            "sv_enemyCharaIds": [
+              1
+            ],
+            "sv_partnerUid": 1,
+            "sv_sessionId": "<string>",
+            "sv_stageId": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Battle begin accepted; sv_battleId is a sequence/ledger ID, not the bot phase ID.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_battleId": "1"
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "ERROR",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Shipped award policy is disabled: increments an in-memory sequence and remembers request data.",
+        "When an evidence-verified award policy is enabled, validates context, persists a ledger and reuses identical active begins.",
+        "sv_partnerCharaId is preserved as context, not independently used to award XP."
+      ]
+    },
+    "endBotBattle": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "endBotBattle",
+          "data": {
+            "sv_botBattleId": 0,
+            "sv_partnerCharaId": 0,
+            "sv_enemyCharaIds": [
+              1
+            ],
+            "sv_battleResult": 0,
+            "sv_myReg": 1,
+            "sv_myCombo": 1,
+            "sv_enemyReg": 1,
+            "sv_enemyCombo": 1,
+            "sv_comboCount": 1,
+            "sv_charaDamage": 1,
+            "sv_kill": 1,
+            "sv_dead": 1,
+            "sv_atBonus": 1,
+            "sv_tagBonus": 1,
+            "sv_niceCut": 1,
+            "sv_wLockAt": 1,
+            "sv_battleId": "<string>",
+            "sv_partnerUid": 1,
+            "sv_sessionId": "<string>",
+            "sv_stageId": 0
+          }
+        }
+      ],
+      "implementation": "explicit_revival_handler",
+      "response_examples": [
+        {
+          "when": "Default shipped award policy is disabled; no reward items or XP granted.",
+          "http_status": 200,
+          "body": {
+            "result": "OK",
+            "time": "1700000000",
+            "data": {
+              "sv_battleId": "1",
+              "sv_rewards": [],
+              "sv_items": [],
+              "sv_mails": []
+            }
+          }
+        },
+        {
+          "when": "Handler validation or required feature/policy check fails.",
+          "http_status": 200,
+          "body": {
+            "result": "ERROR",
+            "time": "1700000000",
+            "data": {}
+          }
+        }
+      ],
+      "notes": [
+        "Default disabled policy records only recent in-memory result summaries and returns empty rewards.",
+        "No XP, LP, loot or authentic win/result-code meaning should be inferred from this example.",
+        "When enabled: battleId must match owner/context, bot ID and policy digest; result code must be 0..3.",
+        "Identical completed results replay the stored receipt; conflicting repeats fail.",
+        "The implemented policy supports verified player/character XP rules, not a general currency/loot award system."
+      ]
+    },
+    "unlockAchievement": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "unlockAchievement",
+          "data": {
+            "sv_achievementIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "useItem": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "useItem",
+          "data": {
+            "sv_holdIds": [
+              1
+            ]
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getRankmatchRanking": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getRankmatchRanking",
+          "data": {
+            "sv_type": 0,
+            "sv_filter": 0,
+            "sv_charaIdFilter": 0,
+            "sv_start": 0,
+            "sv_range": 0,
+            "sv_period": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getCharaUsageRanking": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getCharaUsageRanking",
+          "data": {
+            "sv_period": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getCharaRanking": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getCharaRanking",
+          "data": {
+            "sv_charaId": 0,
+            "sv_filter": 0,
+            "sv_start": 0,
+            "sv_range": 0,
+            "sv_period": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getCircleRanking": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getCircleRanking",
+          "data": {
+            "sv_type": 0,
+            "sv_filter": 0,
+            "sv_start": 0,
+            "sv_range": 0,
+            "sv_period": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getTagRanking": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getTagRanking",
+          "data": {
+            "sv_filter": 0,
+            "sv_start": 0,
+            "sv_range": 0,
+            "sv_period": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getGoodRanking": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getGoodRanking",
+          "data": {
+            "sv_filter": 0,
+            "sv_start": 0,
+            "sv_range": 0,
+            "sv_period": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getSupLamRates": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getSupLamRates",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "logout": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "logout",
+          "data": {}
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    },
+    "getIpLog": {
+      "request_examples": [
+        {
+          "version": 0.8,
+          "call": "getIpLog",
+          "data": {
+            "sv_start": 0,
+            "sv_range": 0
+          }
+        }
+      ],
+      "implementation": "no_explicit_revival_handler",
+      "original_response": null,
+      "response_examples": [],
+      "current_fallback_ref": "#/common_responses/generic_ack"
+    }
+  },
+  "master_loads": {
+    "chara_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "chara_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_charaId": "1",
+              "sv_cost": "2000",
+              "sv_hp": "580",
+              "sv_age": "0",
+              "sv_incarnateType": "0",
+              "sv_seFileName": "SE_CHR_01MEPHISTO",
+              "sv_voiceFileName": "VO_01_MEPHISTO_ONMEMORY",
+              "sv_labelName": "01_mephi",
+              "sv_customLabelName": "01mephi",
+              "sv_sizeType": "0",
+              "sv_sort": "1",
+              "sv_profCamPosX": "0.0",
+              "sv_profCamPosY": "1.2",
+              "sv_profCamPosZ": "3.5",
+              "sv_cusCamPosX": "0.0",
+              "sv_cusCamPosY": "1.2",
+              "sv_cusCamPosZ": "3.5",
+              "sv_appearanceTime": "1388534400",
+              "sv_enableType": "0",
+              "sv_enableTime": "1388534400",
+              "sv_charaType": "0",
+              "sv_moviePath": "NULL",
+              "sv_paramCount": "1",
+              "sv_param": [
+                {
+                  "sv_iconPath": "NULL",
+                  "sv_title": "590009",
+                  "sv_grap": "50",
+                  "sv_longRange": "50",
+                  "sv_speed": "50"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Explicit HP for all 14 released characters: Mephistopheles 580 was footage-verified, 11 others are earlier-build 2015 community-guide values, and Utsutahime 560 / Red Dragon 500 are user-supplied corrections. Stock tiers and presentation are unchanged."
+    },
+    "customize_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "customize_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_customizeId": "1200004",
+              "sv_name": "180021",
+              "sv_characterId": "1",
+              "sv_category": "2",
+              "sv_modelId": "0",
+              "sv_textureId": "4",
+              "sv_equipPart": "2",
+              "sv_desc": "170003",
+              "sv_sort": "5",
+              "sv_camPosX": "0.0",
+              "sv_camPosY": "0.0",
+              "sv_camPosZ": "0.0",
+              "sv_thumbnails": [
+                "Skin/cus_01mephi_cos_parts000_t04"
+              ]
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Original model/texture resources with revival item IDs; only some name associations are recovered or provisionally mapped."
+    },
+    "playerlevel_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "playerlevel_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_level": "0",
+              "sv_totalExp": "0",
+              "sv_openTime": "0",
+              "sv_rewardItems": []
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Fallback thresholds level*level*500 for 0..49 are placeholders; verified policy rows can replace them. Not an authentic XP award formula."
+    },
+    "charalevel_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "charalevel_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_charaId": "1",
+              "sv_level": "0",
+              "sv_totalExp": "0",
+              "sv_openTime": "0",
+              "sv_rewardItems": []
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Fallback thresholds level*level*300 for character IDs 1..21, levels 0..9; verified policy rows can replace specific character curves."
+    },
+    "skillcube_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "skillcube_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "_id": "1200010021001000",
+              "sv_skillcubeId": "1200010021001000",
+              "sv_skillcubeIconId": "at_suit_d",
+              "sv_skillcubeRank": "D",
+              "sv_skillcubeShape": "D01",
+              "sv_skillcubeName": "250092",
+              "sv_skillcubeDesc": "260008",
+              "sv_skillcubeRarityId": "0",
+              "sv_cobeCount": "2",
+              "sv_skillcubePrice": "1000",
+              "sv_skillcubeStatus": "1",
+              "sv_skillcubeCategory": "0",
+              "sv_sort": "1",
+              "sv_effects": [
+                {
+                  "sv_effectId": "2",
+                  "sv_minPercentage": "20",
+                  "sv_maxPercentage": "35",
+                  "sv_behavior": "0"
+                },
+                {
+                  "sv_effectId": "0",
+                  "sv_minPercentage": "0",
+                  "sv_maxPercentage": "0",
+                  "sv_behavior": "0"
+                },
+                {
+                  "sv_effectId": "1",
+                  "sv_minPercentage": "100",
+                  "sv_maxPercentage": "200",
+                  "sv_behavior": "0"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "346 enabled original cube rows; two positional combat slots and a third summary-category/score slot. Empty slots must not be removed. Existing holds 2..341 are preserved, with six dual-effect rows appended. Optional diagnostic cube. Shipped values are not proof of final live-server overrides."
+    },
+    "skillcubelevel_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "skillcubelevel_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_rank": "1",
+              "sv_level": "1",
+              "sv_totalExp": "0",
+              "sv_gainExp": "0",
+              "sv_triggerLimit": "100"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Original mode supplies four rank/base-level rows only. Leveling/consumption/evolution are not restored; trigger allowance 100 is compatibility data."
+    },
+    "rank_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "rank_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_upPoint": "100",
+              "sv_downPoint": "0",
+              "sv_downRatio": "0"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "15 placeholder rank records."
+    },
+    "matching_range_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "matching_range_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_rank": "0",
+              "sv_range": [],
+              "sv_min": "0",
+              "sv_max": "2"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "15 placeholder matching ranges; ranked matchmaking is not implemented."
+    },
+    "store_item_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "store_item_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "_id": "1000000000001001",
+              "sv_items": [
+                {
+                  "sv_itemId": "1000000020000001",
+                  "sv_itemCount": "1"
+                }
+              ],
+              "sv_price": "1",
+              "sv_basisPrice": "1",
+              "sv_sort": "1",
+              "sv_beginTime": "1388534400",
+              "sv_thumbnail": "NULL",
+              "sv_thumbnails": [],
+              "sv_feature": "0",
+              "sv_storeItemDesc": "240118",
+              "sv_itemNameId": "240118"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Compatibility row plus revival Add Grid item when progression is enabled; no recovered full store or original prices."
+    },
+    "stage_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "stage_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "_id": "1",
+              "sv_beginTime": "0",
+              "sv_endTime": "4102444800",
+              "sv_sort": "0"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Stage IDs 1,2,3,5,6; opening-time workaround. Listing a stage does not certify stable gameplay on that map."
+    },
+    "banner_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "banner_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_bannerNum": "1",
+              "sv_beginTime": "1388534400",
+              "sv_endTime": "1388534400",
+              "sv_sort": "1"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Expired compatibility banner."
+    },
+    "const": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "const",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_clientVer": "2.06",
+              "sv_circleSubLeaderExpandMax": "0",
+              "sv_circleMemberExpandMax": "0",
+              "sv_circleSubLeaderExpandCost": "0",
+              "sv_circleMemberExpandCost": "0",
+              "sv_circleAbsorptionCost": "0",
+              "sv_changeTagNameCost": "0",
+              "sv_disconnectCountSpan": "0",
+              "sv_disconnectWarnPercent": "100",
+              "sv_disconnectCriminalPercent": "100",
+              "sv_disconnectReleaseCriminalPercent": "0",
+              "sv_minorVer": "0"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Compatibility constants; client version 2.06, minor version 0."
+    },
+    "bg_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "bg_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_bgPath": "MainMenuBG/MainMenuBG_001stage_01",
+              "sv_bgNum": "1",
+              "sv_stageId": "1",
+              "sv_beginTime": "1388534400",
+              "sv_endTime": "4102444800",
+              "sv_createTime": "1388534400",
+              "sv_sort": "1"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Five original menu-background asset paths with replacement availability windows."
+    },
+    "item_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "item_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_itemId": "1000000020000001",
+              "sv_name": "240118",
+              "sv_desc": "240118",
+              "sv_thumbnails": [],
+              "sv_additions": [],
+              "sv_sort": "1",
+              "sv_createTime": "1388534400",
+              "sv_hold": "0"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Compatibility item, revival Add Grid item when progression is enabled, and 12 consumable inventory definitions with original LP/EXP boost and ticket label quotes. Consumable database IDs are reconstructed; activation and reward multipliers remain unimplemented. Ownership requires an explicit local profile grant."
+    },
+    "gift_item_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "gift_item_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "_id": "1000000000001001",
+              "sv_items": [
+                {
+                  "sv_itemId": "1000000020000001",
+                  "sv_itemCount": "1"
+                }
+              ],
+              "sv_price": "1",
+              "sv_basisPrice": "1",
+              "sv_sort": "1",
+              "sv_beginTime": "1388534400",
+              "sv_thumbnail": "NULL",
+              "sv_thumbnails": [],
+              "sv_feature": "0",
+              "sv_storeItemDesc": "240118",
+              "sv_itemNameId": "240118"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Alias of store_item_master, not a complete gifting implementation."
+    },
+    "chara_rote_schedule_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "chara_rote_schedule_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_charaId": "1",
+              "sv_beginTime": "1388534400",
+              "sv_endTime": "4102444800"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "All 14 released characters available; permanent revival rotation, not original rotation history."
+    },
+    "event_schedule_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "event_schedule_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_eventId": "1",
+              "sv_rewardGroupId": "0",
+              "sv_botRewardGroupId": "0",
+              "sv_rmmItemDropEventGroupId": "0",
+              "sv_beginTime": "1388534400",
+              "sv_endTime": "1388534400"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Expired placeholder; no event rewards implemented."
+    },
+    "message_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "message_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_messageId": "1",
+              "sv_userLang": "english",
+              "sv_title": "Local server",
+              "sv_body": "Offline revival"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Local compatibility message."
+    },
+    "video_card_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "video_card_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_cardName": "Generic",
+              "sv_score": "100"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Compatibility graphics-card score, not benchmark data."
+    },
+    "stageStatus": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "stageStatus",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "_id": "1",
+              "sv_cubifyStep": "0",
+              "sv_freezingTime": "0"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Five zeroed stage-status records; original simulation state not recovered."
+    },
+    "skillcube_mutation_master": {
+      "request": {
+        "version": 0.8,
+        "call": "load",
+        "data": {
+          "name": "skillcube_mutation_master",
+          "query": {}
+        }
+      },
+      "response": {
+        "when": "Known master-data name.",
+        "http_status": 200,
+        "body": {
+          "result": "OK",
+          "time": "1700000000",
+          "data": [
+            {
+              "sv_recipeId": "1",
+              "sv_recipeName": "0",
+              "sv_recipeDesc": "0",
+              "sv_recipeIcon": "NULL",
+              "sv_recipeCategory": "0",
+              "sv_rarity": "1",
+              "sv_nextSkillcubeId": "1",
+              "sv_mainSkillcubeId": "1",
+              "sv_subSkillcubeIds": [],
+              "sv_mutationRate": "0",
+              "sv_nextMutationSkillCubeIds": [],
+              "sv_sort": "1",
+              "sv_status": "0"
+            }
+          ]
+        }
+      },
+      "example_is_subset": true,
+      "note": "Disabled compatibility recipe; synthesis/mutation is not implemented."
+    }
+  },
+  "common_responses": {
+    "circle_unavailable": {
+      "when": "Unsupported Circle mutation; no state change.",
+      "http_status": 200,
+      "body": {
+        "result": "NG",
+        "time": "1700000000",
+        "data": {}
+      },
+      "note": "Explicitly rejected, not a successful implementation."
+    },
+    "generic_ack": {
+      "when": "No explicit handler for call name.",
+      "http_status": 200,
+      "body": {
+        "result": "OK",
+        "time": "1700000000",
+        "data": {}
+      },
+      "note": "Placeholder acknowledgement; the original response and feature behavior are unknown."
+    },
+    "application_error": {
+      "http_status": 200,
+      "body": {
+        "result": "ERROR",
+        "time": "1700000000",
+        "data": {}
+      }
+    },
+    "handler_exception": {
+      "http_status": 500,
+      "body": {}
+    },
+    "unknown_route": {
+      "http_status": 404,
+      "body": {}
+    },
+    "note": "Errors before dispatch/body-length parsing can close the connection without these JSON envelopes."
+  },
+  "known_native_reward_shape": {
+    "status": "Native parser fields recovered; implemented only behind a disabled-by-default verified award policy.",
+    "call": "endBotBattle",
+    "response_data_fields": {
+      "sv_battleId": "decimal string",
+      "sv_rewards": [
+        {
+          "sv_reasonId": "decimal string",
+          "sv_items": [
+            {
+              "sv_itemId": "decimal string",
+              "sv_count": "decimal string",
+              "sv_additions": []
+            }
+          ]
+        }
+      ],
+      "sv_items": [],
+      "sv_mails": []
+    },
+    "native_parsers": {
+      "groups": "0x1400cf370",
+      "item_descriptor": "0x1400fdc60",
+      "xp_totals": "0x1400d1240"
+    },
+    "note": "No original reason-ID meanings, XP quantities, original item database IDs, additions or mail element contracts are asserted. Empty arrays here reflect the implemented policy path."
+  },
+  "native_lobby": {
+    "wire_format": "Binary over TCP; JSON here describes bytes, not an accepted JSON request.",
+    "endianness": "little",
+    "authentication": {
+      "mechanism": "Administrator-provisioned 16-byte key in login payload; behavior depends on ROI_AUTH_MODE.",
+      "modes": {
+        "bound": "Only pre-registered IDs with their individual matching token.",
+        "invite": "Unlisted IDs accepted using a valid invitation key. Existing provisioned IDs keep their keys. New IDs bind to the first valid key used, in memory."
+      },
+      "default_in_code": "bound",
+      "default_in_compose_bundle": "invite",
+      "invitation_binding_limit": 128,
+      "invitation_bindings_persistent": false,
+      "trust_limit": "Key holders can claim previously unregistered identities; sharing a key shares its trust. Restart clears new bindings. This is not verified Steam identity.",
+      "is_steam_ticket_verification": false,
+      "external_transport": "Private variant requires WireGuard. Public variant wraps loopback-only native listeners in the pinned TLS gateway on TCP 52714; never expose raw lobby ports.",
+      "public_variant": "Explicit ROI_PUBLIC_ACCESS=1, no ROI_AUTH_FILE; anonymous claimed IDs, no allowlist or Steam-ticket verification. Existing private invitation keys are not sent by TLS-public clients.",
+      "duplicate_identity": "Only one active connection per identity; identity cannot change within a session."
+    },
+    "public_transport": {
+      "port": 52714,
+      "minimum_tls": "1.2",
+      "server_trust": "Exact DER certificate SHA-256 pin checked before application writes; no CA/hostname/date validation.",
+      "channel_prefix_bytes": 8,
+      "channels_ascii": {
+        "native": "ROI1NRT\n",
+        "profile": "ROI1PRF\n",
+        "health": "ROI1CHK\n"
+      },
+      "health_response_ascii": "ROI-PUBLIC-TLS-1\n",
+      "routing": "Fixed container-loopback destinations 52711 and 52713, never caller-selected addresses.",
+      "limits": {
+        "connections": 32,
+        "per_ip_connections": 8,
+        "handshakes_per_10_seconds": 64,
+        "per_ip_handshakes_per_10_seconds": 20,
+        "handshake_timeout_seconds": 5,
+        "channel_timeout_seconds": 5,
+        "stream_idle_seconds": 90,
+        "write_drain_seconds": 10
+      },
+      "stream_idle_policy": "One shared inactivity clock for both directions. Either direction receiving data resets it; a quiet reply direction alone must not close an active stream.",
+      "trust_limit": "Open anonymous service; encrypted transport does not stop identity spoofing or cache replacement. Not an authoritative account service.",
+      "source": {
+        "file": "client/tools/tls_transport.py",
+        "sha256": "15e819b36dea88426ba8c4f88a3a2d9707d9f1534c683f1b02ce6ce8dec7f501"
+      }
+    },
+    "frame": {
+      "outer": [
+        {
+          "type": "u16",
+          "name": "L",
+          "meaning": "Bytes after this word: body_len word + body + trailer."
+        },
+        {
+          "type": "u16",
+          "name": "body_len",
+          "meaning": "L - 4"
+        },
+        {
+          "type": "bytes[body_len]",
+          "name": "body"
+        },
+        {
+          "type": "u16",
+          "name": "trailer",
+          "value": 0
+        }
+      ],
+      "client_body": [
+        {
+          "type": "u64",
+          "name": "sequence"
+        },
+        {
+          "type": "u16",
+          "name": "session"
+        },
+        {
+          "type": "u16",
+          "name": "type"
+        },
+        {
+          "type": "u64",
+          "name": "uid"
+        },
+        {
+          "type": "bytes",
+          "name": "payload"
+        }
+      ],
+      "server_body": [
+        {
+          "type": "u64",
+          "name": "sequence"
+        },
+        {
+          "type": "u16",
+          "name": "session"
+        },
+        {
+          "type": "u16",
+          "name": "type"
+        },
+        {
+          "type": "u16",
+          "name": "result"
+        },
+        {
+          "type": "u64",
+          "name": "uid"
+        },
+        {
+          "type": "bytes",
+          "name": "payload"
+        }
+      ],
+      "result_codes": {
+        "0": "Success",
+        "1": "Explicit room-operation failure"
+      },
+      "unknown_type_behavior": "Authenticated unknown types outside HANDLED/NOTIFY receive no reply.",
+      "lengths": "Client body header 20 bytes, response body header 22; framing adds 6 bytes.",
+      "trailer_note": "Current parser does not check trailer contents."
+    },
+    "records": {
+      "LobbySettings": {
+        "source": {
+          "file": "client/tools/lobby_settings.py",
+          "sha256": "08c6f1684a0ff326f78a430f34d8edbd045ce61a9fd756c6e7b9becacf843343",
+          "symbol": "decode",
+          "line": 10,
+          "end_line": 21
+        },
+        "layout": [
+          "u8 private (0..7)",
+          "u8 flags (only bits 0 and 1)",
+          "u64 owner hint",
+          "u32 stage",
+          "u16 rankCount (0..128)",
+          "u32 ranks[rankCount]",
+          "u8 mode",
+          "u16 extra (must be 0)"
+        ],
+        "size": "19 + 4*rankCount",
+        "default_decoded": {
+          "private": 0,
+          "flags": 3,
+          "owner": 0,
+          "stage": 24,
+          "ranks": [],
+          "mode": 1
+        },
+        "note": "Owner hint does not grant authority; native stage/settings enum interpretation is not fully recovered."
+      },
+      "RoomRecord": {
+        "source": {
+          "file": "client/tools/nrt_rooms.py",
+          "sha256": "6bbd041cadb7a83b3e81b0e6de79b8eda85903b9c9a4a5240fb42e2d8e0ffbd2",
+          "symbol": "record",
+          "line": 59,
+          "end_line": 74
+        },
+        "layout": [
+          "u64 roomId (1..65535)",
+          "u8 reserved=0",
+          "u8 private",
+          "u8 flags",
+          "u64 owner",
+          "u32 stage",
+          "u16 rankCount",
+          "u32 ranks[rankCount]",
+          "u8 mode",
+          "u16 memberCount",
+          "Member[memberCount]",
+          "u16 endpointCount=1",
+          "u64 endpointOwner",
+          "ASCII[16] hostEndpointHex",
+          "bytes[16] reserved zeros",
+          "u8 status=2",
+          "u16 invitedCount=0"
+        ],
+        "Member": [
+          "u64 uid",
+          "u8 zero",
+          "u8 zero",
+          "u32 zero",
+          "u16 utf8NameLength",
+          "UTF8[nameLength] name (max255 bytes, character boundary)",
+          "u32 zero"
+        ],
+        "note": "Endpoint zero makes a room unsearchable. Host is first member. Room search sorting is descending numeric roomId, not guaranteed chronological."
+      },
+      "BattleInfo": {
+        "source": {
+          "file": "client/tools/nrt_rooms.py",
+          "sha256": "6bbd041cadb7a83b3e81b0e6de79b8eda85903b9c9a4a5240fb42e2d8e0ffbd2",
+          "symbol": "battle_info",
+          "line": 184,
+          "end_line": 226
+        },
+        "layout": [
+          {
+            "offset": 0,
+            "size": 2,
+            "type": "u16",
+            "name": "kind"
+          },
+          {
+            "offset": 2,
+            "size": 16,
+            "type": "bytes",
+            "name": "ab"
+          },
+          {
+            "offset": 18,
+            "size": 1,
+            "type": "u8",
+            "value": 0
+          },
+          {
+            "offset": 19,
+            "size": 8,
+            "type": "bytes",
+            "name": "ce_first_half"
+          },
+          {
+            "offset": 27,
+            "size": 3,
+            "type": "bytes",
+            "value": "000000"
+          },
+          {
+            "offset": 30,
+            "size": 8,
+            "type": "bytes",
+            "name": "ce_second_half"
+          },
+          {
+            "offset": 38,
+            "type": "RoomRecord bytes starting at its offset 19 (stage and entire following tail)"
+          }
+        ],
+        "derivation": "ab=MD5(seed+:ab), ce=MD5(seed+:ce), seed=UTF8(roi-battle:roomId:endpoint). Non-security deterministic compatibility IDs."
+      }
+    },
+    "server_events": {
+      "0xE663": {
+        "name": "canned_partner_message",
+        "sequence": 0,
+        "payload_bytes": 16,
+        "layout": [
+          "u64 sender uid (skipped by native receiver)",
+          "u64 canned-message id"
+        ],
+        "trigger": "Validated E662, targeted only at the requested same-match participant; drained by its socket loop, normally within approximately one second unless already waiting on other I/O.",
+        "evidence": "Builder 0x1400e9be0; parser 0x1400e913f sets +0x4158; briefing/reward Message_Partner UI 0x1402fb550 accepts nonzero IDs except readiness9.",
+        "limits": "No free text or general chat. Drop stale rounds, room departures, disconnects and expired queue entries. No durable/profile writes."
+      },
+      "0xE60D": {
+        "name": "results_ready",
+        "sequence": 0,
+        "trigger": "Validated E60C from this same connection, after its successful E608; one notification per pending battle.",
+        "payload_bytes": 278,
+        "layout": [
+          "bytes[10] copied report prefix (skipped by client)",
+          "u64 resultValue1=0",
+          "u64 resultValue2=0",
+          "bytes[36] remaining skipped header, zeros",
+          "bytes[54] skipped player record[4], zeros"
+        ],
+        "evidence": "Native E60C builder 0x1400ea140; E60D parser 0x1400ecbb0; controller 0x140101d00 calls 0x140103620 to request getItemMail without its 3000-update fallback.",
+        "limits": "No-award revival response, not a recovered original reward formula. The two parsed result values are zero; original field meanings and skipped record contents remain unrecovered. No profile or XP writes, no broadcast, native timeout unchanged."
+      },
+      "0xE665": {
+        "name": "commendations_received",
+        "sequence": 0,
+        "payload_bytes": 16,
+        "layout": [
+          "bytes[8] skipped prefix",
+          "u32 zero",
+          "u32 cumulative received count for this battle"
+        ],
+        "trigger": "Accepted E664 from a teammate in the same server round; next native tick after recipient results-ready.",
+        "evidence": "0x1400e9193 sums the two u32s into +0x4170; 0x1404bed67 drives the incoming Good stamp animation."
+      },
+      "0xE641": {
+        "name": "friend_state",
+        "sequence": 0,
+        "payload": [
+          {
+            "type": "u16",
+            "name": "state"
+          },
+          {
+            "type": "u64",
+            "name": "peer_uid"
+          },
+          {
+            "type": "u32",
+            "name": "reserved",
+            "value": 0
+          }
+        ],
+        "states": {
+          "0": "offline/disappeared",
+          "1": "online",
+          "5": "in lobby"
+        },
+        "timing": "Tick called about every 3 s; poll interval 10 s; suppress for 20 s after room lifecycle requests.",
+        "evidence": "Reconstructed parser behavior; original production push timing not recovered."
+      }
+    },
+    "types": {
+      "0x9001": {
+        "name": "login",
+        "status": "explicit_handler",
+        "request_payload": "Raw 16-byte provisioned credential when authentication is configured; uid is in frame header.",
+        "response_payload": "Empty successful payload; connection closed on rejected authentication."
+      },
+      "0xE605": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE608": {
+        "name": "begin_lobby_battle",
+        "status": "explicit_handler",
+        "request_payload": "u8 followed by u16 kind; handler reads kind at offset 1, or defaults to 0 if short.",
+        "response_payload": "BattleInfo with complete room tail; result=1 if no active room."
+      },
+      "0xE609": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE60A": {
+        "name": "register_host_endpoint",
+        "status": "explicit_handler",
+        "request_payload": "Exactly 16 ASCII hex bytes, allowing trailing NUL padding after shorter hex text.",
+        "response_payload": "10 zero bytes followed by 16 ASCII hex digits; result=1 if invalid/not local host."
+      },
+      "0xE60B": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE60C": {
+        "name": "submit_battle_report",
+        "status": "explicit_handler",
+        "request_payload": "Exactly 356 bytes: u16 kind, bytes[16] match key, remainder of 76-byte header, four 70-byte player reports. Requires a pending successful E608 on this connection and a matching key.",
+        "response_payload": "One unsolicited E60D to the reporting player only; sequence=0, result=0, 278-byte no-award payload. Invalid, duplicate or unsolicited reports are ignored; no E60C echo."
+      },
+      "0xE60D": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE60E": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE60F": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE610": {
+        "name": "create_room",
+        "status": "explicit_handler",
+        "request_payload": "LobbySettings binary record; empty payload uses default settings.",
+        "response_payload": "RoomRecord on success; result=1 on invalid settings or room limit."
+      },
+      "0xE611": {
+        "name": "search_rooms",
+        "status": "explicit_handler",
+        "request_payload": "Ignored by current handler; original filter request layout not reconstructed here.",
+        "response_payload": "u16 count followed by RoomRecord[count]; max 32, excludes own membership and rooms without an endpoint."
+      },
+      "0xE612": {
+        "name": "join_room",
+        "status": "explicit_handler",
+        "request_payload": "u64 roomId in first eight bytes; shorter payload treated as roomId=0.",
+        "response_payload": "RoomRecord; result=1 if absent/full or Steam entry/owner verification fails. Steam rooms with unknown owner can be discovered, but their real owner must match after entry."
+      },
+      "0xE613": {
+        "name": "update_room_settings",
+        "status": "explicit_handler",
+        "request_payload": "LobbySettings binary record; only local host may update.",
+        "response_payload": "Updated RoomRecord; result=1 on invalid settings or unauthorized/missing room."
+      },
+      "0xE614": {
+        "name": "leave_room",
+        "status": "explicit_handler",
+        "request_payload": "Ignored by current handler.",
+        "response_payload": "Empty successful acknowledgement. Host departure closes a local room."
+      },
+      "0xE616": {
+        "name": "check_lobby_invitation",
+        "status": "explicit_handler",
+        "request_payload": "Native builder: u64 roomId, u16 mode, u64 targetUid. Current handler only reads roomId.",
+        "response_payload": "Empty success if room is found; result=1 otherwise. Does not itself implement invitation delivery."
+      },
+      "0xE617": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE61F": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE620": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE621": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE622": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE623": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE640": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE641": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE642": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE652": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE653": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE660": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      },
+      "0xE661": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE662": {
+        "name": "send_canned_partner_message",
+        "status": "explicit_handler",
+        "request_payload": "Exactly 16 bytes: u64 partner uid, u64 message. IDs 1..8 are canned messages; 9 is native readiness. Requires authenticated sender/recipient in the same current room and server round. The native client chooses its teammate; pre-battle team ownership is not independently recovered.",
+        "response_payload": "Empty ACK, same sequence/session, result=0 when queued; result=1 for invalid context, payload, target, or full queue. No echo/broadcast. Target receives E663 on its own socket thread. Queue max16, expiry30s; waits for a later-loading partner to enter the matching round."
+      },
+      "0xE663": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xE664": {
+        "name": "commend_teammate",
+        "status": "explicit_handler",
+        "request_payload": "Exactly 33 bytes: u8 mode, match key[16], u64 teammate uid, u32 previously acknowledged clicks, u32 new clicks. Requires this completed battle and a same-team participant from its room snapshot.",
+        "response_payload": "Empty success ACK after durable saving (including idempotent retries); result=1 for invalid context/counts or storage failure. No 20-click quota; signed native counter bounds remain. E665 is pushed to the recipient."
+      },
+      "0xE665": {
+        "name": "unimplemented_notification",
+        "status": "ignored_one_way",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "No response."
+      },
+      "0xF000": {
+        "name": "generic_acknowledgement",
+        "status": "ack_only_not_full_implementation",
+        "request_payload": "Unknown binary payload; ignored.",
+        "response_payload": "Same sequence/type, result 0, empty payload."
+      }
+    },
+    "note": "Binary protocol descriptions, NOT JSON messages. Ignored notifications have no reply; generic acknowledgements do not implement their original feature."
+  },
+  "profile_relay": {
+    "content_type": "application/json",
+    "not_dragon_enveloped": true,
+    "authentication": {
+      "header": "Authorization: Bearer <REDACTED_32_HEX_CHAR_TOKEN>",
+      "rules": [
+        "With AUTH_TOKENS configured, caller must present a valid provisioned token.",
+        "Bound mode: GET target must be provisioned; PUT may write only the caller identity.",
+        "Invite mode: GET may target unlisted IDs; PUT binds an unlisted ID to the first valid key, or requires its existing key. Provisioned IDs retain their own keys.",
+        "Without AUTH_TOKENS, only a loopback listener may start; loopback requests are unauthenticated."
+      ],
+      "transport": "Private: HTTP inside WireGuard. Public: loopback HTTP through the pinned TLS profile channel on 52714. Client helper bypasses system HTTP proxies.",
+      "public_variant": "No bearer authentication; anyone can replace the cache of a claimed uid. Clients must not send old private invitation credentials."
+    },
+    "note": "body=null means no response-body bytes, not the JSON literal null. GET data is a synthetic subset of a cached peer profile.",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/profile/{uid}",
+        "request_example": {
+          "method": "GET",
+          "path": "/profile/2"
+        },
+        "responses": {
+          "200": "Stored profile object, without Dragon envelope.",
+          "401": "Missing/invalid credential",
+          "403": "Target not provisioned (bound mode)",
+          "404": "Bad path, absent or expired profile"
+        },
+        "success_example": {
+          "http_status": 200,
+          "body": {
+            "_id": "2",
+            "sv_uid": "2",
+            "sv_onlineId": "2",
+            "sv_userName": "Example Peer",
+            "sv_userRegion": "SE",
+            "sv_gameRegion": "SE",
+            "sv_userTutorial": "2147483647",
+            "sv_tutorialMap": {},
+            "sv_rankPoint": "0",
+            "sv_rankId": "1",
+            "sv_playerLv": "1",
+            "sv_playerExp": "0",
+            "sv_playerStatus": "0",
+            "sv_virtualCurrency": "0",
+            "sv_userCountry": "SE",
+            "sv_userCountryState": "",
+            "sv_gamePoint": "0",
+            "sv_userCurrency": "EUR",
+            "sv_itemsHoldLimit": "9999",
+            "sv_allCharaFreeTerm": "0",
+            "sv_freeCharaGainTime": "0",
+            "sv_selectedStageId": "1",
+            "sv_skillgrids": [
+              {
+                "sv_sgridId": "0",
+                "sv_openedSlot": "4",
+                "sv_unlockedSlotItem": "0",
+                "sv_skillcubeHoldIds": [],
+                "sv_gridStatus": "0",
+                "sv_x0y0": "-1",
+                "sv_x1y0": "-1",
+                "sv_x2y0": "-1",
+                "sv_x3y0": "-1",
+                "sv_x0y1": "-1",
+                "sv_x1y1": "0",
+                "sv_x2y1": "0",
+                "sv_x3y1": "-1",
+                "sv_x0y2": "-1",
+                "sv_x1y2": "0",
+                "sv_x2y2": "0",
+                "sv_x3y2": "-1",
+                "sv_x0y3": "-1",
+                "sv_x1y3": "-1",
+                "sv_x2y3": "-1",
+                "sv_x3y3": "-1"
+              }
+            ],
+            "sv_skillcubeHoldLimit": "100",
+            "sv_skillcubes": [
+              {
+                "sv_skillcubeHoldId": "2",
+                "sv_skillcubeId": "1200010021001000",
+                "sv_triggerCount": "0",
+                "sv_triggerLimit": "100",
+                "sv_levelupCount": "0",
+                "sv_evolutionCount": "0",
+                "sv_modificationCount": "0",
+                "sv_recoveryCount": "0",
+                "sv_skillLevel": "1",
+                "sv_skillExp": "0",
+                "sv_status": "0"
+              }
+            ],
+            "sv_items": [],
+            "sv_disconnNum": "0",
+            "sv_circleId": "0",
+            "sv_activeCharaId": "1",
+            "sv_activeSupLamId": "1",
+            "sv_characters": [
+              {
+                "sv_charaId": "1",
+                "sv_charaLv": "1",
+                "sv_charaEnabled": true,
+                "sv_charaEnableTerm": "9999999999999",
+                "sv_charaTutorial": "2147483647",
+                "sv_charaExp": "0",
+                "sv_charaUsage": "0",
+                "sv_customItems": [
+                  {
+                    "sv_customItemHoldId": "1200000",
+                    "sv_customItemId": "1200000"
+                  }
+                ],
+                "sv_customSlots": [
+                  {
+                    "sv_customItemHoldIds": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ],
+                "sv_activeCustomSlotNum": "0"
+              }
+            ],
+            "sv_supLams": [
+              {
+                "sv_supLamId": "1",
+                "sv_supLamLv": "1",
+                "sv_supLamEnableTerm": "9999999999999",
+                "sv_supLamExp": "0",
+                "sv_customSlot": []
+              }
+            ],
+            "sv_enteredRoomId": "0",
+            "sv_tagPartner": "0",
+            "sv_recipes": [],
+            "sv_compositeStackLimit": "0",
+            "sv_compositeStacks": [],
+            "sv_battleRecords": [],
+            "sv_disconnectLog": "0",
+            "sv_disconnCriminal": "0"
+          }
+        },
+        "error_body": null
+      },
+      {
+        "method": "PUT",
+        "path": "/profile/{uid}",
+        "request_example": {
+          "method": "PUT",
+          "path": "/profile/1",
+          "body": {
+            "_id": "1",
+            "sv_uid": "1",
+            "sv_onlineId": "1",
+            "sv_userName": "Example Player",
+            "sv_userRegion": "SE",
+            "sv_gameRegion": "SE",
+            "sv_userTutorial": "2147483647",
+            "sv_tutorialMap": {},
+            "sv_rankPoint": "0",
+            "sv_rankId": "1",
+            "sv_playerLv": "1",
+            "sv_playerExp": "0",
+            "sv_playerStatus": "0",
+            "sv_virtualCurrency": "0",
+            "sv_userCountry": "SE",
+            "sv_userCountryState": "",
+            "sv_gamePoint": "0",
+            "sv_userCurrency": "EUR",
+            "sv_itemsHoldLimit": "9999",
+            "sv_allCharaFreeTerm": "0",
+            "sv_freeCharaGainTime": "0",
+            "sv_selectedStageId": "1",
+            "sv_skillgrids": [
+              {
+                "sv_sgridId": "0",
+                "sv_openedSlot": "4",
+                "sv_unlockedSlotItem": "0",
+                "sv_skillcubeHoldIds": [],
+                "sv_gridStatus": "0",
+                "sv_x0y0": "-1",
+                "sv_x1y0": "-1",
+                "sv_x2y0": "-1",
+                "sv_x3y0": "-1",
+                "sv_x0y1": "-1",
+                "sv_x1y1": "0",
+                "sv_x2y1": "0",
+                "sv_x3y1": "-1",
+                "sv_x0y2": "-1",
+                "sv_x1y2": "0",
+                "sv_x2y2": "0",
+                "sv_x3y2": "-1",
+                "sv_x0y3": "-1",
+                "sv_x1y3": "-1",
+                "sv_x2y3": "-1",
+                "sv_x3y3": "-1"
+              }
+            ],
+            "sv_skillcubeHoldLimit": "100",
+            "sv_skillcubes": [
+              {
+                "sv_skillcubeHoldId": "2",
+                "sv_skillcubeId": "1200010021001000",
+                "sv_triggerCount": "0",
+                "sv_triggerLimit": "100",
+                "sv_levelupCount": "0",
+                "sv_evolutionCount": "0",
+                "sv_modificationCount": "0",
+                "sv_recoveryCount": "0",
+                "sv_skillLevel": "1",
+                "sv_skillExp": "0",
+                "sv_status": "0"
+              }
+            ],
+            "sv_items": [],
+            "sv_disconnNum": "0",
+            "sv_circleId": "0",
+            "sv_activeCharaId": "1",
+            "sv_activeSupLamId": "1",
+            "sv_characters": [
+              {
+                "sv_charaId": "1",
+                "sv_charaLv": "1",
+                "sv_charaEnabled": true,
+                "sv_charaEnableTerm": "9999999999999",
+                "sv_charaTutorial": "2147483647",
+                "sv_charaExp": "0",
+                "sv_charaUsage": "0",
+                "sv_customItems": [
+                  {
+                    "sv_customItemHoldId": "1200000",
+                    "sv_customItemId": "1200000"
+                  }
+                ],
+                "sv_customSlots": [
+                  {
+                    "sv_customItemHoldIds": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ],
+                "sv_activeCustomSlotNum": "0"
+              }
+            ],
+            "sv_supLams": [
+              {
+                "sv_supLamId": "1",
+                "sv_supLamLv": "1",
+                "sv_supLamEnableTerm": "9999999999999",
+                "sv_supLamExp": "0",
+                "sv_customSlot": []
+              }
+            ],
+            "sv_enteredRoomId": "0",
+            "sv_tagPartner": "0",
+            "sv_recipes": [],
+            "sv_compositeStackLimit": "0",
+            "sv_compositeStacks": [],
+            "sv_battleRecords": [],
+            "sv_disconnectLog": "0",
+            "sv_disconnCriminal": "0"
+          }
+        },
+        "responses": {
+          "204": "Stored; empty body",
+          "400": "Malformed length/JSON or invalid profile",
+          "401": "Missing/invalid credential",
+          "403": "Wrong key for an existing identity, strict-mode unprovisioned target, or invite binding limit",
+          "404": "Invalid path",
+          "413": "Missing/nonpositive/oversize Content-Length or any Transfer-Encoding",
+          "503": "Profile cache full after expired entries are removed"
+        },
+        "success_example": {
+          "http_status": 204,
+          "body": null
+        },
+        "error_body": null
+      },
+      {
+        "method": "GET",
+        "path": "/commendations/{uid}",
+        "request_example": {
+          "method": "GET",
+          "path": "/commendations/2"
+        },
+        "responses": {
+          "200": "Durable per-character counts; empty characters object when none.",
+          "401": "Missing/invalid credential",
+          "403": "Target not provisioned (bound mode)",
+          "404": "Invalid path",
+          "503": "Storage unavailable"
+        },
+        "success_example": {
+          "http_status": 200,
+          "body": {
+            "uid": "2",
+            "characters": {
+              "13": 25
+            }
+          }
+        },
+        "error_body": null
+      },
+      {
+        "method": "GET",
+        "path": "/circle/{uid}",
+        "request_example": {
+          "method": "GET",
+          "path": "/circle/1"
+        },
+        "responses": {
+          "200": "Current durable membership ID, or 0 for none.",
+          "401": "Missing credential",
+          "403": "Identity forbidden",
+          "404": "Bad path",
+          "503": "Storage unavailable"
+        },
+        "success_example": {
+          "http_status": 200,
+          "body": {
+            "uid": "1",
+            "circle_id": "1"
+          }
+        },
+        "error_body": null
+      },
+      {
+        "method": "POST",
+        "path": "/circle/{uid}",
+        "request_example": {
+          "method": "POST",
+          "path": "/circle/1",
+          "body": {
+            "name": "Example Player",
+            "call": "getCircleInfo",
+            "data": {}
+          }
+        },
+        "responses": {
+          "200": "Native response data plus authoritative own circle_id, without Dragon envelope.",
+          "400": "Invalid/unsupported operation or membership permission failure",
+          "409": "Duplicate Circle name or membership",
+          "401": "Missing credential",
+          "403": "Wrong identity credential",
+          "404": "Bad path",
+          "413": "Body exceeds 131072 bytes or invalid framing",
+          "503": "Storage unavailable"
+        },
+        "success_example": {
+          "http_status": 200,
+          "body": {
+            "data": {
+              "sv_circle": {
+                "sv_circleId": "1",
+                "sv_createTime": "1700000000",
+                "sv_circleName": "Example Circle",
+                "sv_circleIcon": "====",
+                "sv_comment": "",
+                "sv_circleAreaId": "1",
+                "sv_inviteOnly": "0",
+                "sv_minRank": "0",
+                "sv_maxMembers": "20",
+                "sv_memberCount": "1",
+                "sv_status": "1",
+                "sv_gamePoint": "0",
+                "sv_leaderUid": "1",
+                "sv_leaderName": "Example Player",
+                "sv_subLeaderMax": "0",
+                "sv_subLeaderCount": "0",
+                "sv_subLeaderUids": [],
+                "sv_invitings": [],
+                "sv_members": [
+                  {
+                    "sv_uid": "1",
+                    "sv_onlineId": "1",
+                    "sv_userName": "Example Player",
+                    "sv_rankId": "1",
+                    "sv_joinTime": "1700000000",
+                    "sv_joinMethod": "0",
+                    "sv_loginTime": "0",
+                    "sv_position": "2"
+                  }
+                ]
+              },
+              "sv_leaderName": "Example Player",
+              "sv_invitings": []
+            },
+            "circle_id": "1"
+          }
+        },
+        "error_body": null
+      }
+    ]
+  },
+  "evidence": {
+    "original_exe_sha256": "34a46fbc9e2ea6c6c9eebfddd0d6e4bef388a3eea5088838dd134588225cedbb",
+    "request_source": "Bounded static native-builder inspection; ROI-Client-API-Evidence.json.",
+    "response_source": "Public replacement-server source; manually constructed synthetic examples, not captured traffic.",
+    "sources": [
+      {
+        "file": "client/tools/roi_server_data.py",
+        "sha256": "0a48cf8941c441a793d9fe6a895a19f38fcdb03908a24fe97ab86cff777a9faf"
+      },
+      {
+        "file": "client/tools/roi_masters.py",
+        "sha256": "aff9566ea2d7f86daa31e6d4a6ac042cab6e6e42efdb2f4680657950c06d64d2"
+      },
+      {
+        "file": "client/tools/roi_awards.py",
+        "sha256": "22c5055f3b6d79464d4699883bdafbde634e5330c370274de5b3451ac1c6a3c0"
+      },
+      {
+        "file": "client/tools/nrt_logic.py",
+        "sha256": "07bfcf3ec53288eeda60d3b883137c49830f659ffc43d1089363199193769ec5"
+      },
+      {
+        "file": "client/tools/nrt_rooms.py",
+        "sha256": "6bbd041cadb7a83b3e81b0e6de79b8eda85903b9c9a4a5240fb42e2d8e0ffbd2"
+      },
+      {
+        "file": "client/tools/profile_relay.py",
+        "sha256": "0142e4860b310a21b033d7d2b4ec2988e7743805ac5c36bb600f99aa0ee46c18"
+      }
+    ],
+    "limits": "Explicit handler does not imply every native request variant is implemented or every original response field is recovered."
+  }
+}

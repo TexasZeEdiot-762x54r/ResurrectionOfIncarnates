@@ -1,0 +1,29 @@
+Reviewed update: RiseOfIncarnates-Offline.zip, 2026-10-18
+Original SHA256: FD8FC325173CA8FBB55F309C4A85BA4A3D23AB1AE3ED0170ACB10E503E6A4044
+
+New features: existing-archive Customize thumbnails, character stock/type/stat-panel
+data, lobby settings, populated battle-entry replies, invites/friend-state support,
+post-match item-mail arrays, and sharing players' real customization profiles.
+Some character values/text remain inferred or placeholders in the upstream source.
+Full two-PC native combat is not proven by this installation or its protocol tests.
+
+Security merge: retained per-player credentials, host-only endpoint/settings updates,
+bounded parsing/connections/logging, four-player limit, safe Steam metadata validation,
+private config file permissions and fixed source-executable/path checks.
+
+The profile relay is additionally authenticated and bounded. Only the matching
+credential may write a player's profile; reads require a provisioned player's token.
+Profiles expire and sensitive credential fields are rejected. HTTP proxy settings are
+bypassed for private relay traffic. A single coalescing publisher replaces unbounded
+threads per customization change. Raw upstream's unauthenticated relay was not deployed.
+
+Rocky publishes TCP 52711 (lobby) and 52713 (profiles) only on <vpn_bind_host>; both are
+protected by the dedicated wg0/<vpn_network> ingress guard. Other services, existing
+WireGuard zone policy, SELinux, credentials and container resource limits are retained.
+
+The O-drive update changes source and generated thumbnail metadata only. It does not
+replace the game executable or recopy/modify game resource archives. Config and saved
+profile are retained; a timestamped rollback backup is created before copying sources.
+
+Players still need Steam and WireGuard. Existing per-player credentials remain valid.
+The private Friend ZIP contains only the friend's access file; do not post it publicly.

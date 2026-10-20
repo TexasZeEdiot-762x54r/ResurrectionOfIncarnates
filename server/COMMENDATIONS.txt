@@ -1,0 +1,51 @@
+COMMENDATIONS (revival implementation)
+
+Client native 20-click limit removed. All players wanting unrestricted clicks
+must install this client patch; this is not an original-rule reconstruction.
+Native signed integer representation and transport flood protections remain.
+
+E664 post-battle requests now save counts once and E665 updates the teammate's
+post-battle Good animation. Replayed cumulative requests do not add counts twice.
+Only another same-team participant in that completed battle is eligible.
+The server records the recipient character from the published battle-start
+profile; it rejects unknown characters rather than guessing a character.
+
+Player Information's Good Ratings field is an account total. Native
+0x1403c24df sums profile.sv_battleRecords[1/2].sv_goodCount (numeric strings).
+The service also retains per-character totals. It does not invent XP, LP,
+skill rights or old commendations that were never received by this service.
+Existing ranked/custom win/loss data is not changed by this feature.
+
+The loopback profile server refreshes own counts in a background worker every
+five seconds; a newly opened Player Information panel sees the saved snapshot.
+Previously open panels may need to be reopened. Remote profile fetches overlay
+the authoritative total without allowing stale uploads to reset it.
+
+Shared-server deployment: preserve the new /app/data named Docker volume.
+It contains commendations.sqlite3. Back up this volume with the other server
+state; do not use docker compose down -v unless intentionally deleting counts.
+The container remains non-root and read-only outside its data/log mounts.
+The SQLite database is bounded to approximately 64 MiB plus its transaction
+journal; a full or unwritable database rejects an award rather than claiming
+to have saved it. Anonymous public mode still uses claimed identities, not
+authenticated Steam tickets. Do not treat these as tamper-proof rankings.
+
+Read-only relay API:
+GET /commendations/<uid>
+response: {"uid":"222","characters":{"13":25}}
+No HTTP commendation-write endpoint exists. Writes require the binary battle
+context. Invitation-mode relay credential checks also cover this GET endpoint.
+
+Native evidence:
+0x1404bf1ea..0x1404bf206: old maximum 20, five-byte comparison/branch removed.
+0x1400e9ca0: E664 builder: u8 mode, two u64 match-key words, u64 recipient,
+  u32 previous acknowledged count, u32 new count (33 payload bytes).
+0x1400e9173: E664 success adds pending to acknowledged sent count.
+0x1400e9193: E665 parser skips eight bytes, sums two u32s into received count.
+0x1404bed67: received count drives the native incoming Good stamp animation.
+0x1400fd386..0x1400fda3b: record indices 1/2 parse Good counters.
+
+Verification: synthetic tests cover over-20 clicks, retries, another battle
+using the same native match key, receiver notification bytes, durable restart,
+wrong players/teams/keys, and profile preservation. A real two-player match
+must still verify the post-battle animation and Player Information display.

@@ -1,0 +1,47 @@
+# Deployment, credentials and generated settings
+**/deployment.local.json
+**/deployment.local.*
+**/.env
+**/.env.*
+**/private/
+**/config.json
+**/config.json.*
+**/lobby-access*.json
+**/lobby-invitation*.json
+**/lobby-auth*.json
+**/*.key
+**/*.pem
+**/*.crt
+**/*.pfx
+**/*.p12
+**/id_rsa*
+**/id_ed25519*
+**/.ssh/
+**/.aws/
+
+# Local player/runtime data
+**/player_profile*.json*
+**/logs/
+**/data/
+**/compatibility-backups/
+**/*.sqlite*
+**/*.db
+**/*.dmp
+**/*.log
+**/*.tmp
+**/.deployment-*
+**/screenshots/
+
+# Game binaries, extracted assets and downloaded dependency runtimes
+**/game/
+**/resource/
+**/libs/
+**/relibs/
+**/*.exe
+**/*.dll
+**/*.pyd
+**/*.dat
+**/*.zip
+**/__pycache__/
+**/*.py[cod]
+.venv/

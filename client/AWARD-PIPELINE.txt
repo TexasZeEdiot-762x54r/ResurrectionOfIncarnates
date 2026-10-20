@@ -1,0 +1,77 @@
+Award pipeline reconstruction, 2026-10-19
+
+Status
+  Bot-battle award handling is implemented but DISABLED by default. No original
+  XP rates, XP thresholds or grid-expansion reward levels are claimed recovered.
+  The production award-policy.json has no rates, curves or synthetic fixtures.
+  Existing play, account-level overrides, currency and layouts remain unchanged.
+
+Recovered native protocol
+  endBotBattle sends battle statistics to /Dragon/game. Its response parser
+  0x1400cf370 accepts sv_rewards grouped by sv_reasonId, each with sv_items.
+  Items contain sv_itemId, sv_count and optional sv_additions. Numbers are strings.
+  0x1400fdc60 decodes the decimal item descriptor. 0x1400d1240 collects XP items
+  into player/character result totals. The client separately compares cumulative
+  XP with playerlevel_master or charalevel_master and displays level rewards.
+  sv_exp in 0x140092500 belongs to achievement rewards, not this battle schema.
+
+  The grid-right item signature maps through 0x1404ced70 to display type 4 and
+  original quote 550016, "Expand Skill Grid +%d". Reconstructed protocol-compatible
+  IDs use zero suffixes; they are not recovered original database item IDs.
+  The hard-coded level fallback in 0x1404ced70 describes feature display unlocks,
+  not the missing expansion reward schedule. It is not an entitlement grant table.
+
+Implemented path
+  A verified local rule selects XP quantities for a bot battle ID and outcome.
+  Client-supplied reward/XP fields cannot set those quantities. A saved battle
+  context binds the result to its owner, selected character and policy version.
+  Completing a battle atomically saves XP, resulting levels and a receipt.
+  Exact result retries return that receipt without applying XP again, including
+  after server restart. Conflicting, stale or unknown results cannot be redeemed.
+  Only the latest 128 receipts are kept; expired results remain ineligible.
+
+  Verified curves feed native master rows. Saved player/character XP is returned
+  by loadPlayer/updateProfile instead of being unconditionally replaced by zero.
+  Grid rewards use the separate grid-reward-policy.json schedule. Crossing a
+  verified reward level exposes rights without choosing or opening cells.
+  Expand > Add Block still spends the rights and validates the chosen cell.
+  The existing per-grid allowance model remains provisional, not a recovered
+  original economy. Alternative loadouts are not automatically purchased.
+
+Policy requirements
+  Keep the game closed while editing local policy data. Evidence strings and
+  verified flags document reviewed sources; the flags cannot establish that a
+  source is authentic. Do not enable this with guessed values.
+  award-policy.json schema 1 contains enabled, player_levels, character_levels
+  and bot_rewards. Every nonempty curve/reward row requires verified=true and
+  a nonempty evidence source. Curves have level and total_xp. Character curves
+  are keyed by character ID. Bot rules have bot_battle_id, battle_result,
+  reason_id, player_xp and character_xp. Rule results are raw protocol values,
+  not an assumed win/loss mapping. This version handles fixed verified rows;
+  the original performance-dependent formula is still unknown.
+  Observed three-phase bot runs use sv_botBattleId values 0, 1 and 2. These phase
+  IDs are not the separate sv_battleId transaction numbers returned at each start.
+
+  Native curve rows are indexed from zero. The native display counts thresholds
+  less than or equal to XP and subtracts one. Do not silently convert that to
+  one-based indexing. Current compatibility tables use 50 player rows and 10
+  rows per character; these are not assertions of original maximum levels.
+  Placeholder curves remain available only for existing UI compatibility and
+  are NEVER used as the authority for awarding XP. A manually overridden level
+  must agree with verified cumulative XP before the award policy can be enabled.
+
+Limits and verification
+  Isolated tests use explicitly synthetic fixtures for boundaries, native item
+  fields, JSON request/response flow, persistence, duplicate/concurrent retries,
+  disk failure, overflow, policy changes, Add Block spending and profile retention.
+  Live default-policy compatibility is checked separately; no synthetic XP is
+  awarded to the actual player. A nonzero native in-game XP animation has not
+  yet been validated. XP awards intentionally stay disabled pending original data.
+  Multiplayer/NRT awards, achievement awards, drops and original reward formulas
+  are not implemented by this module. Bot results are client-reported, not a
+  secure authoritative match simulation or multiplayer anti-cheat system.
+
+Distribution
+  The client ZIP includes this module and its empty policy. Player XP, account
+  profiles, receipts, lobby credentials and logs are not distributed. No shared
+  Rocky lobby-server change is required for this local profile-service patch.

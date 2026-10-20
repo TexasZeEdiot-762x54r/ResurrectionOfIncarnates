@@ -1,0 +1,9 @@
+ARG PYTHON_BASE
+FROM ${PYTHON_BASE}
+WORKDIR /app
+COPY nrt_server.py nrt_logic.py nrt_rooms.py nrt_security.py server_state.py paths.py network_defaults.py lobby_settings.py player_names.py profile_relay.py commendations.py circles.py public_backend.py public_gateway.py tls_transport.py ./
+ENV ROI_LOBBY_MODE=server ROI_LOBBY_LISTEN=loopback ROI_PUBLIC_ACCESS=1 ROI_QUIET=1 PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 ROI_COMMENDATION_DB=/app/data/commendations.sqlite3
+RUN groupadd --gid 10001 roi && useradd --system --uid 10001 --gid roi roi && mkdir -p /app/logs /app/data && chown roi:roi /app/logs /app/data
+USER 10001:10001
+EXPOSE 52714/tcp
+CMD ["python", "public_gateway.py"]

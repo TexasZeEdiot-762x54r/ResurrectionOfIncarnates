@@ -1,0 +1,43 @@
+CHARACTER SELECT PANEL HEADINGS - 2026-10-19
+
+The local chara_master now sends full common_text quote IDs in sv_param[].sv_title.
+The previous 181-193 short indices do not exist in common_text and rendered blank.
+The earlier claim that these titles were unrecoverable was incorrect.
+
+Recovered original IDs and English text:
+590005 Summoner
+590007 Deuteros
+590009 Human
+590010 Transformation
+590011 Summon Deuteros
+590012 Sweep Mode
+590013 Assault Mode
+590015 Falcon Form
+590016 Ram Form
+590017 Scarab Form
+
+This corrects all 23 existing panels across 14 playable characters, without
+changing their panel counts/order, portraits, stat bars, incarnate-type enums,
+HP, cost, outfits, levels, XP, or saved data. No new translations are invented
+and no text resources or executable patches are installed for this correction.
+Existing panel/form associations and stat values are preserved, not newly
+claimed to be independently recovered historical balance data.
+
+Native evidence (supported original executable SHA-256 checked):
+0x1400a6cd5 stores sv_title as a u32 in each 0x48-byte panel record.
+0x14030332c reads row+0x1e0+panel*0x48 and passes it unchanged to the common_text
+lookup 0x14058ae70. The bare icon filename is prefixed by the UI at 0x14030327c.
+The actual common_text resource contains every full ID above. Tests compare
+the complete old/new chara_master responses and permit only sv_title changes.
+
+Updating an existing current revival client:
+Close the game. Merge this complete client ZIP into the patch root, replacing
+included files but retaining your own config.json/player_profile.json and game.
+Then use your usual Online - Steam launcher. There is no need to recopy game
+assets, rebuild roi.exe or restart the shared public lobby container for titles.
+For just this correction, the changed runtime files are tools/roi_data.py and
+tools/roi_masters.py. The game caches this master at login, so a client restart
+is required; changing tabs alone does not load the new titles.
+
+Static, automated and local HTTP checks pass. User-visible headings still need
+confirmation after a fresh game launch. Brand-new installs still use Setup.bat.

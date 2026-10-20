@@ -1,0 +1,1290 @@
+{
+  "format": "roi-library-text",
+  "version": 1,
+  "language": "en",
+  "provenance": {
+    "source": {
+      "title": "Rise of Incarnates [1080p, 60fps and No Commentary]",
+      "interval_seconds": [
+        355,
+        1449
+      ],
+      "frame_size": [
+        1920,
+        1080
+      ]
+    },
+    "method": "Local OCR draft with reviewed corrections against the supplied recording; original raster captures retained as evidence, not displayed for text.",
+    "limitations": [
+      "English only; no missing How to Play or unseen move lists invented.",
+      "Washington D.C. ends mid-sentence in the recording. The visible continuation is transcribed and marked incomplete; unseen ending is not supplied."
+    ]
+  },
+  "characters": {
+    "mephistopheles": {
+      "bio": {
+        "paragraphs": [
+          "Jedrek has recently awakened to his newly discovered abilities.",
+          "During a street fight with a rival gang, he suffered grave injuries. After his sudden transformation, everyone around him became distant, frightened by his demon-like appearance--all except Emily. However, during an encounter with Wild Hunt, an organization known for attacks on unregistered incarnates, Emily is captured.",
+          "Mephistopheles often whispers to Jedrek, urging him to succumb to his temptation for violence. Once transformed, Jedrek rages completely out of control, yoked to the whims of Mephistopheles' penchant for destruction. Consumed with self-loathing and anger at Wild Hunt, at the injustices done to incarnates, at the government who does nothing to stop it, and even at a society that ignores it all, Jedrek slowly nurtures the wildly destructive entity within him."
+        ],
+        "source_asset": "mephistopheles-bio.jpg"
+      },
+      "daimon-bio": {
+        "paragraphs": [
+          "Jedrek has recently awakened to his newly discovered abilities.",
+          "During a street fight with a rival gang, he suffered grave injuries. After his sudden transformation, everyone around him became distant, frightened by his demon-like appearance--all except Emily. However, during an encounter with Wild Hunt, an organization known for attacks on unregistered incarnates, Emily is captured.",
+          "Mephistopheles often whispers to Jedrek, urging him to succumb to his temptation for violence. Once transformed, Jedrek rages completely out of control, yoked to the whims of Mephistopheles' penchant for destruction. Consumed with self-loathing and anger at Wild Hunt, at the injustices done to incarnates, at the government who does nothing to stop it, and even at a society that ignores it all, Jedrek slowly nurtures the wildly destructive entity within him."
+        ],
+        "source_asset": "mephistopheles-daimon-bio.jpg"
+      },
+      "details": {
+        "Age": 22,
+        "Gender": "Male",
+        "Country": "U.S.A."
+      },
+      "moves": {
+        "source_asset": "mephistopheles-moves.jpg",
+        "rows": [
+          {
+            "command": "Ranged Attack",
+            "properties": "",
+            "details": "Fires a projectile from the Gunblade. A simple Ranged Attack. Easy to fire multiple shots."
+          },
+          {
+            "command": "Special Move 1",
+            "properties": "Burn / Guard Break",
+            "details": "Launches an aura blast from your Gunblade, dealing considerable damage. Attack button can be held down to charge up the attack. A fully-charged aura blast can deal a great deal of damage and shatter the enemy's guard."
+          },
+          {
+            "command": "Special Move 2",
+            "properties": "",
+            "details": "Impales the enemy on your Gunblade, then sends them flying off with a left-handed punch. While the enemy is impaled, tap the close-range attack button to fire the Gunblade for additional damage."
+          },
+          {
+            "command": "Character Ability Power",
+            "properties": "",
+            "details": "Transforms into Mephistopheles. When transformed, all attacks are powered up to devastating effect."
+          },
+          {
+            "command": "N + Melee Attack",
+            "properties": "",
+            "details": "A simple Melee Attack that can be extended to a 4-hit combo."
+          },
+          {
+            "command": "← / → + Melee Attack",
+            "properties": "",
+            "details": "A Melee Attack that swings around to the enemy's side, allowing you to evade incoming projectiles. This is also an effective way to sidestep an enemy's guard."
+          },
+          {
+            "command": "↑ + Melee Attack",
+            "properties": "Tag Combo Launch",
+            "details": "Hurls your opponent into the air to initiate a Tag Combo."
+          },
+          {
+            "command": "↓ + Melee Attack",
+            "properties": "",
+            "details": "Leaps into the air, evading enemy projectiles, and then kicks downward onto the enemy. Especially useful for ambushing the enemy from above."
+          },
+          {
+            "command": "Tag Combo - Ranged",
+            "properties": "",
+            "details": "Finishes a Tag Combo with an aura blast from the Gunblade for incredible damage."
+          },
+          {
+            "command": "Tag Combo - Melee",
+            "properties": "",
+            "details": "Finishes a Tag Combo by intercepting the enemy, piercing them with the Gunblade, and then smashing them into the ground for maximum damage."
+          },
+          {
+            "command": "Awakening",
+            "properties": "Awakening",
+            "details": "Transforms into Mephistopheles. Your team's attacks are powered up to devastating effect."
+          }
+        ],
+        "reference_seconds": [
+          377,
+          381
+        ]
+      }
+    },
+    "ares": {
+      "bio": {
+        "paragraphs": [
+          "Terrence can summon Ares and control him like a part of his own body. This being, termed a \"Deuteros\", is a well-known type of incarnate power.",
+          "Terrence's development of a Deuteros may stem from his awakening as an incarnate at the young age of 12, when it was not power fantasies he imagined for himself, but rather another being embodying pure destruction. Left drifting after an accident at sea, he was able to triumph over the others in the struggles over the meager food by channeling Ares, the god of war.",
+          "In order to protect incarnate rights, Terrence joined a government organization. He hopes that by gaining the respect and trust of those around him he can curb the government's current trend towards incarnate oppression.",
+          "Naturally, he is unable to forgive the existence of Wild Hunt, an organization known for assaults on incarnates. Once Terrence learns the truth about Wild Hunt, his entire life will be upended."
+        ],
+        "source_asset": "ares-bio.jpg"
+      },
+      "daimon-bio": {
+        "paragraphs": [
+          "Terrence can summon Ares and control him like a part of his own body. This being, termed a \"Deuteros\", is a well-known type of incarnate power.",
+          "Terrence's development of a Deuteros may stem from his awakening as an incarnate at the young age of 12, when it was not power fantasies he imagined for himself, but rather another being embodying pure destruction. Left drifting after an accident at sea, he was able to triumph over the others in the struggles over the meager food by channeling Ares, the god of war.",
+          "In order to protect incarnate rights, Terrence joined a government organization. He hopes that by gaining the respect and trust of those around him he can curb the government's current trend towards incarnate oppression.",
+          "Naturally, he is unable to forgive the existence of Wild Hunt, an organization known for assaults on incarnates. Once Terrence learns the truth about Wild Hunt, his entire life will be upended."
+        ],
+        "source_asset": "ares-daimon-bio.jpg"
+      },
+      "details": {
+        "Age": 27,
+        "Gender": "Male",
+        "Country": "U.S.A."
+      }
+    },
+    "lilith": {
+      "bio": {
+        "paragraphs": [
+          "A successful arms dealer at a young age, Mireia is equally skilled in both the sales and use of the weapons she supplies. But her real strength lies in her powerful incarnate abilities. Those who underestimate her fall prey to her machinations or are overwhelmed by her furious attacks as they are quickly sliced to pieces. Even those who initially seem to hold their own against her are unable to keep up with her lightning speed once she transforms.",
+          "Hearing that the mysterious heavily-armed organization Wild Hunt possesses weapons specialized for use against incarnates, Mireia develops a plan to acquire them by force. These weapons have never been seen before, even by an experienced arms dealer like Mireia. If she could somehow acquire them, she could ask any price she liked. In this era, anything related to incarnates is worth vast sums of money.",
+          "Mireia has her eye on an even bigger prize, one of the highest classified secrets of the U.S. government, known as the Prophet. Thinking of the thrill, challenge, and overwhelming fortune to be gained from this venture, she can't help but break into a grin."
+        ],
+        "source_asset": "lilith-bio.jpg"
+      },
+      "details": {
+        "Age": 23,
+        "Gender": "Female",
+        "Country": "U.S.A."
+      }
+    },
+    "grim-reaper": {
+      "bio": {
+        "paragraphs": [
+          "A specialist in the field of incarnate research, Dr. Gaspard Watteau was unsuccessful in his experiments to forcefully awaken incarnate abilities in his test subjects. Unbeknownst to him, his efforts were secretly being sabotaged, rendering his program a failure.",
+          "As the body count from the failed experiments piled up, Watteau's laboratory was targeted for closure. The initiator of the research program, the President of the United States, was trying to quickly bury everything before it could come to light.",
+          "During the chaos of the forceful closure, Dr. Watteau unintentionally awakened his own daimon--the Grim Reaper. Amidst the squirming, writhing undead aftermath, Dr. Watteau's strong will to survive pushed him to escape and take command of these undead beings to exact revenge.",
+          "Now, wanted as an incarnate terrorist by international authorities, he pursues a path of vengeance against President Sanders and the United States government, his zombie hordes ever increasing along the way."
+        ],
+        "source_asset": "grim-reaper-bio.jpg"
+      },
+      "details": {
+        "Age": 103,
+        "Gender": "Male",
+        "Country": "France"
+      }
+    },
+    "brynhildr": {
+      "bio": {
+        "paragraphs": [
+          "A childhood of abuse at the hands of her father ended the day she awoke as an incarnate. Fear of retribution for his violence led the man to take his own life a few years later. Already isolated by her status as an incarnate, Quinn faced further alienation as she was passed from orphanage to orphanage, ultimately ending up at a facility run by the United States federal government.",
+          "Dreaming of a society in which incarnates could coexist with normal humans free from discrimination, she began to seek out ways to contribute towards the greater good of the world. Yet headlines about incarnate crimes and acts of terror indelibly marked her kind as a threat to be feared by the general public. Her frustrations grew into a deep resentment of the rampaging incarnates, and she came to believe that the tremendous power incarnates hold required an even more powerful system of law and justice to restrain it. She found that power as commander of the Wild Hunt."
+        ],
+        "source_asset": "brynhildr-bio.jpg"
+      },
+      "details": {
+        "Age": 24,
+        "Gender": "Female",
+        "Country": "U.S.A."
+      }
+    },
+    "odin": {
+      "bio": {
+        "paragraphs": [
+          "Feared as the kingpin of the EU, age has not dulled Kruger's fangs, nor his ambitions. Under the guise of retirement, he is secretly at work unfurling a new scheme: a pan-European revolution at the hands of the incarnates to secure their human rights—and to heighten their power to greatest extent possible. In his arsenal is the unparalleled intelligence network \"Odin's Eye,\" the ranks of incarnates under his command, and the multi-legged assault tank \"Sleipnir\" he pilots. All of the pieces are in place for his plan to assassinate a host of key figures and overturn the European power structure....",
+          "Yet now he has dispatched a portion of the force he gathered for his revolution to America. Men as calculating as Kruger seldom alter long-laid plans for no reason--behind this change lie the whispers of another, fed directly into his brain. And by its bidding, Kruger now turns his attentions from Europe to the United States, where the Prophet is being held in secret."
+        ],
+        "source_asset": "odin-bio.jpg"
+      },
+      "details": {
+        "Age": 70,
+        "Gender": "Male",
+        "Country": "Germany"
+      }
+    },
+    "ra": {
+      "bio": {
+        "paragraphs": [
+          "Abascal's career as a doctor ended the day an incarnate slaughtered his family. His anger led him to Akohr, an ideological organization founded on the belief that incarnates are monsters that must be exterminated.",
+          "One day, he was placed on a mission to capture a boy able to turn people into incarnates. Instead, he witnessed the boy being mortally wounded--the work of a panicked Akohr member unable to quell the fear of seeing his allies transformed into monsters.",
+          "The all-too-familiar sight of the powerless brutalized by the strong left Abascal deeply conflicted. But when he saw that the boy was still drawing breath, he acted without hesitation. Before him lay a life that he could save. He cast aside his revenge and returned to the healer's path. Today, he wanders the globe with that mysterious boy, saving lives along the way--human and incarnate alike. To him, all life is equal.",
+          "Amid the worsening incarnate conflict, a number of factions have set their sights on Abascal's young ward, and each time Abascal--now an incarnate through the boy's power--has stood to face them."
+        ],
+        "source_asset": "ra-bio.jpg"
+      },
+      "details": {
+        "Age": 27,
+        "Gender": "Male",
+        "Country": "Spain"
+      }
+    },
+    "fenrir": {
+      "bio": {
+        "paragraphs": [
+          "Burrell was that rare exception: a man who bore no prejudice against incarnates. Were he an incarnate, he felt, he could give more to his country. Given that mentality, it seems almost inevitable that an injury sustained during one mission saw him awaken. When he was subsequently nominated to lead the Were-Legion, an experimental incarnate unit, he jumped at the opportunity. Having successfully completed a number of difficult missions since then, the experiment has been dubbed a resounding success.",
+          "Yet no one can tolerate being treated like a lab rat for long. Burrell asserted to his men that the only way they would earn standing as human beings in the eyes of their superiors was to prove their worth as soldiers with results, despite the increasingly unreasonable missions they were given.",
+          "That is, until they came under the command of Reinhold Kruger. Now, Burrell has been dispatched to America as the EU's fiercest warrior."
+        ],
+        "source_asset": "fenrir-bio.jpg"
+      },
+      "details": {
+        "Age": 28,
+        "Gender": "Male",
+        "Country": "U.K."
+      }
+    },
+    "slayer": {
+      "bio": {
+        "paragraphs": [
+          "As a member of the secret society Akohr and a firm believer in its tenets, Duran serves in their squad of assassins--a professional incarnate-killer. Raised in an orphanage operated by an Akohr affiliate, he grew into a proud warrior and an unquestioning ideologue.",
+          "Duran's incarnate hunting career took a turn one day when he was selected to take part in one of Akohr's new experiments. The organization had retrieved a lamina from a recently eliminated target, and their logic was simple: fight fire with fire. If their non-incarnate assassin could be made to wield this enigmatic weapon, it would mean an exponential leap in firepower. And so Duran underwent body modification to enable him to harness the power of the demons he stalks."
+        ],
+        "source_asset": "slayer-bio.jpg"
+      },
+      "details": {
+        "Age": 25,
+        "Gender": "Male",
+        "Country": "Italy"
+      }
+    },
+    "loki": {
+      "bio": {
+        "paragraphs": [
+          "Beaten half to death by an incarnate, Miljkovic's deep grudge motivated him to join Akohr. Yet when he awoke as an incarnate himself on a mission, he knew it was too dangerous to return. He became a fugitive for some time, and when he was ultimately captured, he reclaimed his freedom by force using his impressive destructive abilities.",
+          "In time, he met a woman interested in those abilities--and in purchasing information on the mysterious boy whose powers had spontaneously awakened Miljkovic as an incarnate. This woman, Asha Mehta, spoke of a world ruled by incarnates. Miljkovic was quick to join her.",
+          "In her employ, he would never lack for targets against which to work out his frustrations. What's more, he was sure she would prove useful in his quest for vengeance against Akohr."
+        ],
+        "source_asset": "loki-bio.jpg"
+      },
+      "details": {
+        "Age": 32,
+        "Gender": "Male",
+        "Country": "Russia"
+      }
+    },
+    "kali": {
+      "bio": {
+        "paragraphs": [
+          "A woman of two faces. As the young CEO of media giant Vikarāla Corporation, she earned accolades for her considerable work in the post-disaster global reconstruction effort. Vikarāla immediately stepped in to distribute handheld communication devices around the world free of cost, netting the company widespread good will.",
+          "But behind closed doors, she spearheads the domesticated-human project, a vision of the future in which incarnates reign over the powerless masses. Needless to say, Asha counts herself among the ranks of the former.",
+          "She has raised a private army using her company's massive wealth, while the worldwide monopoly on communications traffic that Vikarāla's relief efforts secured makes wiretapping and information control a simple task. No one has yet been able to stop her from launching her grand plan, and even now she presses forward unimpeded by the global leaders' growing fear and resentment."
+        ],
+        "source_asset": "kali-bio.jpg"
+      },
+      "details": {
+        "Age": 20,
+        "Gender": "Female",
+        "Country": "India"
+      }
+    },
+    "zeus": {
+      "bio": {
+        "paragraphs": [
+          "As sitting President of the United States, he keeps his share of secrets. None greater than the fact that he is an incarnate. During his time in the Senate, he made active political use of the incarnate issue, and his positions earned him the fear and ire of anti-incarnate factions. A bullet from the member of one such group nearly killed him, but he returned to the living with Zeus, king of the gods, in tow. The incident and his new status only intensified his previous position.",
+          "As president, Sanders established an incarnate registration system, while simultaneously creating the Wild Hunt, a black ops unit operating outside of the law. The former helped piece together an accurate picture of the current state of incarnates in the US, while the latter gathered together unregistered incarnates through what amounts to abduction. But what motivated this extreme measure? The answer lies in the daimon known as the Prophet--an existence capable of extinguishing all human life."
+        ],
+        "source_asset": "zeus-bio.jpg"
+      },
+      "details": {
+        "Age": 53,
+        "Gender": "Male",
+        "Country": "U.S.A."
+      }
+    },
+    "utsutahime": {
+      "bio": {
+        "paragraphs": [
+          "Yuki Himuro had always hated her powers. She feared the day she would be found out as an incarnate, wishing instead that her abilities would just disappear.",
+          "The change came with no forewarning. At a set time of day, her friends would all enter a trance-like state. One minute later, life would resume as if it had never been interrupted. Yet nothing happened to her--or to any other incarnates. She knew immediately that something terrible was brewing.",
+          "And so she paid a visit to her most trusted acquaintance, private investigator and fellow incarnate Ishin Asakura. Though she had known him for years, she'd never been more glad to count him as an ally. She also knew the one other thing she could depend on was her own power. To protect herself and her friends, she would have to cast her fear away."
+        ],
+        "source_asset": "utsutahime-bio.jpg"
+      },
+      "details": {
+        "Age": 17,
+        "Gender": "Female",
+        "Country": "Japan"
+      }
+    },
+    "red-dragon": {
+      "bio": {
+        "paragraphs": [
+          "At the moment of the first annihilation of humankind, one man made contact with the newly-formed daimon, the Prophet. That man's direct ancestor living in the 21st century was Jedrek Tyler, making Tyler the contemporary human most susceptible to the Prophet's influence. Embracing the Prophet's guidance as his destiny, he rose against the Sovereign, but still the world traced the same path to destruction.",
+          "The Prophet retrieved the fallen fighter's body. To bestow on him another chance, Tyler would need a body capable of surviving long-term cold sleep and the cataclysmic process of resetting the world. The daimon implanted large quantities of both lamina and herald tissue into Tyler's body to see that realized.",
+          "Just as the Prophet had previously smuggled lamina from one iteration of the world into the next, he now brought with him a champion--a being now far different from the Jedrek Tyler that once was."
+        ],
+        "source_asset": "red-dragon-bio.jpg"
+      },
+      "details": {
+        "Age": 0,
+        "Gender": "Male",
+        "Country": "Unknown"
+      }
+    }
+  },
+  "stages": {
+    "new-york-city": {
+      "country": "U.S.A.",
+      "details": {
+        "Location": "42.665N, 73.799W",
+        "Area": "54475 sq.m",
+        "Population": "2.21 million"
+      },
+      "paragraphs": [
+        "A standard rectangular stage with a fully destructible environment. There are few platforms, allowing you to overlook the stage from any position. The red bleachers and the trailer can take considerable punishment and can provide temporary cover in the heat of battle."
+      ],
+      "illustration": {
+        "file": "stage-new-york-city-art.jpg",
+        "width": 1032,
+        "height": 535,
+        "source_asset": "stage-new-york-city.jpg",
+        "crop": [
+          0,
+          0,
+          1032,
+          535
+        ],
+        "sha256": "df1fb8356fb6ec8fee50ba632991882daf8ee926181b2bdc66c7703ad6110444"
+      },
+      "reference_seconds": [
+        607
+      ],
+      "incomplete": false
+    },
+    "paris": {
+      "country": "France",
+      "details": {
+        "Location": "48°51′24″N 2°21′03″E",
+        "Area": "40.7 sq m",
+        "Population": "2.21 million"
+      },
+      "paragraphs": [
+        "This circular stage surrounds the Arc de Triomphe, which can be destroyed. You will have to fight around and within the Arc de Triomphe while taking cover from enemy attacks. Once destroyed, you must adapt your strategy as you can use the remaining pillars as cover but also climb on to use them as vantage points."
+      ],
+      "illustration": {
+        "file": "stage-paris-art.jpg",
+        "width": 1032,
+        "height": 535,
+        "source_asset": "stage-paris.jpg",
+        "crop": [
+          0,
+          0,
+          1032,
+          535
+        ],
+        "sha256": "841b628adcce2ed8da70f2204e88a15629d66b64af9acb2274f59bd080526eba"
+      },
+      "reference_seconds": [
+        613
+      ],
+      "incomplete": false
+    },
+    "london": {
+      "country": "England",
+      "details": {
+        "Location": "51°30′26″N 0°7′39″W",
+        "Area": "607 sq m",
+        "Population": "8.308 million"
+      },
+      "paragraphs": [
+        "London - Europe's largest city and the capital of the United Kingdom. We are excited to announce London as one of the theaters of battle in Rise of Incarnates!",
+        "The Houses of Parliament tower over this stage, while the entire ground has been decimated by eruptions of lava. Players will fight on the lava-hardened Thames river and Westminster Bridge."
+      ],
+      "illustration": {
+        "file": "stage-london-art.jpg",
+        "width": 1032,
+        "height": 536,
+        "source_asset": "stage-london.jpg",
+        "crop": [
+          0,
+          0,
+          1032,
+          536
+        ],
+        "sha256": "3e6db9e6cbe942284bec465723b309d95851ecc1c38ae6f69f2a2bc84da9acbe"
+      },
+      "reference_seconds": [
+        619
+      ],
+      "incomplete": false
+    },
+    "washington-d-c": {
+      "country": "U.S.A.",
+      "details": {
+        "Location": "38.9047° N, 77.0164° W",
+        "Area": "6375 sq.m",
+        "Population": "700,000"
+      },
+      "paragraphs": [
+        "The political center of the United States of America encountered a multitude of attacks by the Incarnates and is under a brink of destruction. The White House, located in the center of the stage can be used as a vantage point and as a location to take cover from incoming attacks. Securing the location will greatly affect which team controls the flow of battle.",
+        "The White House can also be destroyed, which will transform the stage into a flat arena where…"
+      ],
+      "illustration": {
+        "file": "stage-washington-d-c-art.jpg",
+        "width": 1032,
+        "height": 559,
+        "source_asset": "stage-washington-d-c.jpg",
+        "crop": [
+          0,
+          0,
+          1032,
+          559
+        ],
+        "sha256": "15e1bcaae954a731e7cbde16ff43b24bf84a6d5fec63e5728f547841e11cbc85"
+      },
+      "reference_seconds": [
+        625
+      ],
+      "incomplete": true
+    }
+  },
+  "story": {
+    "the-era-of-incarnates": {
+      "title": "The Era of Incarnates",
+      "paragraphs": [
+        "It is as if Nature itself is in revolt. The same scenes, played out again and again the world over: Meteorites falling from the sky, massive cold fronts sweeping across the land, an unending onslaught of catastrophe. The so-called \"cube phenomena\" have enveloped the world, and the people live in perpetual fear of what will become of their planet.",
+        "Among the people of this age, there are those known as \"incarnates\"—humans with extraordinary abilities. These special powers are drawn from daimones, or spiritual manifestations of the gods, demons, and monsters of all the world's mythology. Owing to their eerie supernatural powers, incarnates are feared by the general public, and authorities have attempted to harness these powers for their own ends. But one day, in the mind of every incarnate there speaks a voice: \"To avoid certain destruction, you must defeat the Sovereign of this era.\"",
+        "Each incarnate has responded to this message differently. Some take it as a revelation, while others dismiss it as a mere hallucination. If some lament it as an ill omen for the future, others relish the ensuing chaos as a pretext to fulfill their base desires. But no matter the reaction, none amongst them can tell who or what the Sovereign of the era could be.",
+        "With their own interpretations and reasons to fight, the incarnates enter the fray."
+      ],
+      "illustration": {
+        "file": "story-the-era-of-incarnates-art.jpg",
+        "width": 868,
+        "height": 474,
+        "source_asset": "story-the-era-of-incarnates.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          474
+        ],
+        "sha256": "4332b1a895e47f8eeef4db89b23da634541d0ac4c17f68da6eca17f17bea6c4f"
+      },
+      "source_asset": "story-the-era-of-incarnates.jpg",
+      "reference_seconds": [
+        683,
+        693
+      ]
+    },
+    "incarnates": {
+      "title": "\"Incarnates\"",
+      "paragraphs": [
+        "\"Incarnates\": Those able to commune with beings of legend—and harness their power.",
+        "Able to levitate, channel nature's energy at will, or perform other supernatural feats, these men and women have gone by many names throughout history: sorcerers, witches, shamans, miracle workers, even demigods. Even as superstitions fell away in modern times, rumors of superhuman powers persisted. Today, these chosen few are referred to as incarnates.",
+        "Their existence known to the establishment since at least the early 20th century, they became the focus of attention during World War II. From Germany's supersoldier experiments to the German-British paranormal battles waged by Karl Ernst Krafft and Louis de Wohl, to the Japanese attempt on President Roosevelt's life via ritual curses, records of incarnate activity are plentiful. Interest in their kind from Churchill and other world leaders is also well documented. This wartime research quietly continued after the war's end, exploring both the incarnates' military uses as well as applications in medicine and other fields. Today, it is known that all paranormal phenomena once known as magic or miracles can in fact be attributed to the work of these incarnates.",
+        "Yet many of these secret studies have still been viewed with skepticism—a view even those conducting the studies have been eager to foster in order to protect their findings. As a result, incarnates have largely been fodder for urban legends.",
+        "In recent years, a number of high-profile crimes and terrorist attacks have brought incarnates to the forefront of public consciousness. What were once thought of as fictional bogeymen have now become a very real threat, provoking a wave of fear and persecution from the general population. Research into their abilities from both a military and domestic security stance has risen to high priority, and the world's governments have taken measures to identify and regulate their incarnates while also developing new weaponry to keep them in check. What sense of mystery surrounded their abilities in the age of magic is now gone, replaced with a stark view that paints incarnates' powers as brutal and dangerous tools of immoral destruction.",
+        "The term \"incarnate\" derives from the idea that these men and women are avatars of power given form. Formerly a slang label used in rumors and urban legends, it took root as the mainstream media began to cover stories relating to their existence. The precise origin of the term is unknown, but it stands today as the most common and broadly-used term for these individuals."
+      ],
+      "illustration": {
+        "file": "story-incarnates-art.jpg",
+        "width": 868,
+        "height": 473,
+        "source_asset": "story-incarnates.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          473
+        ],
+        "sha256": "672b983a23e0578997c378e856c5ab9a79df6108544032cbc9885a1c0a02c327"
+      },
+      "source_asset": "story-incarnates.jpg",
+      "reference_seconds": [
+        645,
+        681
+      ]
+    },
+    "daimones": {
+      "title": "\"Daimones\"",
+      "paragraphs": [
+        "\"Daimones\": Non-corporeal consciousnesses",
+        "At the source of the incarnates' powers lies the pantheon of gods, demons, and monsters spoken of in legends the world over. Yet these are not divine beings to be worshiped, nor are they unidentified life forms. Their existence stems from the very belief humans have placed in them over the ages: abstract concepts gradually rectified into fixed, spiritual forms. As long as humanity exists to carry on these concepts, the power they hold continues to grow. Incarnate researchers have termed these beings \"daimones.\"",
+        "Originally a Greek word for the divine, the term was first applied to these beings by Dr. Balzac, an early frontrunner in incarnate research. Also notable as the first human to attempt direct communication with a daimon, he left a profound legacy via his work in the field, even as it earned him an eccentric reputation among his less visionary contemporaries.",
+        "As oral histories, written legends, and illustrations are passed down through generations, the image they instill in those untold numbers of human minds is refined and built up until the daimon emerges as an autonomous entity of raw information. As a result of this unique genesis, they are in a constant process of evolution, taking influence from shifts in cultural and religious views throughout history. While the swift pace of scientific progress in recent centuries temporarily eroded the mind-share devoted to these mystical beings, the recent flourishing of media consumption has provided them a new stage in the form of literature, theater, and beginning with the 20th century films, video games, and more. While it is thought that several generations' time is required for such paradigm shifts to bring about visible changes in a daimon, the Earth's population has grown exponentially in the modern era. Despite the casualties caused by recent natural disasters, more humans live today than ever before, and their minds have been drawn to these mythic figures at an unprecedented rate. This has allowed a proportionally faster rate of evolution among daimones, making the possibility of dramatic changes in the near future very real."
+      ],
+      "illustration": {
+        "file": "story-daimones-art.jpg",
+        "width": 868,
+        "height": 468,
+        "source_asset": "story-daimones.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          468
+        ],
+        "sha256": "4dad0f4f6b000b51b5d6e57c734f7615cf33362e86d5f0519de5748d4b35c7d4"
+      },
+      "source_asset": "story-daimones.jpg",
+      "reference_seconds": [
+        695,
+        709
+      ]
+    },
+    "the-birth-of-an-incarnate": {
+      "title": "The Birth of an Incarnate",
+      "paragraphs": [
+        "When a human is placed under extreme duress, the self weakens and recedes, giving rise to a fragile mental state in which the individual's consciousness can mingle with that of a daimon—a phenomenon known as \"contact.\" This psychic connection becomes a channel through which the daimon's power can flow into the human, causing that host to awaken as an incarnate. Not all people are capable of making contact, however, even when pushed to their limits. Only those with the mental fortitude and strength of will required to attract a daimon emerge with the ability to wield their powers as incarnates.",
+        "Those subjects who draw in a daimon but fail to make contact generally do not suffer negative effects. Those who succeed in making contact but fail to awaken as an incarnate, however, face dire results. In the best cases, madness awaits; in the worst, brain damage or death. In extremely rare cases, the bodies of subjects who suffer brain trauma may be taken over entirely by the daimon they made contact with, allowing for direct communication between human and daimon using the incarnate's body as a medium. The majority of such cases have yielded only strings of unintelligible gibberish, but some have offered crucial hints at the nature and origin of the daimones.",
+        "The mentality, desires, and regrets of the subject play a critical role in determining with which daimon a subject makes contact. Consequently, there is a strong correspondence between the personality of an incarnate and the nature of their daimon. Furthermore, it has been proven that the death of an incarnate breaks their contact with the daimon, releasing it back into the collective consciousness. The daimon may then make contact with a new human, giving birth to a new incarnate."
+      ],
+      "illustration": {
+        "file": "story-the-birth-of-an-incarnate-art.jpg",
+        "width": 868,
+        "height": 476,
+        "source_asset": "story-the-birth-of-an-incarnate.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          476
+        ],
+        "sha256": "cdf13f9c943c5add20732bfceff7f30b8772e4b31e257e481d834de9bd5a9b33"
+      },
+      "source_asset": "story-the-birth-of-an-incarnate.jpg",
+      "reference_seconds": [
+        711,
+        723
+      ]
+    },
+    "life-as-an-incarnate": {
+      "title": "Life as an Incarnate",
+      "paragraphs": [
+        "The form and abilities yielded when an incarnate manifests his or her power depends greatly upon the image they hold of their daimon. If a daimon is commonly understood as a fire deity, for instance, the incarnate's powers will likely favor pyromancy and a strong resistance to heat. Contrarily, an incarnate's doubts can greatly hinder the expression of their power; a daimon cannot do what its incarnate believes to be impossible. It is this self-limitation, often a product of so-called \"common sense,\" that greatly diminishes many incarnates' potential.",
+        "Some incarnates rise above such limits, however, and the influence they bear on the world is vast. Following a spate of acts of large-scale crime and terror by incarnates, the world's governments enacted systems to preemptively identify and manage their incarnate population. Registered incarnates are secretly tagged with microchips, allowing authorities to track their location and any use of their powers. All children are subjected to mandatory screenings at birth to ensure a complete database of potential incarnates. Even so, children born in developing nations (or who lack birth records for other reasons) exist outside of this system in significant numbers, and many of those born before such tests were implemented have avoided incarnate screenings as adults. Many such \"closet incarnates\" strive to keep a low profile, hiding their powers in an effort to preserve their quiet lives, making precise estimates of their numbers difficult. As a result, rumors persist of secret incarnates affiliated with any number of military and intelligence agencies around the globe. In truth, in more than a few cases, these claims have a legitimate basis.",
+        "Official records state there are currently 3,561 registered incarnates worldwide, but fear of the persecution that awaits identified incarnates means the true figure is likely closer to 10,000."
+      ],
+      "illustration": {
+        "file": "story-life-as-an-incarnate-art.jpg",
+        "width": 868,
+        "height": 475,
+        "source_asset": "story-life-as-an-incarnate.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          475
+        ],
+        "sha256": "703528dea34e5fb58e89e3aa0fbc867683b9a89b9668824334470fcc822cddc2"
+      },
+      "source_asset": "story-life-as-an-incarnate.jpg",
+      "reference_seconds": [
+        725,
+        739
+      ]
+    },
+    "the-phantom-unit": {
+      "title": "The Phantom Unit",
+      "paragraphs": [
+        "Founded as part of an experimental incarnate deployment program, the Unit existed even before Sanders's presidency began. In its early days, it was intended as an incubator for agents able to use paranormal abilities. Graduates from the program were then placed in a variety of agencies based on their aptitudes. An extremely small-scale operation by its very nature, the Phantom Unit was kept a closely-guarded secret.",
+        "These days, the Unit is comprised of Terrence Blake and a handful of other incarnates, and is led by a non-incarnate named Mackenzie. Initially staffed by incarnates forcibly assembled by the US government, early members were resistant to say the least. But through a year of patient, sincere communication, Mackenzie gradually earned their trust and ultimately their affection, a fact attested by his nickname in the unit, \"Pops.\" In return, he has served as a buffer between the Unit and higher-ups who frequently view incarnates as less than human.",
+        "Following its initial success, the project shifted into its second phase. Ever since, the Phantom Unit has served as a model for how these men and women's incredible powers can be used for the good of the nation and its citizens.",
+        "Unit members include individuals like Blake who hold a strong pro-incarnate philosophy, as well as those like Erendira Quinn who are understanding of the government's position and eager to assist in the implementation of its policies. With Sanders' ascent to the presidency placing an incarnate at the pinnacle of American power, the expectations placed on the Phantom Unit have risen, and with them its importance. It has also served to draw increased international attention to its activities. To those who count the United States as an enemy, the Phantom Unit is a dangerous foe—and a high-priority target."
+      ],
+      "illustration": {
+        "file": "story-the-phantom-unit-art.jpg",
+        "width": 868,
+        "height": 474,
+        "source_asset": "story-the-phantom-unit.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          474
+        ],
+        "sha256": "a8e7fd126578543b7cf1908991df4fe64faedf0fc1dd577eab1ff7800a8d0900"
+      },
+      "source_asset": "story-the-phantom-unit.jpg",
+      "reference_seconds": [
+        741,
+        753
+      ]
+    },
+    "the-global-restoration-effort": {
+      "title": "The Global Restoration Effort",
+      "paragraphs": [
+        "A recent chain of natural disasters continues to rock the world even now, but mankind has begun to adapt. The loss of airports and shipping centers dealt a huge blow to the world's transportation systems, while damage to undersea cables and communications satellites hobbled the flow of information. But with the world's governments struggling to assess the damage and preserve civil order, rebuilding infrastructure often had to take a back seat. A number of powerful private-sector companies stepped in to fill that void, seeing it as the perfect chance to place the government in their debt while expanding their market share. The restoration effort began to pick up speed, and today even conservative estimates show that at least 40% of the global infrastructure is back online.",
+        "On the information front, Indian industry giant Vikarāla Corporation's contributions were especially extensive, earning them widespread praise. In addition to opening three private satellites to public use, they distributed Vikarāla-made communications terminals to people the world over at no cost, and offered connection services at a greatly reduced cost, much to the joy of the masses. Despite the expenses this no doubt entailed, the corporation emerged with massive market share and an unimpeachable brand reputation. Today, they represent a global monopoly—no doubt the intention of Vikarāla's top executives from the start.",
+        "Meanwhile, in transportation, local and regional building efforts formed the majority of the restoration, with no megacorp emerging as a clear leader. Instead, smaller businesses on the national and city level took the initiative, with many ultimately negotiating with the government over usage rights for the facilities they built in an effort to recoup their expenses.",
+        "And so has corporate greed pulled the battered world back onto its feet once more. With humanity having fought back the first wave of disasters, the world's governments now stand in a better position to take the lead in countering and recovering from the disasters still to come. For those private corporations who seized the opportunity to capitalize on the chaos, the future is looking bright."
+      ],
+      "illustration": {
+        "file": "story-the-global-restoration-effort-art.jpg",
+        "width": 868,
+        "height": 488,
+        "source_asset": "story-the-global-restoration-effort.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          488
+        ],
+        "sha256": "c4deaafd4b29208670f7086ff13c7ad03ee59365e8c17ce67abfa1c1ad9f3d05"
+      },
+      "source_asset": "story-the-global-restoration-effort.jpg",
+      "reference_seconds": [
+        755,
+        765
+      ]
+    },
+    "skill-cubes": {
+      "title": "Skill Cubes",
+      "paragraphs": [
+        "Alongside the disasters that rocked the globe came another curious change. Now widely known as \"cube phenomenon,\" it saw objects and spaces appear as perfect cubes. While it has since been proven that this curious illusion is the result of distortions of the light, the cause of said distortions remains unknown. Many are quick to point out that a similar effect results whenever an incarnate uses his or her powers, but the scale and duration of those instances pales next to those resulting from the broader cube phenomenon, leading experts to conclude that the two are similar but ultimately separate phenomena.",
+        "The existence of skill cubes was first put forward as part of the larger hypothesis that this cube phenomenon sprung from the effects of powers used by incarnates (and by extension their daimones). When tests proved that objects causing the cube phenomenon were in fact able to influence incarnates' abilities, it was seen as a possible solution to the incarnate problem. Research organizations the world over set to work on a way to inhibit or cancel out incarnate abilities.",
+        "Elsewhere, similar research was undertaken with the aim of amplifying those powers. Unlike the internationally-conducted public studies aiming to weaken incarnate powers, these experiments were matters of classified military research. In truth, the money and manpower invested in the former in the name of peace and equality was dwarfed by that secretly spent on honing these living weapons.",
+        "The public side of that research has yielded some conclusions. The elemental composition of the object exhibiting cube phenomena determines the degree to which incarnate powers are amplified or dampened. What's more, certain elements affect only set classes of powers, meaning that to apply the use of such objects requires a highly nuanced understanding. In addition, applying certain processes to the cube object can modify the character and range of the effect it bears. Given these insights from the outward-facing arm of cube phenomenon research, it is assumed that a good deal more has been uncovered in secret.",
+        "The introduction of this new weapon—and it would be naive to think it anything but—has seen both the world's military-industrial complex and underground organizations attempt to monopolize information and establish distribution routes. Merely a few short years after the phenomenon was first observed, skill cube technology is soon expected to make a reality of both anti-incarnate weaponry and incarnate power amplification devices."
+      ],
+      "illustration": {
+        "file": "story-skill-cubes-art.jpg",
+        "width": 868,
+        "height": 484,
+        "source_asset": "story-skill-cubes.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          484
+        ],
+        "sha256": "38747e76ef5329f9e474c43df2046baa224598611a53a3cb5e689dfa8db486f5"
+      },
+      "source_asset": "story-skill-cubes.jpg",
+      "reference_seconds": [
+        767,
+        789
+      ]
+    },
+    "the-wild-hunt": {
+      "title": "The Wild Hunt",
+      "paragraphs": [
+        "A covert American force of incarnate hunters working to apprehend unregistered incarnates. Answering directly to President Sanders, the squad is led by Erendira Quinn, who was scouted through the Phantom Unit program.",
+        "Named after the phantasmal hunt of legend, the squadron now lives up to the moniker by stalking and spiriting away its incarnate prey in the dead of night. Due to America's vast size, several sub-squads exist, though none can compare in firepower to the First Squadron, personally commanded by Quinn herself.",
+        "Though the squad's existence is a military secret unknown to the general populace, any with the misfortune to learn of their activities call them \"the incarnate hunters\" in fearful whispers.",
+        "The true purpose of the Wild Hunt lies in the coming clash between the United States and an unidentified person called \"the Prophet.\" President Sanders believes that greater numbers of incarnates will be needed in order to emerge victorious—a fact disclosed only to Quinn. The other members of the unit believe their actions serve only to preserve law and order through the proper management of incarnates.",
+        "Over the course of his investigations into a string of disappearances, Terrence Blake learns that the victims are likely unregistered incarnates—his brethren—and swears to see them found. When he learns these \"incarnate hunts\" are the work of the government, he leaves the Phantom Unit and severs ties with the US military."
+      ],
+      "illustration": {
+        "file": "story-the-wild-hunt-art.jpg",
+        "width": 868,
+        "height": 477,
+        "source_asset": "story-the-wild-hunt.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          477
+        ],
+        "sha256": "93bcc6415692872ea16c0606d908b31b807b91fe07a96a1a750e58783ade111f"
+      },
+      "source_asset": "story-the-wild-hunt.jpg",
+      "reference_seconds": [
+        791,
+        803
+      ]
+    },
+    "the-cube-phenomenon-and-the-chain-of-disasters": {
+      "title": "The Cube Phenomenon and the Chain of Disasters",
+      "paragraphs": [
+        "The cube phenomenon, which first manifested in the early 21st century, was initially thought to be a mass perceptual distortion of unknown cause. Later, it would become a symbol of fear the world over.",
+        "Some time later, the first disaster struck: a meteorite impact in an urban area. The city struck was the site of the first observed instance of the cube phenomenon. When a second and third disaster followed soon after—also in places affected by cube phenomena—people began to notice the correlation.",
+        "In the days that followed, areas affected by the cubes were swiftly abandoned. While such mass evacuations greatly minimized the casualties caused by subsequent disasters, the losses from the first three were sufficient to spark worldwide panic. Meanwhile, the cubes remain in these marked cities even after the disasters have passed, standing as terrifying monuments.",
+        "In addition to claiming countless human lives, these disasters dealt a crippling blow to governmental and communications infrastructures, with several major world cities becoming ghost towns overnight. Their inhabitants moved on to new regions, founding cities there. Second New York, Neo Kowloon, and others rose as bustling new trade centers while their former counterparts were abandoned, devolving into lawless slums for those left behind.",
+        "Beyond the initial meteorite, disasters took the form of massive earthquakes, freak cold snaps and other weather anomalies, unprecedented outbreaks of mold, and a standing, persistent tornado. None have as yet been scientifically explained. In place of answers, rumors arose—most pointing the finger at incarnates. Lynch mobs took to the streets, with hysterical citizens killing incarnates on sight. As that fear and hatred of incarnates took ever-deeper root in the mainstream population, so too was resentment and anger building among incarnates. A wave of crimes perpetrated by incarnates followed, and the vicious cycle continued.",
+        "Today, the cube phenomenon is the subject of much research and investigation at every level, but humanity is no closer to understanding its cause. Most people have given up any hope of immediate answers. In the absence of scientifically-founded conclusions, the void has been filled with conspiracy theories blaming secret incarnate experiments performed by the US or EU. Others point to a written record from the 18th century of a duel carried out between alleged wizards wherein a similar phenomenon was said to have been observed for some three seconds' time. The scientific establishment dismisses it as hearsay and superstition, but others maintain it bears some connection to current events."
+      ],
+      "illustration": {
+        "file": "story-the-cube-phenomenon-and-the-chain-of-disasters-art.jpg",
+        "width": 868,
+        "height": 485,
+        "source_asset": "story-the-cube-phenomenon-and-the-chain-of-disasters.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          485
+        ],
+        "sha256": "c70680a2d48f695928a64ffe3723913ac2880373634ddaae36f2cd8ec22a0154"
+      },
+      "source_asset": "story-the-cube-phenomenon-and-the-chain-of-disasters.jpg",
+      "reference_seconds": [
+        805,
+        827
+      ]
+    },
+    "laminae": {
+      "title": "Laminae",
+      "paragraphs": [
+        "Recent days have seen the appearance of a string of weapons of unidentified origin. While their appearance is superficially similar to that of known armaments, they operate by fundamentally different mechanisms, miraculous technology housed in a familiar shell. What's more, these weapons frequently turn up around incarnates—another detail beyond explanation. These arms will later come to be known as laminae, but at this stage they have yet to develop a collective label.",
+        "Laminae resonate with their users' psyche, enabling those with unusually strong minds—incarnates—to draw out the full extent of their power. That fact, together with the frequency with which these devices are found by incarnates, makes the possibility of coincidence extremely doubtful, with the implication being that someone is intentionally distributing these weapons to the world's incarnates.",
+        "Investigations into their source have proven as yet unfruitful. Those few who know of laminae's existence welcome any that fall into their allies' hands and fear those found by their enemies. Such polarized emotions have spurred on further research, and analysis of these weapons continues. On the streets, some people have begun the risky proposition of attacking incarnates in order to claim their laminae for themselves. Perhaps therein lies the true aim of the one distributing these arms: to grant power to the incarnates, then force them into combat. But who, and to what end?"
+      ],
+      "illustration": {
+        "file": "story-laminae-art.jpg",
+        "width": 868,
+        "height": 482,
+        "source_asset": "story-laminae.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          482
+        ],
+        "sha256": "263ca673efabb841af4de76f95a401aa76fce805b84f4c7c386fd15f8647fdfd"
+      },
+      "source_asset": "story-laminae.jpg",
+      "reference_seconds": [
+        829,
+        847
+      ]
+    },
+    "incarnates-in-turmoil": {
+      "title": "Incarnates in Turmoil",
+      "paragraphs": [
+        "In the wake of the first disasters, incarnates became targets for suspicion and worse. The fear, envy, and entrenched victimhood mentality of the powerless soon gave birth to widespread persecution of those with power. In return, many incarnates succumbed to the temptations of their power and struck back, driving the wedge between them deeper and worsening the already widespread panic. Elsewhere, a handful of incarnates decided to use their abilities for good, as first responders working to aid disaster survivors, or as members of the reconstruction effort.",
+        "One incarnate, presumed American but known only as the Good Samaritan, awoke to supernatural strength and used his newfound abilities to save the lives of no fewer than 238 people, as well as aiding in the construction of refugee camps. None who witnessed his work first-hand had anything but praise for the mysterious man, with many saying that if only all incarnates shared his character, the world would be a peaceful place. While others like him did exist, their noble acts were sadly overshadowed by the far larger number of incarnates acting on their own selfish impulses. Popular sentiment continued to sour, until the Good Samaritan was seen as a sort of tragic joke, and public opinion firmly determined that incarnates were dangerous. The simple fact that incarnates possessed a power beyond the ken of average humans ultimately proved enough to convince the vast majority of humanity—most of whom had no direct contact with incarnates whatsoever—that they were an uncontrollable threat. Their very existence placed mankind in peril.",
+        "It is unclear what became of the Good Samaritan. As the reconstruction effort stabilized, he was sighted less and less. Perhaps amid the rising tide of anti-incarnate sentiment he felt that his presence caused more unrest than his powers could do good. While the matter is now left to conjecture, the man portrayed by the eyewitness accounts of other relief workers seems to be one compassionate and selfless enough to warrant such an assessment."
+      ],
+      "illustration": {
+        "file": "story-incarnates-in-turmoil-art.jpg",
+        "width": 868,
+        "height": 484,
+        "source_asset": "story-incarnates-in-turmoil.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          484
+        ],
+        "sha256": "9598d3c5c1dc6d0496f0e5de76c748d88a9985e58198e4be4d3c97fc42c2d187"
+      },
+      "source_asset": "story-incarnates-in-turmoil.jpg",
+      "reference_seconds": [
+        849,
+        865
+      ]
+    },
+    "the-were-legion": {
+      "title": "The Were-Legion",
+      "paragraphs": [
+        "The United States' Phantom Unit is not the only project of its kind. Just as fear of the incarnates' abilities is a global phenomenon, the desire to harness it is equally universal.",
+        "The EU's attempt to militarize their incarnate population is quickly closing the gap with that of their counterparts across the Atlantic. The Were-Legion, an experimental strike force primarily under British command, has quickly accrued a tally of successful missions that would have been unthinkable using conventional human soldiers. Comprised entirely of soldiers who awakened as incarnates while in military service, all Legion members have since officially been declared deceased. As the name suggests, many of their numbers possess shapeshifting abilities.",
+        "As with the Phantom Unit, the Legion's existence is a closely-kept secret; even the name itself is known only to a precious few. The expectations of their commanders in the top echelons of the EU are great—almost as great as the fear inspired in those same commanders by the Legion's extreme deadliness and notorious difficulty to control.",
+        "Evidence suggests that France's navy once attempted a similar project, but unlike the Were-Legion, test subjects used in those experiments ultimately deserted—the result of a string of intentional suicide missions ordered by their superiors as fear began to outweigh expectations. One rumor holds that the figure leading the experiment in fact held strong anti-incarnate beliefs. Perhaps the failure of the unit was part of an intentional effort to debunk the notion that incarnates' powers can be harnessed for constructive use. If nothing else, it serves as a testament that human-incarnate relations seldom go smoothly."
+      ],
+      "illustration": {
+        "file": "story-the-were-legion-art.jpg",
+        "width": 868,
+        "height": 443,
+        "source_asset": "story-the-were-legion.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          443
+        ],
+        "sha256": "376eee7c576e2946d9362f6a64a613fb20122bd595cb48a35920aa9ca172bbc2"
+      },
+      "source_asset": "story-the-were-legion.jpg",
+      "reference_seconds": [
+        867,
+        879
+      ]
+    },
+    "a-call-to-awakening": {
+      "title": "A Call to Awakening",
+      "paragraphs": [
+        "Rumor tells of a curious boy able to awaken others as incarnates simply by being nearby, with no need for that person to be exposed to mortal danger.",
+        "At first, it was little more than an urban legend: more superstitious fuel for the fire of anti-incarnate fear. But those who aspire to power in this new, unstable world know that every superstition, however fringe or unlikely, is worth a thorough investigation when it pertains to incarnates and their abilities—and this world has no shortage of ambitious organizations. The intentional creation of incarnates had been attempted, of course, but the failures of Dr. Watteau's experiments were typical of all such ventures. If the tales of this boy were true, it could mean a monopoly, and all the profits and power that entailed.",
+        "It was not long before his existence was proven. Believed to be an incarnate himself, the boy is a wanderer who shuns contact with others. The world's power brokers have other plans, however, and even now their agents are engaged in a heated race to claim him for their own."
+      ],
+      "illustration": {
+        "file": "story-a-call-to-awakening-art.jpg",
+        "width": 868,
+        "height": 486,
+        "source_asset": "story-a-call-to-awakening.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          486
+        ],
+        "sha256": "618b79c681b3cd7d7d1084ddc1a10d2fac7b6eda2db27cc5e7200d627dcfd084"
+      },
+      "source_asset": "story-a-call-to-awakening.jpg",
+      "reference_seconds": [
+        881,
+        895
+      ]
+    },
+    "akohr": {
+      "title": "Akohr",
+      "paragraphs": [
+        "With time, fear of incarnates gave rise to an anti-incarnate movement. Desperate to defend themselves against the lengthening list of crimes perpetrated by berserk incarnates, people have come to justify preemptive strikes against these supernatural menaces as the only solution. Leading the charge in this sentiment are the members of a secret society known as Akohr. United in the belief that incarnates are demons wholly separate from humanity, their final aim inexorably turned to total incarnate extinction. This call to genocide proved a bridge too far for the general populace, who have branded the group as dangerous extremists, but many in positions of power around the world remain members in secret today.",
+        "As an ideological group, Akohr became a gathering place for manpower, technology, and capital free of the restrictions of nationality or social class. The society's resources were all poured into the research and development of weaponry capable of overcoming incarnates. In truth, many of its more influential members were more interested in that wealth and might than in Akohr's philosophy. They hold the true reins of the organization, with Akohr's zealous leader serving as little more than a figurehead. While a charismatic demagogue may have been enough to mobilize the group in its infancy, an organization of Akohr's current scale requires business professionals to operate.",
+        "Under their profit-driven management, Akohr has become a driving force in the world economy, not to mention a hotbed of intrigue. Its leaders live in uncertainty, yet they are unable to put the genie of Akohr back in its bottle. Many of the engineers and technicians in the society's employ are in similar situations: members of Akohr chiefly because it allows them to conduct their research as they desire. In the end, only the rank-and-file members retain a strong ideological bent, firmly believing even now that they are locked in a holy war against the root of all worldly evil.",
+        "Whatever the motives, Akohr has nurtured a potent fighting force. Within the society, these skilled assassins are known as \"Slayers.\" Honed through Akohr's cutting-edge training program and armed with the world's most advanced weaponry, they are united in a single purpose: the eradication of all incarnates. Recent evidence suggests some of Akohr's masters have drafted lists of problem members within the organization for the Slayers to purge, but at the present time, it appears the killers have yet to target anyone other than incarnates."
+      ],
+      "illustration": {
+        "file": "story-akohr-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-akohr.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "5af6fec88733a77dcccc60564f42bad2955ad5b1184aa664e1e82b9f20d900b6"
+      },
+      "source_asset": "story-akohr.jpg",
+      "reference_seconds": [
+        897,
+        915
+      ]
+    },
+    "the-asakura-detective-agency": {
+      "title": "The Asakura Detective Agency",
+      "paragraphs": [
+        "As a veteran member of the international police force, Ishin Asakura had a long list of solved cases to his name. Characterized by methodical investigations, lightning-quick decision making, and the overpowering strength of his iaido swordplay, his was a style unique among his peers. As a result, he frequently worked alone, a fact the natural loner very much appreciated.",
+        "It was not until one year ago that he met someone worthy of calling his partner. A fellow native of Japan, Himuro was the first officer to be able to keep up with Asakura's pace. Together, they investigated the Indian megacorp Vikarāla, alleged to keep its own private army. Upon infiltrating the company to verify those claims, they encountered weaponry the likes of which neither had ever seen. When that fearsome arsenal was trained on them, they had no choice but to flee. The injuries sustained in the process ultimately claimed Himuro's life and left Asakura badly injured. His vengeful desire for the ability to cut through even the hardest steel reached Susano-o, the mightiest of Japan's ancient pantheon, and Asakura awakened as an incarnate.",
+        "As soon as his injuries healed, he returned to his investigation, swearing that his partner's death would not be in vain. Yet he was quickly met with heavy pressure from above—clearly the work of Vikarāla's money. Unable to trust in the justice of the police any longer, Asakura severed his ties with the force, using his connections and raw determination to establish a private detective agency.",
+        "But even away from the police, his erstwhile colleagues kept him firmly in their sight. Both the international police and Japanese law enforcement kept a close eye on his activities, half due to continuing pressure from his former superiors, and half to suspicions that he was set on revenge. Those suspicions were well founded.",
+        "Despite their prying eyes, he steadily gathered information and equipment. Just days before he was set to depart the country, a visitor came calling: Yuki Himuro, the only daughter of his fallen partner...."
+      ],
+      "illustration": {
+        "file": "story-the-asakura-detective-agency-art.jpg",
+        "width": 868,
+        "height": 501,
+        "source_asset": "story-the-asakura-detective-agency.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          501
+        ],
+        "sha256": "0a17a89d0482fd37ee56670377aaa57980abc9fb8cab2ac20d7211d71a01a726"
+      },
+      "source_asset": "story-the-asakura-detective-agency.jpg",
+      "reference_seconds": [
+        917,
+        953
+      ]
+    },
+    "the-coleman-incident": {
+      "title": "The Coleman Incident",
+      "paragraphs": [
+        "Amid the chaos caused by cube phenomena and the disasters in their wake, one death stuck out: that of the leader of an influential American cult, assassinated by a sniper. The event came to be termed the Coleman Incident, after its victim.",
+        "Oswald Coleman, the cult's founder, claimed that the phenomena befalling the earth marked the beginning of the world's end, mere harbingers of the destruction to come. It is thought that his efforts to stoke people's fears and manipulate their minds were the first stage in a coup d'etat. It is true, at least, that he did gather a great number of followers, delaying reconstruction efforts across the United States. As a result, many suspect that his assassin was likely hired by the US government.",
+        "Though the truth of the matter is unclear, the fact that the assassin was never caught, and that Coleman's body went missing shortly after add an air of mystery to the incident. It sparked a spate of books, and people everywhere eagerly debated the theories, while the remaining cultists brought suit against the authors for libel. Perhaps the greatest enigma addressed in these works was the vanishing corpse. Some claimed those in the government who had ordered the hit collected Coleman's body to suppress any evidence, while others said it was the cultists who had spirited away their fallen leader in order to give him a secret burial.",
+        "Given the drastically impaired communications infrastructure, it is difficult to think anyone truly had a complete view of the facts, save for the US government. If it is true that they authored, executed, then covered up this plot, it is a given that any external inquiries into the matter would meet with swift suppression. By their hand or not, the matter remains unsolved."
+      ],
+      "illustration": {
+        "file": "story-the-coleman-incident-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-the-coleman-incident.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "76a0216a5b379eab83e1b682ccda8626a0542a194e24ce1fbd87257dbe4eddb9"
+      },
+      "source_asset": "story-the-coleman-incident.jpg",
+      "reference_seconds": [
+        955,
+        985
+      ]
+    },
+    "the-vikarala-corporation-and-the-domesticated-human-project": {
+      "title": "The Vikarala Corporation and the Domesticated-Human Project",
+      "paragraphs": [
+        "Headquartered in India, the Vikarāla Corporation is among the world's top media empires. Known also for its philanthropic work, the corporation reestablished the information infrastructure in the wake of the disasters and issued communications terminals to the population free of charge, earning them worldwide plaudits. Asha Mehta, the daughter of Vikarāla's founder, inherited control of the megacorp at a young age, and remains a household name.",
+        "Originally earning its wealth in the radio and television industry, the corporation joined the internet era a step behind, losing their primacy as a result. Following Asha's appointment as CEO, however, Vikarāla sank its capital into new information technologies and soon rocketed back into the global lead. Quick to adopt new fields ever since, the corporation now has a hand in an impressive range of enterprises. Though known the world over for its products and services as a megacorp today, the company also possesses another, less-known face.",
+        "Asha's status as an incarnate proved a key feature in the corporation's remarkable turnaround. Her goal: a society in which incarnates hold total domination over average humans; her logic, that the weak ought naturally be ruled by the strong. Her vision gave rise to the \"Domesticated-human Project.\" As the name suggests, non-incarnates were seen as resources to be harvested. Step by step, preparations were laid, and when cube phenomena and the global disasters disabled the world's communications, the plan was put into action. In monopolizing the tech restoration effort, Vikarāla held the intelligence world's heart in its grip. With the exception of the few major governments able to salvage some portion of their infrastructure, all information now passed through the Vikarāla Corporation. Even in those nations that maintained some autonomy, that extended only as far as government affairs. Private citizens the world over were now entirely dependent on Vikarāla's technology to live. Asha essentially held the whole world hostage, making any public challenge to the corporation impossible.",
+        "Using the corporation's three satellites, she could disseminate a special signal to the entire globe. That signal would then reach a receiver built into every piece of Vikarāla tech and be played in proximity to its user. Able to place non-incarnates into a temporary hypnotic state, that signal ultimately allowed the corporation to sort incarnates from normal citizens within any region on earth. After several rounds of tests, Vikarāla began sending that signal at regular intervals and collecting the resulting data—data which would prove a powerful catalyst in advancing their grand plan."
+      ],
+      "illustration": {
+        "file": "story-the-vikarala-corporation-and-the-domesticated-human-project-art.jpg",
+        "width": 868,
+        "height": 502,
+        "source_asset": "story-the-vikarala-corporation-and-the-domesticated-human-project.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          502
+        ],
+        "sha256": "d920958f71c08b0264175781137bcc323ddeeca2a59dc78be5aecb4548d0ffe2"
+      },
+      "source_asset": "story-the-vikarala-corporation-and-the-domesticated-human-project.jpg",
+      "reference_seconds": [
+        987,
+        1015
+      ]
+    },
+    "the-unknown-prophet": {
+      "title": "The Unknown Prophet",
+      "paragraphs": [
+        "In truth, it was the United States government that ordered the assassination and collection of Oswald Coleman. Their motive: fear of the influence he and his cult wielded, and the potential for widespread dissidence should he turn the general population to his cause. The shooting, however, was not fatal, and Coleman was recovered in a persistent comatose state. When he was subsequently found to be an incarnate, the government ordered that his body be used for research. What followed shocked everyone: an enigmatic warning spoken through Coleman's mouth by his daimon, \"the Prophet.\"",
+        "\"In the mid-32nd century, the Earth was destroyed by human hands. The Prophet exists now to return back through time in search of decisive turning points in man's history. The present day, 21st century Earth, represents the start of the ninth attempt to avert this course.\"",
+        "By its own words, the Prophet is a daimon able to turn back time and determined to use that ability to change the events that set mankind on a path to global destruction. What's more, the moment time is reversed, the people who existed in that future are erased, and the Earth itself suffers immense damage—losses the Prophet has dismissed as inconsequential when compared to total annihilation. The string of disasters now rocking the world have merely been the ripples caused by his temporal intervention.",
+        "But in the face of such heavy casualties the world over today, assurances of a better tomorrow mean little. And what if this ninth attempt should fail? The moment the Prophet turned back time once more, the world as it now was would cease to exist, along with all humanity—all life on Earth. President Sanders declared the Prophet the enemy of all mankind, and ordered the search for a way to destroy the daimon forever. Thankfully, as long as the brain-dead Coleman is kept alive, the Prophet remains trapped within his body..."
+      ],
+      "illustration": {
+        "file": "story-the-unknown-prophet-art.jpg",
+        "width": 868,
+        "height": 501,
+        "source_asset": "story-the-unknown-prophet.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          501
+        ],
+        "sha256": "a0154a06aa3459ca94dcec53bc42a08ef5adf18907b822616a31a7bae4b7cdcb"
+      },
+      "source_asset": "story-the-unknown-prophet.jpg",
+      "reference_seconds": [
+        1017,
+        1055
+      ]
+    },
+    "the-heralds": {
+      "title": "The Heralds",
+      "paragraphs": [
+        "The Prophet's aim is to change the future, and in truth the present day is already far altered by his influence. It was he who brought the laminae back with him. He who indirectly brought about the disasters ravaging the world. What's more, a new form of being now lurks in the shadows... Born of the Prophet and his incarnate, Oswald Coleman, to act as their agents, these creations are what the daimon calls his heralds.",
+        "A vast number of heralds were made by the time of Coleman's shooting, scattered across the globe. At a glance, they seem no different from any other organism, exhibiting the same appearance, the same behaviors. But they are not, strictly speaking, living things. Most resemble humans, while others take the shape of small animals, birds, or insects, and still others bear more monstrous forms.",
+        "Those appearing human have largely blended into the societies around them. Some even have artificial memories and are wholly unaware of the true nature of their existence. Even so, the purpose of that existence remains to do the Prophet's bidding: to disseminate laminae to incarnates and steer history toward the Prophet's desired outcome.",
+        "Since declaring the Prophet a threat, the United States government has captured a number of these heralds, and subsequent experiments have yielded a way to identify them. Wild Hunt, the special unit tasked with rounding up unidentified incarnates, has begun hunting heralds as well. The pressure is high, as each new herald apprehended limits the Prophet's reach while also offering potentially vital clues in the search for a way to destroy the daimon for good."
+      ],
+      "illustration": {
+        "file": "story-the-heralds-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-the-heralds.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "31046bda2ad2cd1ad6309e33fc067caa461659dbe0cf6a6667768b05c5a47a02"
+      },
+      "source_asset": "story-the-heralds.jpg",
+      "reference_seconds": [
+        1057,
+        1083
+      ]
+    },
+    "a-world-on-loop": {
+      "title": "A World on Loop",
+      "paragraphs": [
+        "At once a far-off future and a calamity already come to pass, the world met its end in the 32nd century. The lives of all humanity were snuffed out, and in that final moment, their subconscious minds turned to legends of eschatology, and to an overriding fear of death. That moment saw the birth of the Prophet. Of course, it was not an entirely new concept. The Greek god of time, Khronos. The Hindu destroyer-god Shiva. Kalki, hero of the end-times. The Norse god, Heimdall.... Countless avatars of the world's ending and rebirth came together to form this new daimon. A moment later, one of that world's last surviving incarnates successfully made contact. In some respects, the terrible anguish of the extinction of all mankind was its salvation, as a host of men and women awoke as incarnates in that blink of an eye.",
+        "The common themes of science fiction, first emerging in the 19th century, remained firmly in the minds of mankind even to the end, thirteen centuries later. They stand apparent in the Prophet's nature as a traveler through time. As printing technology developed and new methods for sharing ideas emerged, those common ideas reached larger and larger populations—fertile ground for those concepts to mature in. The modern information age allowed for daimones to grow and evolve at an unprecedented rate.",
+        "When speaking through the incapacitated Coleman, the Prophet called this the ninth attempt at rewriting history. A ninth attempt at averting the cataclysm awaiting in our future. What, then, of the prior eight? According to the Prophet, all had met the same end. Some timelines ended a few hundred years sooner, but none had seen mankind survive beyond the 32nd century.",
+        "If the present day is to serve as a critical branching point in history, three end-states seem plausible: for a society ruled by incarnates to emerge, for incarnates to be kept under the management of those without powers, or for both to find a way to coexist as equals in humanity. Each has its adherents, and even now incarnates are working on seeing that their various chosen futures come to pass.",
+        "But will that future last, or is the day of reckoning to come inevitable?"
+      ],
+      "illustration": {
+        "file": "story-a-world-on-loop-art.jpg",
+        "width": 868,
+        "height": 502,
+        "source_asset": "story-a-world-on-loop.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          502
+        ],
+        "sha256": "cd431211cf951d6c00f44dfe37851807cb88d60fa0129f6745f12f5dac28f5d3"
+      },
+      "source_asset": "story-a-world-on-loop.jpg",
+      "reference_seconds": [
+        1085,
+        1123
+      ]
+    },
+    "the-prophet-s-message": {
+      "title": "The Prophet's Message",
+      "paragraphs": [
+        "Even as a captive of the US government, the Prophet continued his mission with the one avenue left to him: a message sent psychically to those with the power to act on it. In his plea, he called for the removal of the greatest present influence on the world. His words reached their chosen audience, and individuals the world over heard the Prophet's revelation as a voice from the ether.",
+        "In his message, the Prophet spoke of a \"Sovereign\"—the person with the single greatest influence on the state of the world. The person unwittingly guiding humanity down a path toward its end. The person whose death would yield the greatest change in history's course.",
+        "All who heard his message were incarnates. Some who knew well the extent of their powers, others who had only begun to glimpse their potential. Some who brandished that power in rage, others who concealed it as they hatched their plots. Still others yet unsure of their purpose... Their ideals and circumstances ran the gamut, but all held the potential to change the future.",
+        "The message was sent more than once—with the awakening of each new powerful incarnate, the Prophet once more spoke these words:",
+        "\"Humankind now walks the path to obliteration: an end to all, at the hands of one man. The Sovereign has set this fatal course. It falls on you now to divert it. You have the means to make that change. Now, make that power known. Use it not for profit, but for peace. Join hands with your brothers and sisters and strike the Sovereign down.\"",
+        "Many have dismissed the message as an auditory hallucination. But will they think the same after learning that others heard it, too?",
+        "The Prophet's captors in the US government had no such illusions. They took his words as a declaration of war against America, leader of the free world, and a call for the death of its president, Gordon Matthew Sanders. But others his message reached believed they were the true Sovereign. Still others sought to kill the Sovereign and take his throne—to them, the Prophet's words meant that someone was aware of their secret ambitions. That realization made some more cautious, others bolder. Some chose to ignore the message altogether, yet the Prophet's revelation had set the world into motion.",
+        "Having spurred the incarnates on, the Prophet then broke their chains; the monitoring chips implanted in all registered incarnates ceased to function. No longer could the world's governments track them. He offered these men and women their freedom—so that they might better do his bidding."
+      ],
+      "illustration": {
+        "file": "story-the-prophet-s-message-art.jpg",
+        "width": 868,
+        "height": 503,
+        "source_asset": "story-the-prophet-s-message.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          503
+        ],
+        "sha256": "fad2cb2ef800a47584980c30658f95e63eef26b10c329423c7fc9f99a172a8e3"
+      },
+      "source_asset": "story-the-prophet-s-message.jpg",
+      "reference_seconds": [
+        1125,
+        1167
+      ]
+    },
+    "lamina-a-substance-smuggled-through-time": {
+      "title": "Lamina: A Substance Smuggled Through Time",
+      "paragraphs": [
+        "Compared to the present day, there were far fewer incarnates in the mid-21st century of the first timeline of man's history--now our distant past, long since erased by the Prophet—yet research on them reached an advanced level. One theory in particular proved especially influential.",
+        "Credit for the discovery goes to Dr. Sakaki, a noted luminary working in research into incarnates' possible military applications. He observed that some substance was resonating with the incarnates' strong psyches, and dedicated the rest of his lifetime to its analysis. When he died at age 64, his students carried on his work, and the turn of the 22nd century saw the first successful synthesis of this new telepathic medium based on Sakaki's Lamina Theory.",
+        "This new material, lamina, was able to respond to its user's mind to produce a variety of effects, and quickly found applications in a wide spectrum of fields in the following years. Chief among its uses, though, was weaponry—a fact attested by its name, the Latin word for \"blade.\"",
+        "Lamina amplified the incarnates' power. By the start of the 23rd century, humans who had amplified their psychic abilities using lamina made successful contact with daimones. More and more normal humans began to awake as incarnates. Increasingly tight restrictions were put upon the use of lamina, but the global incarnate population had already grown exponentially—a fact which ultimately led to the cataclysm of the 32nd century.",
+        "Through his attempts to rewrite history, the Prophet concluded that incarnates were the one force able to change the world's course—the ones with the power to defeat the Sovereign. By extension, augmenting that power seemed a logical step. In that respect, the Prophet's introduction of lamina to the past seems an inevitability. By embedding lamina directly into the body of his incarnate host, the Terminal Being, the Prophet has managed to bring more and more of the substance back with him through time with each iteration until present day.",
+        "And now, in Earth's ninth 21st century, that large store of lamina represents blades at the Sovereign's throat, placed into the hands of incarnates by the Prophet's designs."
+      ],
+      "illustration": {
+        "file": "story-lamina-a-substance-smuggled-through-time-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-lamina-a-substance-smuggled-through-time.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "36b84cacea13ea3ebc310dd7ebd1683111e0b669aa61a75b6d9b97a04c8aba9c"
+      },
+      "source_asset": "story-lamina-a-substance-smuggled-through-time.jpg",
+      "reference_seconds": [
+        1169,
+        1195
+      ]
+    },
+    "transform-deuteros-and-servant-master": {
+      "title": "Transform, Deuteros, and Servant-Master",
+      "paragraphs": [
+        "Incarnate powers manifest in a variety of visibly distinct forms. Research on the matter has divided them roughly into three types: transform, deuteros, and servant-master. Some individuals exhibit profound specialization, while in other cases multiple types may exist concurrently in some form.",
+        "1. Transform",
+        "Through phenomena such as the placebo effect (wherein patients given a fake drug report actual benefits), the concept of mind over matter has long had some scientific basis. Shapeshifting abilities of this class are believed to stem from a similar mechanism, applied at the level of an incarnate and daimon's extreme willpower. Specifics vary: individuals may sprout wings or a tail, additional limbs, or a second head. The physical capabilities these new forms confer are themselves a form of superpower.",
+        "Because the incarnate's unique mental image of their daimon plays a major role in determining the form they take, transformations may deviate in appearance from the traditional image painted by legends.",
+        "2. Deuteros",
+        "The user conjures an avatar which they are then able to freely control. Believed by most to be an extreme version of the Third Man syndrome, in which people report seeing hallucinations of another person during traumatic situations, incarnates are able to cause the image they hold of their daimon to manifest physically. As before, the specifics of the avatar's form are determined more by the unique mental image of its incarnate than by convention, so a daimon's appearance may deviate from standard depictions. Most deuteros appear at the incarnate's side, but exceptions do exist in which they manifest at remote locations.",
+        "Named for the Greek word for \"second,\" these avatars represent a second self for their wielder.",
+        "3. Servant-master",
+        "A rare class of abilities, with fewer documented cases than transform or deuteros type incarnates.",
+        "This is similar on some levels to the deuteros class, though instead of conjuring an avatar from raw thought, servant-masters are able to manipulate existing objects. Examples have included clumps of earth, water or other liquids, and even the corpses of living things. In these cases, the controlled objects are referred to as \"servants.\"",
+        "Though they are thought to be a form of telekinesis, in some cases servants appear to exhibit autonomous thinking.",
+        "Imagine your reaction if one day a close friend or family member suddenly became the unthinking servant of a stranger. Few things can rival the deep psychological horror provoked by that concept. At present, there are no official reports of incarnates able to control conscious organisms such as living humans. Yet it remains one of the powers most feared— and desired—by the world's governments. The fact that no public record exists of such an incarnate strongly implies that all such cases have been kept heavily classified. Though it may smack of conspiracy theorism, such an ability's implications for reconnaissance and assassination would make such top-secret treatment inevitable."
+      ],
+      "illustration": {
+        "file": "story-transform-deuteros-and-servant-master-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-transform-deuteros-and-servant-master.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "8c0b7c762aa2085e44d6b0f972a28021843d953da4c9dc8e4053af896fc893e4"
+      },
+      "source_asset": "story-transform-deuteros-and-servant-master.jpg",
+      "reference_seconds": [
+        1197,
+        1243
+      ]
+    },
+    "odin-s-eye": {
+      "title": "Odin's Eye",
+      "paragraphs": [
+        "Known now as the mastermind behind the EU's rise, Kruger proved gifted in military deception from a young age but his path to success was not without sacrifice. In his youth he was caught in an explosion that left him paralyzed from the waist down. Standing at death's door, he awoke as an incarnate; for Kruger, it was like being born anew.",
+        "Kruger quickly learned the explosion was an assassination attempt by political foes and he began secretly eliminating everyone involved. His machinations were often disguised as simple acts of international terrorism - one of which was employing pirates to attack the Queen Norton, an incident that led to the the awakening of Terrence Blake.",
+        "As the embodiment of the all-seeing god Odin, Kruger believed he needed a way to control the flow of information and keep his deceptions hidden from public scrutiny. To realize this objective, he developed the \"Odin's Eye\" system and firmly established his position in the EU. Seeking to further his knowledge beyond the reach of satellites, Odin's Eye attained unfettered access to all surveillance systems and communication systems throughout the world.",
+        "Data now pours into Kruger's underground headquarters in Cologne as he manipulates the military balance of the world."
+      ],
+      "illustration": {
+        "file": "story-odin-s-eye-art.jpg",
+        "width": 868,
+        "height": 501,
+        "source_asset": "story-odin-s-eye.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          501
+        ],
+        "sha256": "4ba059ab1dff11c4cf25b00894a0171e67a456ebb909d0c4ed7cf0c6246d99e1"
+      },
+      "source_asset": "story-odin-s-eye.jpg",
+      "reference_seconds": [
+        1245,
+        1277
+      ]
+    },
+    "clifford-mcgregor": {
+      "title": "Clifford McGregor",
+      "paragraphs": [
+        "Within Akhor there are two pillars of power - ideology and management.",
+        "Akhor's objective: the elimination of all Incarnates. To this end, blood must be spilled and money is essential. Even so, one man with very different intentions grew to control all the finances within Akhor through careful manipulation.",
+        "Although their anti-incarnate sentiment was not especially strong, Dr. Sakaki and Dr. Balzac came to Akhor looking for the means to continue their work as scientists. An Akhor member approached them with the funds for their project and handed over the data Akhor had amassed on incarnates - before the organization would ultimately collapse. That benefactor was Clifford McGregor.",
+        "Clifford was formerly with MI6 and remains an expert in the field of intelligence gathering. Some believe he may also be an incarnate, but these claims remain little more than baseless rumor.",
+        "Using Akhor's science division for his own ends, Clifford oversaw the secret development of the Deux Ex Machina prototype, a project kept secret from even MI6. One of the prototypes was Vikarāla's Matrikas unit which would eventually terrorize the world in the \"Human Domestication\" project. Clifford's allegiances remain unknown. Since the UK would not be spared by Vikarāla's plans, either Asha Mehta does not know Clifford's true identity, or Clifford is not the loyal agent he appears to be.",
+        "Initially Asha and Clifford were disgusted to learn of Watteau's successful experiments in awakening incarnate powers. Both were resentful towards a world in which incarnates could be awoken so easily. Their answer was to secretly sabotage his work, with the Matrikas unit offered by Clifford to Vikarāla as a reward. True to form, Asha sought to awaken and control only those with exceptional talent, but the reasons behind Clifford's resistance to increasing the incarnate population remained a mystery. Perhaps his motivations will be revealed once he steps out from the shadows...."
+      ],
+      "illustration": {
+        "file": "story-clifford-mcgregor-art.jpg",
+        "width": 868,
+        "height": 502,
+        "source_asset": "story-clifford-mcgregor.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          502
+        ],
+        "sha256": "50cfa77ad3cf591666b466860146e8646b7fd5ed481a28d41316b0a99481aa9f"
+      },
+      "source_asset": "story-clifford-mcgregor.jpg",
+      "reference_seconds": [
+        1279,
+        1301
+      ]
+    },
+    "gordon-matthew-sanders-the-sovereign": {
+      "title": "Gordon Matthew Sanders, \"The Sovereign\"",
+      "paragraphs": [
+        "It has been said that Oswald Coleman harbors a Daimones within him known as \"The Prophet\". The Prophet is said to hold the power to end humanity and forcibly reset time. Knowing this, Sanders perceives the Prophet to be a sworn enemy of mankind, and will stop at nothing to destroy the Daimones.",
+        "The Prophet spoke to the minds of each incarnate gifted with great power that the one known as \"The Sovereign\" would lead the world to its destruction - and Sanders believes he is the Sovereign.",
+        "His claim is far from unfounded: he represents mankind in the present age, at a moment that will decide history as we know it. He is the President of the United States. His position grants him the ability to avoid turmoil. Surely he is worthy of the title of \"Sovereign\"?",
+        "Despite countless Incarnates seeking the Sovereign's life, Sanders has maneuvered adeptly while bringing incarnates of considerable power to his side. Sanders was convinced that only incarnates have the power to destroy Daimones, given that they were the source of all incarnate powers.",
+        "\"Mankind will unite to end the Prophet!\"",
+        "With this battle cry, Sanders would eventually begin what became known as \"The Prophet War\".."
+      ],
+      "illustration": {
+        "file": "story-gordon-matthew-sanders-the-sovereign-art.jpg",
+        "width": 868,
+        "height": 502,
+        "source_asset": "story-gordon-matthew-sanders-the-sovereign.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          502
+        ],
+        "sha256": "df42e2ab5103b67c0c6f617ecb53e1d966b25c4f2af3a02b7f4a98d12244d70a"
+      },
+      "source_asset": "story-gordon-matthew-sanders-the-sovereign.jpg",
+      "reference_seconds": [
+        1303,
+        1321
+      ]
+    },
+    "the-washington-incident": {
+      "title": "The Washington Incident",
+      "paragraphs": [
+        "Washington D.C. is the United States' seat of power, housing both the \"Sovereign\" Sanders and the secret laboratories where research continues on the captured Prophet.",
+        "Those who came to challenge the Sovereign, those seeking to free the Prophet and the initial phase of the Vikarara \"Human Domestication Project\", converged in what is known today as the \"Washington Incident\"..",
+        "As the capital of the United States, Washington D.C. was well equipped to handle the ensuing chaos thanks to its preparations for emergencies. However, incident after incident has left the United States vulnerable. Some will attempt to usurp her position as the leading world power. When questions are asked of President Sanders and the country he leads, will they have an answer? Perhaps this is but one of The Prophet's goals."
+      ],
+      "illustration": {
+        "file": "story-the-washington-incident-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-the-washington-incident.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "0927e65d816b3db0ff480520f23ce71568519b28b43c3302354d75a449451013"
+      },
+      "source_asset": "story-the-washington-incident.jpg",
+      "reference_seconds": [
+        1323,
+        1345
+      ]
+    },
+    "emily": {
+      "title": "Emily",
+      "paragraphs": [
+        "During her time with Jedrek, Emily's memory was often clouded and she did not appear to have any living relatives. She was captured during an operation designed to arrest unregistered incarnates. Though her lover, Jedrek, was a former gang member proficient in various arms, he was no match for the tactical capabilities of the military unit Wild Hunt.",
+        "In truth, Emily exists as a Herald for the Prophet brought to awaken Jedrek's true power. Jedrek is the ancestor of \"The Terminal Being\", destined to gather and lead the incarnates in the battle to end the world. Drawn to his latent powers, the Prophet sought out Jedrek above all others.",
+        "Emily was sent to Jedrek by the Prophet and succeeded in becoming Jedrek's lover. However, she has no knowledge of why she exists or that she is the Herald. Emily believes she is a normal human being, and is not aware that she is part of a far greater scheme.",
+        "During the 8th failure - in other words, the last reset - she was known as \"Martha\" and had a different appearance. In this era, the Prophet gave her both the name and appearance of Sanders' deceased daughter, but the real Emily Sanders perished during the natural disasters caused by the Prophet's last time shift.",
+        "The Prophet did this with the intention of provoking a powerful response from Jedrek and Sanders, and to gain a slight advantage in the battle against the Sovereign. Unfortunately, his actions did not yield the results he had expected, as he only succeeded in giving Sanders stronger resolve to bring down the Prophet at all costs - even if it means ending his \"daughter's\" life."
+      ],
+      "illustration": {
+        "file": "story-emily-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-emily.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "f6970704489f3e8a9528117d3ab7446bb222910e5773cc6274649a9cb3ac24ad"
+      },
+      "source_asset": "story-emily.jpg",
+      "reference_seconds": [
+        1347,
+        1377
+      ]
+    },
+    "mephistopheles": {
+      "title": "Mephistopheles",
+      "paragraphs": [
+        "A portion of the Herald, Emily, was made using cells from \"The Terminal Being\". As Jedrek and Emily touch, these cells would enter Jedrek and affect the Daimones he eventually contacts. In simple terms, Jedrek's Daimones, \"Mephistopheles\" has been altered by the Prophet.",
+        "Jedrek had always questioned his way of life - something that without doubt had a hand in awakening Mephistopheles, or \"The Whisperer\". Although exceedingly rare, when a potential incarnate host is broken spiritually or in mortal danger, the Daimones may initiate contact. Jedrek and Mephistopheles are an example of this very rare occurrence. But if another Daimones, the Prophet, had influence over the Daimones within Jedrek, this could explain why Mephistopheles was driven to initiate contact.",
+        "Above all, the Prophet needs Jedrek to defeat the Sovereign. The conflict between Jedrek's humanity and the destructive nature of his Daimones, the consolidation of the two by Jedrek's spirit... are these all part of the Prophet's grand scheme?"
+      ],
+      "illustration": {
+        "file": "story-mephistopheles-art.jpg",
+        "width": 868,
+        "height": 487,
+        "source_asset": "story-mephistopheles.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          487
+        ],
+        "sha256": "1e572725d53416caaadb6aabad35d78eb18939c22fde553c4416c88cd59ee3cf"
+      },
+      "source_asset": "story-mephistopheles.jpg",
+      "reference_seconds": [
+        1379,
+        1420
+      ]
+    },
+    "the-herald-of-reinhold-kruger": {
+      "title": "The Herald of Reinhold Kruger",
+      "paragraphs": [
+        "Kruger, an incarnate known for his considerable power, controls \"Odin's Eye\" to manipulate the EU from the shadows. He too has heard the Prophet's message, but despite his frustrations, he understood he was not the \"Sovereign\". The Prophet required Kruger's social influence, leading him to use a Herald in the form of a small parasite to burrow into Kruger's mind and manipulate him. This means of control would lead to Kruger's involvement in the final battles with The Sovereign.",
+        "Heeding the commands of the Herald's voice, Kruger rallied incarnates to battle and ushered in the battle against Sanders. However, Kruger's consciousness never fully submitted to the parasite. Eventually he reclaimed control of his will from the Herald within him and successfully sealed it away.",
+        "With the knowledge he had gained from the Herald, Kruger realized there was still much left to do and resolved to set his ambitions even higher in his remaining years.",
+        "As he aims for a future that would see him rise to a position of absolute authority, Kruger knows he must keep the Prophet's power in check and resist a direct conflict with the United States. Kruger knows such an outcome would ultimately lead to his demise, and leave him a mere tool to be cast aside once used."
+      ],
+      "illustration": {
+        "file": "story-the-herald-of-reinhold-kruger-art.jpg",
+        "width": 868,
+        "height": 500,
+        "source_asset": "story-the-herald-of-reinhold-kruger.jpg",
+        "crop": [
+          0,
+          0,
+          868,
+          500
+        ],
+        "sha256": "9a5dbc985f5e515e61dfa2658e2bb88daf2841072dd7a64f514497a3f36135d1"
+      },
+      "source_asset": "story-the-herald-of-reinhold-kruger.jpg",
+      "reference_seconds": [
+        1421,
+        1437
+      ]
+    }
+  }
+}

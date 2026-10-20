@@ -1,0 +1,1453 @@
+{
+  "authorize": {
+    "request_type": 1,
+    "builder": "0x140043460",
+    "path": "/Dragon/authorize",
+    "body": {
+      "os": "steam",
+      "api_version": "0.8",
+      "steamId": "uint64",
+      "region": "string",
+      "login": "int32",
+      "ticket": "string"
+    }
+  },
+  "calls": [
+    {
+      "call": "registerProfile",
+      "request_type": 7,
+      "builder": "0x140043e70",
+      "data": {
+        "charaId": "int32",
+        "name": "string",
+        "sv_onlineId": "uint64",
+        "sv_gameRegion": "string"
+      }
+    },
+    {
+      "call": "getLobbyList",
+      "request_type": 5,
+      "builder": "0x140044a40",
+      "data": {}
+    },
+    {
+      "call": "enterLobby",
+      "request_type": 6,
+      "builder": "0x140044b10",
+      "data": {
+        "aid": "int32"
+      }
+    },
+    {
+      "call": "load",
+      "request_type": 3,
+      "builder": "0x140044be0",
+      "data": {
+        "name": "player",
+        "query": {
+          "_id": "uint64"
+        }
+      }
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x140045580",
+      "data": {
+        "query": {
+          "_id": "uint64"
+        }
+      }
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x140045d70",
+      "data": {
+        "query": {
+          "$in": [
+            {
+              "_id": "uint64"
+            }
+          ]
+        }
+      },
+      "note": "Native shape is query.$in=[{_id:uid},...], NOT query._id.$in=[uid,...]."
+    },
+    {
+      "call": "load",
+      "request_type": 43,
+      "builder": "0x140046a70",
+      "data": {
+        "name": "itemBook",
+        "query": {
+          "sv_uid": "uint64"
+        }
+      }
+    },
+    {
+      "call": "load",
+      "request_type": 44,
+      "builder": "0x1400473d0",
+      "data": {
+        "name": "itemBook",
+        "query": {
+          "sv_uid": "uint64",
+          "sv_itemId": "uint64"
+        }
+      }
+    },
+    {
+      "call": "load",
+      "request_type": 45,
+      "builder": "0x140047d70",
+      "data": {
+        "name": "circle",
+        "fields": {
+          "sv_circleIcon": 0,
+          "sv_leaveMembers": 0,
+          "sv_comment": 0
+        },
+        "query": {
+          "sv_invitings.sv_uid": "uint64",
+          "sv_status": 1
+        }
+      }
+    },
+    {
+      "call": "load",
+      "request_type": 3,
+      "builder": "0x140048d40",
+      "data": {
+        "name": "string",
+        "query": {}
+      },
+      "note": "Collection/master loader; native constructor always creates an empty query object."
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x140049620",
+      "data": {
+        "query": {
+          "sv_onlineId": "uint64"
+        }
+      }
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x140049e00",
+      "data": {
+        "query": {
+          "_id": "uint64"
+        },
+        "fields": {
+          "sv_skillcubes": 0,
+          "sv_skillgrids": 0
+        }
+      }
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x14004a7d0",
+      "data": {
+        "query": {
+          "sv_onlineId": "uint64"
+        },
+        "fields": {
+          "sv_skillcubes": 0,
+          "sv_skillgrids": 0
+        }
+      }
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x14004b180",
+      "data": {
+        "query": {
+          "_id": "uint64"
+        },
+        "fields": {
+          "_id": 1,
+          "sv_onlineId": 1,
+          "sv_characters": 1,
+          "sv_rankId": 1,
+          "sv_rankPoint": 1,
+          "sv_gamePoint": 1,
+          "sv_skillcubes": 1,
+          "sv_skillgrids": 1,
+          "sv_activeCharaId": 1,
+          "sv_playerExp": 1
+        }
+      }
+    },
+    {
+      "call": "loadPlayer",
+      "request_type": 3,
+      "builder": "0x14004bcc0",
+      "data": {
+        "query": {
+          "_id": "uint64"
+        },
+        "fields": {
+          "_id": 1,
+          "sv_onlineId": 1,
+          "sv_gamePoint": 1,
+          "sv_skillcubes": 1
+        }
+      }
+    },
+    {
+      "call": "updateCustomize",
+      "request_type": 94,
+      "builder": "0x14004c710",
+      "data": {
+        "sv_charaId": "int32",
+        "sv_slotNum": "int32",
+        "sv_customItemHoldIds": [
+          "uint64"
+        ]
+      },
+      "note": "Outfit hold IDs in native slot order; character outfit has head, costume, weapon, accessories and reserved slots."
+    },
+    {
+      "call": "updateSupLamCustomize",
+      "request_type": 94,
+      "builder": "0x14004d790",
+      "data": {
+        "sv_supLamId": "int32",
+        "sv_slotNum": "int32",
+        "sv_customItemHoldIds": [
+          "uint64"
+        ]
+      },
+      "note": "Outfit hold IDs in native slot order; character outfit has head, costume, weapon, accessories and reserved slots."
+    },
+    {
+      "call": "changeActiveCustomizeSlot",
+      "request_type": 95,
+      "builder": "0x14004e2e0",
+      "data": {
+        "sv_charaId": "int32",
+        "sv_activeCustomSlotNum": "int32"
+      }
+    },
+    {
+      "call": "changeSupLamActiveCustomizeSlot",
+      "request_type": 96,
+      "builder": "0x14004e8f0",
+      "data": {
+        "sv_supLamId": "int32",
+        "sv_activeCustomSlotNum": "int32"
+      }
+    },
+    {
+      "call": "updateProfile",
+      "request_type": 9,
+      "builder": "0x14004ef00",
+      "data": {
+        "name": "string",
+        "steamRegion": "string",
+        "steamLang": "string"
+      }
+    },
+    {
+      "call": "updateProfile",
+      "request_type": 9,
+      "builder": "0x14004fa90",
+      "data": {
+        "charaId": "uint64",
+        "sv_tutorialMap": {
+          "chara": "int32"
+        }
+      }
+    },
+    {
+      "call": "updateProfile",
+      "request_type": 9,
+      "builder": "0x140050330",
+      "data": {
+        "stageId": "int32"
+      }
+    },
+    {
+      "call": "updateProfile",
+      "request_type": 9,
+      "builder": "0x140050a00",
+      "data": {
+        "supLamId": "uint64"
+      }
+    },
+    {
+      "call": "getItemMail",
+      "request_type": 17,
+      "builder": "0x1400510d0",
+      "data": {
+        "sv_isReadOnly": 1
+      }
+    },
+    {
+      "call": "getItemMail",
+      "request_type": 18,
+      "builder": "0x140051780",
+      "data": {
+        "sv_isReadOnly": 0
+      }
+    },
+    {
+      "call": "composeSkillCube",
+      "request_type": [
+        10,
+        11
+      ],
+      "builder": "0x140051e00",
+      "data": {
+        "stackNum": "int32",
+        "mode": "int32",
+        "mainMaterial": "uint64",
+        "subMaterials": [
+          "uint64"
+        ],
+        "recipe": "uint64",
+        "isTest": "int32"
+      },
+      "note": "isTest=0 => native type 10; isTest=1 => type 11. mode enum meanings are not established here."
+    },
+    {
+      "call": "verifyComposing",
+      "request_type": 14,
+      "builder": "0x140052b00",
+      "data": {
+        "sv_stackNum": "int32"
+      }
+    },
+    {
+      "call": "cutCompositeTime",
+      "request_type": [
+        16,
+        15
+      ],
+      "builder": "0x1400530e0",
+      "data": {
+        "sv_isQuery": "int32",
+        "sv_stackNum": "int32"
+      },
+      "note": "sv_isQuery=0 => native type 15; sv_isQuery=1 => type 16."
+    },
+    {
+      "call": "removeSkillcubes",
+      "request_type": 93,
+      "builder": "0x1400536f0",
+      "data": {
+        "sv_skillcubeHoldIds": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "removeSkillcubes",
+      "request_type": 93,
+      "builder": "0x140053e80",
+      "data": {
+        "sv_skillcubeHoldIds": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "extendSkillGrid",
+      "request_type": 12,
+      "builder": "0x140054890",
+      "data": {
+        "openGrids": [
+          {
+            "sv_sgridId": "int32",
+            "sv_slotKeys": [
+              "string"
+            ]
+          }
+        ]
+      },
+      "note": "sv_slotKeys contains coordinate key strings such as sv_x0y1. Not individual x/y JSON fields."
+    },
+    {
+      "call": "updateSkillGrid",
+      "request_type": 13,
+      "builder": "0x140055500",
+      "data": {
+        "sv_grids": [
+          {
+            "sv_sgridId": "int32",
+            "sv_openedSlot": "int32",
+            "sv_unlockedSlotItem": "int32",
+            "sv_x0y0": "int32(-1) or uint64",
+            "sv_x1y0": "int32(-1) or uint64",
+            "sv_x2y0": "int32(-1) or uint64",
+            "sv_x3y0": "int32(-1) or uint64",
+            "sv_x0y1": "int32(-1) or uint64",
+            "sv_x1y1": "int32(-1) or uint64",
+            "sv_x2y1": "int32(-1) or uint64",
+            "sv_x3y1": "int32(-1) or uint64",
+            "sv_x0y2": "int32(-1) or uint64",
+            "sv_x1y2": "int32(-1) or uint64",
+            "sv_x2y2": "int32(-1) or uint64",
+            "sv_x3y2": "int32(-1) or uint64",
+            "sv_x0y3": "int32(-1) or uint64",
+            "sv_x1y3": "int32(-1) or uint64",
+            "sv_x2y3": "int32(-1) or uint64",
+            "sv_x3y3": "int32(-1) or uint64",
+            "sv_skillcubeHoldIds": [
+              "uint64"
+            ]
+          }
+        ]
+      },
+      "note": "Native builder emits all 16 cells: -1 locked, 0 open, holdId*100+partIndex occupied. It does NOT emit sv_gridStatus."
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 98,
+      "builder": "0x140055f20",
+      "data": {
+        "sv_userTutorial": "int32",
+        "sv_tutorialMap": {
+          "management": "int32"
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 99,
+      "builder": "0x1400566d0",
+      "data": {
+        "sv_tutorialMap": {
+          "tutorial_second": "int32"
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 100,
+      "builder": "0x140056da0",
+      "data": {
+        "sv_tutorialMap": {
+          "management": "int32"
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 98,
+      "builder": "0x140057470",
+      "data": {
+        "sv_charaTutorial": {
+          "sv_charaId": "int32",
+          "sv_tutorialValue": "int32"
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 101,
+      "builder": "0x140057b90",
+      "data": {
+        "sv_tutorialMap": {
+          "chara": "int32"
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 102,
+      "builder": "0x140058260",
+      "data": {
+        "sv_tutorialMap": {
+          "help": "int32"
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "request_type": 103,
+      "builder": "0x140058930",
+      "data": {
+        "sv_tutorialMap": {
+          "stateFlag": "int32"
+        }
+      }
+    },
+    {
+      "call": "updateGameOption",
+      "request_type": 97,
+      "builder": "0x140059010",
+      "data": {
+        "sv_optDisplayMode": "int32",
+        "sv_optWindowSize": "int32",
+        "sv_optBrightness": "int32",
+        "sv_optVSync": "int32",
+        "sv_optShadow": "int32",
+        "sv_optSSAO": "int32",
+        "sv_optPostEffect": "int32",
+        "sv_optParticleEffect": "int32",
+        "sv_optMasterVol": "int32",
+        "sv_optBgmVol": "int32",
+        "sv_optSEVol": "int32",
+        "sv_optVoiceVol": "int32",
+        "sv_optVoiceChat": "int32",
+        "sv_optVoiceTXVol": "int32",
+        "sv_optVoiceRXVol": "int32",
+        "sv_optAudioCh": "int32",
+        "sv_optAudioOffOnInactive": "int32",
+        "sv_os": "string",
+        "sv_ram": "uint64",
+        "sv_cpuSpeed": "uint64",
+        "sv_cpuNum": "uint64",
+        "sv_vram": "uint64",
+        "sv_graphicCard": "string",
+        "sv_existsMic": "int32",
+        "sv_lang": "string",
+        "sv_cpuName": "string"
+      }
+    },
+    {
+      "call": "logWorstPing",
+      "request_type": 19,
+      "builder": "0x14005a110",
+      "data": {
+        "srcAddr": "string",
+        "disconnectCode": "int32",
+        "pings": [
+          {
+            "destAddr": "string",
+            "sv_onlineId": "uint64",
+            "maxTime": "int32",
+            "relay": "int32",
+            "connect": "int32"
+          }
+        ]
+      },
+      "note": "Address strings use dotted-quad formatting; native loop emits three destination records in pings."
+    },
+    {
+      "call": "logClientAction",
+      "request_type": 20,
+      "builder": "0x14005b150",
+      "data": {
+        "sv_logs": [
+          {
+            "sv_actionTime": "uint64",
+            "sv_actionId": "int32",
+            "sv_place": "string",
+            "sv_remark": {
+              "battleId": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "call": "logClientAction",
+      "request_type": 20,
+      "builder": "0x14005c140",
+      "data": {
+        "sv_logs": [
+          {
+            "sv_actionTime": "int32",
+            "sv_actionId": "int32",
+            "sv_place": "string",
+            "sv_remark": {
+              "battleId": "string",
+              "tagComboCount": "int32",
+              "dashCancelCount": "int32",
+              "attackPoint": "uint64",
+              "damagePoint": "uint64",
+              "killCount": "int32",
+              "deadCount": "int32",
+              "targetChangeCount": "int32",
+              "cancelComboCount": "int32",
+              "awakeCount": "int32",
+              "isTag": "int32",
+              "playerRank": "int32",
+              "playerLevel": "int32",
+              "charaId": "int32",
+              "charaLevel": "int32",
+              "isFriend": "int32",
+              "battleResult": "int32",
+              "shotCount": "int32",
+              "grapCount": "int32",
+              "specialOneCount": "int32",
+              "specialTwoCount": "int32",
+              "nativeSkillCount": "int32",
+              "guardCount": "int32",
+              "isVoiceChat": "int32",
+              "awakeAttackPoint": "int32",
+              "awakeDamagePoint": "int32",
+              "tagComboChance": "int32",
+              "doubleLockCount": "int32",
+              "cutDamage": "int32",
+              "cutCount": "int32",
+              "shotHitCount": "int32",
+              "grapHitCount": "int32",
+              "guardDoingCount": "int32",
+              "overHeatCount": "int32",
+              "chainAttack": "int32",
+              "vsBotBattleId": "int32"
+            }
+          }
+        ]
+      },
+      "note": "Battle-summary logger; statistics are inside sv_logs[].sv_remark, not top-level data."
+    },
+    {
+      "call": "logClientAction",
+      "request_type": 20,
+      "builder": "0x14005d740",
+      "data": {
+        "sv_logs": [
+          {
+            "sv_actionTime": 0,
+            "sv_actionId": "int32",
+            "sv_place": "stop error",
+            "sv_remark": 0
+          }
+        ]
+      }
+    },
+    {
+      "call": "saveReplay",
+      "request_type": 21,
+      "builder": "0x14005e450",
+      "data": {
+        "sv_stageId": "int32",
+        "sv_roomType": "int32",
+        "sv_entries": [
+          {
+            "sv_uid": "uint64",
+            "sv_playerLv": "int32",
+            "sv_charaId": "int32",
+            "sv_userName": "string",
+            "sv_rankId": "int32",
+            "sv_circleName": "string",
+            "sv_side": "int32",
+            "sv_tagName": "string"
+          }
+        ],
+        "sv_replayData": "string",
+        "sv_replayVer": "string",
+        "sv_flag": "uint64"
+      },
+      "note": "sv_entries has up to four player records. sv_side is 1 or 2 for native sides 0 or 1, otherwise omitted. sv_replayData uses post-serialization string replacement; replay encoding is not documented here."
+    },
+    {
+      "call": "findReplay",
+      "request_type": 22,
+      "builder": "0x14005f430",
+      "data": {
+        "sv_replayVer": "string",
+        "sv_stageId": "int32",
+        "sv_roomType": "int32",
+        "sv_uids": [
+          "integer"
+        ],
+        "sv_minRankId": "int32",
+        "sv_maxRankId": "int32",
+        "sv_allyCharaIds": [
+          "integer"
+        ],
+        "sv_foeCharaIds": [
+          "integer"
+        ],
+        "sv_circleName": "string",
+        "sv_beginTime": "uint64",
+        "sv_endTime": "uint64"
+      },
+      "note": "Filter members are conditionally included by the builder. Numeric enum meanings and original server defaults are not asserted."
+    },
+    {
+      "call": "loadReplay",
+      "request_type": 23,
+      "builder": "0x1400609c0",
+      "data": {
+        "sv_replayId": "string"
+      }
+    },
+    {
+      "call": "getPurchaseItemList",
+      "request_type": 24,
+      "builder": "0x140061180",
+      "data": {}
+    },
+    {
+      "call": "beginPurchase",
+      "request_type": 25,
+      "builder": "0x1400617b0",
+      "data": {
+        "sv_purchaseItemId": "uint64",
+        "sv_purchaseDescString": "string"
+      }
+    },
+    {
+      "call": "endPurchase",
+      "request_type": 26,
+      "builder": "0x140062020",
+      "data": {
+        "sv_cancel": "int32",
+        "sv_orderId": "uint64"
+      }
+    },
+    {
+      "call": "queryPurchase",
+      "request_type": 27,
+      "builder": "0x140062710",
+      "data": {
+        "sv_orderId": "uint64"
+      }
+    },
+    {
+      "call": "getStoreItemList",
+      "request_type": [
+        29,
+        28
+      ],
+      "builder": "0x140062de0",
+      "data": {
+        "sv_type": "int32"
+      },
+      "note": "sv_type=0 => native type 28; sv_type=1 => type 29."
+    },
+    {
+      "call": "addToCart",
+      "request_type": [
+        31,
+        30
+      ],
+      "builder": "0x1400634d0",
+      "data": {
+        "sv_type": "int32",
+        "sv_storeItems": [
+          {
+            "sv_storeItemId": "uint64",
+            "sv_storeItemCount": "int32"
+          }
+        ]
+      },
+      "note": "sv_type=0 => native type 30; sv_type=1 => type 31."
+    },
+    {
+      "call": "getMyCart",
+      "request_type": [
+        33,
+        32
+      ],
+      "builder": "0x1400642b0",
+      "data": {
+        "sv_type": "int32"
+      },
+      "note": "sv_type=0 => native type 32; sv_type=1 => type 33."
+    },
+    {
+      "call": "updateCart",
+      "request_type": 34,
+      "builder": "0x1400649a0",
+      "data": {
+        "sv_type": "int32",
+        "sv_storeItems": [
+          {
+            "sv_storeItemId": "uint64",
+            "sv_storeItemCount": "int32"
+          }
+        ]
+      }
+    },
+    {
+      "call": "updateCart",
+      "request_type": 34,
+      "builder": "0x140065760",
+      "data": {
+        "sv_type": "int32",
+        "sv_storeItems": [
+          {
+            "sv_storeItemId": "uint64",
+            "sv_storeItemCount": "int32"
+          }
+        ]
+      }
+    },
+    {
+      "call": "removeFromCart",
+      "request_type": [
+        37,
+        36
+      ],
+      "builder": "0x1400665a0",
+      "data": {
+        "sv_type": "int32",
+        "sv_storeOrderIds": [
+          "integer"
+        ]
+      },
+      "note": "sv_type=0 => native type 36; sv_type=1 => type 37."
+    },
+    {
+      "call": "buyItem",
+      "request_type": [
+        39,
+        38
+      ],
+      "builder": "0x140067160",
+      "data": {
+        "sv_type": "int32"
+      },
+      "note": "sv_type=0 => native type 38; sv_type=1 => type 39."
+    },
+    {
+      "call": "exchangeProductItem",
+      "request_type": 40,
+      "builder": "0x140067850",
+      "data": {
+        "code": "string"
+      }
+    },
+    {
+      "call": "findPlayerByName",
+      "request_type": 46,
+      "builder": "0x140068010",
+      "data": {
+        "sv_name": "string"
+      }
+    },
+    {
+      "call": "setMyState",
+      "request_type": 49,
+      "builder": "0x1400687d0",
+      "data": {
+        "sv_playerState": "int32"
+      }
+    },
+    {
+      "call": "getPlayerState",
+      "request_type": 50,
+      "builder": "0x140068ea0",
+      "data": {
+        "sv_uids": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "findCircle",
+      "request_type": 56,
+      "builder": "0x140069ac0",
+      "data": {
+        "sv_name": "string",
+        "sv_inviteOnly": "int32",
+        "sv_minRank": "int32",
+        "sv_circleAreaId": "int32",
+        "sv_page": "int32"
+      }
+    },
+    {
+      "call": "findCircle",
+      "request_type": 56,
+      "builder": "0x14006a360",
+      "data": {
+        "sv_circleIds": [
+          "integer"
+        ],
+        "sv_page": "int32",
+        "sv_enableMaxMember": "int32"
+      }
+    },
+    {
+      "call": "getCircleName",
+      "request_type": 58,
+      "builder": "0x14006aed0",
+      "data": {
+        "sv_circleIds": [
+          "integer"
+        ],
+        "sv_enableMaxMember": "int32"
+      }
+    },
+    {
+      "call": "setupCircle",
+      "request_type": 57,
+      "builder": "0x14006bb20",
+      "data": {
+        "sv_name": "string",
+        "sv_circleIcon": "string",
+        "sv_inviteOnly": "int32",
+        "sv_minRank": "int32",
+        "sv_circleAreaId": "int32"
+      }
+    },
+    {
+      "call": "getCircleMemberList",
+      "request_type": 59,
+      "builder": "0x14006c540",
+      "data": {}
+    },
+    {
+      "call": "getCircleInfo",
+      "request_type": 60,
+      "builder": "0x14006cb70",
+      "data": {}
+    },
+    {
+      "call": "joinCircle",
+      "request_type": 61,
+      "builder": "0x14006d1a0",
+      "data": {
+        "sv_circleId": "uint64",
+        "sv_cancel": "int32"
+      }
+    },
+    {
+      "call": "replyToJoinCircle",
+      "request_type": 62,
+      "builder": "0x14006d890",
+      "data": {
+        "sv_uid": "uint64",
+        "sv_accept": "int32"
+      }
+    },
+    {
+      "call": "inviteCircle",
+      "request_type": 63,
+      "builder": "0x14006df80",
+      "data": {
+        "sv_uid": "uint64",
+        "sv_cancel": "int32"
+      }
+    },
+    {
+      "call": "replyToInviteCircle",
+      "request_type": 64,
+      "builder": "0x14006e670",
+      "data": {
+        "sv_circleId": "uint64",
+        "sv_accept": "int32"
+      }
+    },
+    {
+      "call": "leaveCircle",
+      "request_type": 65,
+      "builder": "0x14006ed60",
+      "data": {}
+    },
+    {
+      "call": "breakUpCircle",
+      "request_type": 66,
+      "builder": "0x14006f390",
+      "data": {}
+    },
+    {
+      "call": "kickCircleMember",
+      "request_type": 67,
+      "builder": "0x14006f9c0",
+      "data": {
+        "sv_uids": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "changeCircleIcon",
+      "request_type": 69,
+      "builder": "0x1400703d0",
+      "data": {
+        "sv_circleIcon": "string"
+      }
+    },
+    {
+      "call": "changeComment",
+      "request_type": 68,
+      "builder": "0x140070b70",
+      "data": {
+        "sv_comment": "string"
+      }
+    },
+    {
+      "call": "changeEntryQualifications",
+      "request_type": 70,
+      "builder": "0x140071310",
+      "data": {
+        "sv_inviteOnly": "int32",
+        "sv_minRank": "int32"
+      }
+    },
+    {
+      "call": "incMaxNumOfSubLeaders",
+      "request_type": 71,
+      "builder": "0x140071a00",
+      "data": {}
+    },
+    {
+      "call": "incMaxNumOfMembers",
+      "request_type": 72,
+      "builder": "0x140072030",
+      "data": {}
+    },
+    {
+      "call": "assignLeader",
+      "request_type": 73,
+      "builder": "0x140072660",
+      "data": {
+        "sv_uid": "uint64"
+      }
+    },
+    {
+      "call": "changeSubLeader",
+      "request_type": 74,
+      "builder": "0x140072d30",
+      "data": {
+        "sv_assignUids": [
+          "integer"
+        ]
+      },
+      "note": "Native flag chooses assign OR cast-down; the builder does not send both keys together."
+    },
+    {
+      "call": "changeSubLeader",
+      "request_type": 74,
+      "builder": "0x140072d30",
+      "data": {
+        "sv_castDownUids": [
+          "integer"
+        ]
+      },
+      "note": "Native flag chooses assign OR cast-down; the builder does not send both keys together."
+    },
+    {
+      "call": "changeCircleArea",
+      "request_type": 75,
+      "builder": "0x1400735f0",
+      "data": {
+        "sv_circleAreaId": "uint64"
+      }
+    },
+    {
+      "call": "updateFriends",
+      "request_type": 51,
+      "builder": "0x140073cc0",
+      "data": {
+        "sv_onlineIds": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "sync",
+      "request_type": 52,
+      "builder": "0x1400747a0",
+      "data": {}
+    },
+    {
+      "call": "changeTagName",
+      "request_type": [
+        54,
+        55
+      ],
+      "builder": "0x140074dd0",
+      "data": {
+        "sv_partnerUid": "uint64",
+        "sv_isCircle": "int32",
+        "sv_tagName": "string"
+      },
+      "note": "sv_isCircle=1 => native type 54; sv_isCircle=0 => type 55."
+    },
+    {
+      "call": "getTagName",
+      "request_type": 53,
+      "builder": "0x140075690",
+      "data": {
+        "sv_uids": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "getGiftItemList",
+      "request_type": 76,
+      "builder": "0x140075f20",
+      "data": {}
+    },
+    {
+      "call": "addToGiftCart",
+      "request_type": 77,
+      "builder": "0x140076550",
+      "data": {
+        "sv_giftItems": [
+          {
+            "sv_storeItemId": "uint64",
+            "sv_storeItemCount": "int32",
+            "sv_toUid": "uint64",
+            "sv_message": "string"
+          }
+        ]
+      }
+    },
+    {
+      "call": "removeFromGiftCart",
+      "request_type": 78,
+      "builder": "0x1400770f0",
+      "data": {
+        "sv_storeOrderIds": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "getMyGiftCart",
+      "request_type": 79,
+      "builder": "0x140077bd0",
+      "data": {}
+    },
+    {
+      "call": "buyGift",
+      "request_type": 80,
+      "builder": "0x140078200",
+      "data": {}
+    },
+    {
+      "call": "beginBotBattle",
+      "request_type": 41,
+      "builder": "0x140078830",
+      "data": {
+        "sv_botBattleId": "int32",
+        "sv_partnerCharaId": "int32",
+        "sv_enemyCharaIds": [
+          "integer"
+        ],
+        "sv_partnerUid": "uint64",
+        "sv_sessionId": "string",
+        "sv_stageId": "int32"
+      }
+    },
+    {
+      "call": "endBotBattle",
+      "request_type": 42,
+      "builder": "0x140079680",
+      "data": {
+        "sv_botBattleId": "int32",
+        "sv_partnerCharaId": "int32",
+        "sv_enemyCharaIds": [
+          "integer"
+        ],
+        "sv_battleResult": "int32",
+        "sv_myReg": "uint64",
+        "sv_myCombo": "uint64",
+        "sv_enemyReg": "uint64",
+        "sv_enemyCombo": "uint64",
+        "sv_comboCount": "uint64",
+        "sv_charaDamage": "uint64",
+        "sv_kill": "uint64",
+        "sv_dead": "uint64",
+        "sv_atBonus": "uint64",
+        "sv_tagBonus": "uint64",
+        "sv_niceCut": "uint64",
+        "sv_wLockAt": "uint64",
+        "sv_battleId": "string",
+        "sv_partnerUid": "uint64",
+        "sv_sessionId": "string",
+        "sv_stageId": "int32"
+      }
+    },
+    {
+      "call": "load",
+      "request_type": [
+        48,
+        47
+      ],
+      "builder": "0x14007a710",
+      "data": {
+        "name": "tag",
+        "query": {
+          "_id": "string"
+        }
+      },
+      "note": "Tag key is formatted from two decimal IDs as <uidA>T<uidB>. Native selector 0 => type 47, 1 => 48; selector is not a JSON argument."
+    },
+    {
+      "call": "unlockAchievement",
+      "request_type": 81,
+      "builder": "0x14007b2c0",
+      "data": {
+        "sv_achievementIds": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "useItem",
+      "request_type": 82,
+      "builder": "0x14007bda0",
+      "data": {
+        "sv_holdIds": [
+          "integer"
+        ]
+      }
+    },
+    {
+      "call": "getRankmatchRanking",
+      "request_type": 83,
+      "builder": "0x14007c880",
+      "data": {
+        "sv_type": "int32",
+        "sv_filter": "int32",
+        "sv_charaIdFilter": "int32",
+        "sv_start": "int32",
+        "sv_range": "int32",
+        "sv_period": "int32"
+      }
+    },
+    {
+      "call": "getCharaUsageRanking",
+      "request_type": 84,
+      "builder": "0x14007d010",
+      "data": {
+        "sv_period": "int32"
+      }
+    },
+    {
+      "call": "getCharaRanking",
+      "request_type": 85,
+      "builder": "0x14007d6e0",
+      "data": {
+        "sv_charaId": "int32",
+        "sv_filter": "int32",
+        "sv_start": "int32",
+        "sv_range": "int32",
+        "sv_period": "int32"
+      }
+    },
+    {
+      "call": "getCircleRanking",
+      "request_type": 86,
+      "builder": "0x14007de50",
+      "data": {
+        "sv_type": "int32",
+        "sv_filter": "int32",
+        "sv_start": "int32",
+        "sv_range": "int32",
+        "sv_period": "int32"
+      }
+    },
+    {
+      "call": "getTagRanking",
+      "request_type": 87,
+      "builder": "0x14007e5c0",
+      "data": {
+        "sv_filter": "int32",
+        "sv_start": "int32",
+        "sv_range": "int32",
+        "sv_period": "int32"
+      }
+    },
+    {
+      "call": "getGoodRanking",
+      "request_type": 88,
+      "builder": "0x14007ed00",
+      "data": {
+        "sv_filter": "int32",
+        "sv_start": "int32",
+        "sv_range": "int32",
+        "sv_period": "int32"
+      }
+    },
+    {
+      "call": "getSupLamRates",
+      "request_type": 89,
+      "builder": "0x14007f440",
+      "data": {}
+    },
+    {
+      "call": "logout",
+      "request_type": 90,
+      "builder": "0x14007fb50",
+      "data": {}
+    },
+    {
+      "call": "getIpLog",
+      "request_type": 91,
+      "builder": "0x140080180",
+      "data": {
+        "sv_start": "int32",
+        "sv_range": "int32"
+      }
+    }
+  ],
+  "master_loads": [
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "chara_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "customize_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "playerlevel_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "charalevel_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "skillcube_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "skillcubelevel_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "rank_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "matching_range_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "store_item_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "stage_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "banner_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "const",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "bg_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "item_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "gift_item_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "chara_rote_schedule_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "event_schedule_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "message_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "video_card_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "stageStatus",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "skillcube_mutation_master",
+        "query": {}
+      }
+    }
+  ]
+}

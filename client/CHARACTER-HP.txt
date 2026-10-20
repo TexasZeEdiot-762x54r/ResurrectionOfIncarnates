@@ -1,0 +1,28 @@
+Recovered Character HP - 2026-10-19
+
+Restored the earlier revival build's sourced base-HP table through chara_master,
+with two additional user-supplied values:
+Mephistopheles 580       Ares 630              Zeus 690
+Lilith 280               Fenrir 600            Grim Reaper 570
+Loki 650                 Brynhildr 570         Odin 670
+Slayer 330               Kali 510              Ra 640
+Utsutahime 560           Red Dragon 500
+
+Mephistopheles 580 was checked against the user's original gameplay footage.
+The remaining values were recorded in that build from the community guide:
+https://steamcommunity.com/sharedfiles/filedetails/?id=417813369
+These are recovered reference values, not a captured original server table.
+
+Utsutahime 560 and Red Dragon 500 were supplied by the user on 2026-10-19,
+not independently verified from footage. The old build's 1,000 HP for those
+characters was readiness-only test data and has NOT been copied. All 14
+released characters now have explicit HP; unreleased rows remain unchanged.
+
+Only base HP changes. Stock costs, team stocks, skills, models, skeletons,
+animation, inputs, damage handling and account data are unchanged. Normal
+native spawning/respawning consumes this master data; no recurring live-health
+override is installed. Actual maximum HP may also reflect equipped bonuses.
+
+Every player should update their client package and restart the game to reload
+the cached master table. No shared lobby-server restart or executable rebuild
+is required for an existing server-backed installation.

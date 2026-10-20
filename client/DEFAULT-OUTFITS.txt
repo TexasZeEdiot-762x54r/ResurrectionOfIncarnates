@@ -1,0 +1,42 @@
+INDEPENDENT PLAYER OUTFITS / EXPLICIT DEFAULTS - 2026-10-19
+
+Default equipment is not a missing remote profile and must not borrow a local
+player's equipped cosmetics for the same character. Two replacement-server paths
+allowed this: unsaved defaults were emitted as sv_customSlots:[], and a relay
+miss built a guest using the local profile, including its equipped outfits.
+
+The local profile API now:
+- Sends an explicit nine-entry default outfit for otherwise empty loadout slots.
+- Resolves zero head/costume/weapon selections to the base model/colour HOLD IDs
+  from THAT character/profile's inventory, rather than the receiving player's.
+- Keeps zero accessories as none, and retains nonzero custom equipment selections.
+- Copies/normalizes remote snapshots without mutating their shared data or any
+  local saved profile; old clients' empty remote default slots are handled too.
+- Uses base equipment/no accessories for a temporary relay-miss guest. Other
+  fields remain the legacy placeholder shape, not authoritative partner data.
+- Preserves valid active loadout selection, including an unsaved default slot.
+- Does not fabricate an item hold if the profile has no corresponding base item
+  (for example, Odin has no separate default-head item in this catalogue).
+
+Only tools/roi_server_data.py changes at runtime. There is no profile migration,
+outfit reset, archive modification, executable rebuild, XP/currency change or
+public-server restart. Serialization normalizes defaults; explicit user saves
+remain authoritative. The public relay still exchanges untrusted cosmetic data,
+not verified Steam ownership/account records.
+
+Existing current-client update:
+1. Close the game on each PC.
+2. Merge this complete client ZIP into that PC's existing PATCH ROOT, replacing
+   included files. Keep its own tools/config.json and tools/player_profile.json;
+   neither private file is included in the ZIP. Do not copy a friend's profile.
+3. Use the usual Online - Steam launcher (LAN variant for the server's LAN).
+   Setup.bat, game-asset copying and executable rebuild are not needed for this fix.
+4. Create/rejoin a fresh lobby to discard native cached remote profiles. Test the
+   same character on both PCs with one custom outfit and one default, then swap.
+
+Automated cases cover empty/all-zero defaults, mixed pieces, accessory removal,
+different per-player hold IDs, multiple active slots, missing relay data and saved
+profile immutability. Live HTTP/relay checks verified eight formerly empty remote
+character rows became explicit, and the local saved-profile hash stayed unchanged.
+Two-player visual confirmation is still pending; do not claim a completed native
+rendering test solely from server response checks.

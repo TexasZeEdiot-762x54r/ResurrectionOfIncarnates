@@ -1,0 +1,57 @@
+Skill-grid revival patch, 2026-10-18
+
+Native features
+  Five independent saved loadouts (IDs 0..4), Add Grid LP checkout, locked cells,
+  and Add Block requests. Cubes may be reused across alternative loadouts.
+  Cube placement cannot create grids, unlock cells, or grant expansion credits.
+  Complete cube shapes and inventory ownership are checked on every save.
+
+Recovery versus revival policy
+  Original client text confirms player level 5 unlocks the skill-grid system.
+  Native text confirms expansion rights are spent through Expand > Add Block.
+  A firsthand 2015 player guide describes four starting cells, thirteen cells
+  through leveling, and five alternative loadouts:
+  https://steamcommunity.com/sharedfiles/filedetails/?id=417813369
+  Exact later reward levels, initial cell positions and shop prices were NOT recovered.
+  Default original_rewards mode has NO guessed later level grants. Verified reward
+  entries belong in tools/grid-reward-policy.json with their source evidence.
+  The old level 6..17 schedule is archived, not active. Already-open cells and cube
+  layouts are retained per grid; new grids do not inherit legacy test grants.
+  Cell choice remains manual and must adjoin an open cell; leveling never chooses it.
+  Central 2x2 positions remain a revival setting. A new grid costs 1 LP and a fresh
+  installation receives a one-time 2 LP test allowance. These prices and positions
+  are not recovered live-service balance data. No XP awards were enabled.
+  Fresh profiles start at player level 1. With XP rewards still disabled, an
+  administrator can set playerLevel to 5 for skill-grid testing (client closed).
+
+  346 enabled original cube variants are provided at level 1. The first 340 hold
+  IDs are unchanged; six dual-combat-effect variants are appended. Native arrays
+  retain two combat slots and a separate third summary-grade slot, including
+  empty slots. See SKILL-GRID-GRADES.txt for the corrected parser interpretation.
+  Synthesis, drops, durability rules and XP curves are not restored.
+  A new install does not include the developer's neutral diagnostic cube or labels.
+
+Upgrade
+  Close the client. Back up the existing installation, then overlay this client
+  patch in its patch folder, not Steam's base-game directory. Run Apply Update.bat.
+  It backs up player_profile.json under tools/compatibility-backups before the
+  one-time migration. The previous grid is also retained in the profile under
+  skillGridsBeforeProgression. Cubes outside the smaller unlocked area are
+  unequipped whole, not deleted. Levels, outfits and lobby credentials are kept.
+  Setup.bat performs the same initialization for a fresh installation.
+
+Distribution
+  This ZIP contains patch sources and recovered cube metadata, not roi.exe, game
+  archives, Steam files, profiles, passwords, access tokens or developer logs.
+  Everyone supplies their own supported Steam executable and historical assets.
+  Shared Rocky lobby setup is in the separate LobbyServer ZIP. Grid/profile
+  handlers run locally on each player's PC, not in the shared lobby container.
+
+Verification status
+  Automated protocol/storage tests pass. The smaller grid and original-cube
+  placement/save were confirmed in game. Add Grid checkout and switching to the
+  purchased grid were confirmed. The exact second-grid-only save packet was
+  replayed against the live server, then the user confirmed UI saves no longer
+  errored. Expansion credits and locking have automated protocol/storage coverage
+  and native field-layout confirmation; Add Block still needs an in-game check
+  with an evidence-backed expansion reward. No original reward schedule is claimed.

@@ -1,0 +1,66 @@
+Customization labels, 2026-10-19
+
+The server used quote ID 0 for every cosmetic's name and description. That ID
+resolved to unrelated dialogue ("Here we go. Think you can keep up?"). This
+affected all characters, not only Fenrir.
+
+Items now use numeric quote IDs pointing to distinct model/colour labels, such
+as "Costume 001 - Colour 02", "Accessory 003", and "Head Accessory 003".
+Model 000 / colour 00 base items use the original "Default" quote. Colour
+labels are one-based for readability; underlying model/texture IDs do not change.
+
+Names now distinguish footage-verified mappings, player-supplied references,
+provisional appearance matches, and unresolved revival labels. This is NOT a
+complete recovery of the original cosmetic-name mapping. Original names are
+present in common_text, but their exact links to many models/colours remain
+unverified. No names are assigned by guessed release order. Item descriptions
+identify player references and provisional matches.
+
+Setup / Apply Update closes or requires closing the client, backs up archive
+014, and changes only reviewed untranslated cosmetic-placeholder text cells.
+Original translated names, dialogue, skill-cube text and the diagnostic cube
+labels are preserved. The patch fits inside the existing archive entry, changes
+no archive index or game executable, and does not touch profiles, item/hold IDs,
+ownership, equipment, thumbnails, saved outfits, levels, LP or reward policies.
+
+Generated customize-labels.json contains only reviewed label metadata. It does
+not contain credentials, profiles or game assets. Reapplying the same update is
+a no-op. Unexpected text/layout or insufficient allocation aborts before writing.
+
+Restart the client after applying: customization masters and text are cached.
+
+Applied partial recovery, 2026-10-19:
+- Added costume model 000 / textures 91, 92 and 93 for each of the 14 characters
+  (42 items). Each has an original thumbnail, material and resolvable diffuse maps.
+  Some original materials share a diffuse map and vary material parameters.
+- Preserved all pre-existing item/hold IDs and all model-100 entries. Developer
+  placeholder pictures for those model-100 entries remain; different costumes'
+  thumbnails have not been substituted to hide missing pictures.
+- Mephistopheles model 000 / texture 04 is now named Speed Stripe (quote 180021),
+  independently matched to the original menu footage at 3:40 and its thumbnail.
+  Its generic description uses the original Costume category quote, not a guessed
+  item description.
+- Total catalogue: 1,463 entries. New colours display as 92/93/94 because the
+  revival labels consistently use archive texture index plus one.
+- Existing label IDs and text allocations remain stable. The new colour labels
+  share three quotes across characters, avoiding a text-slot overflow/renumbering.
+
+Name-mapping follow-up, 2026-10-19:
+- Replaced 34 more numbered costume labels for Ares and Mephistopheles.
+- Two are the player's supplied references: Mephistopheles model 005 / texture 03
+  (display Colour 04) -> Lone Revenant; Ares model 003 / texture 04 (display
+  Colour 05) -> Fierce and Untamed. They are explicitly player-reported, not
+  independently verified original item-to-shop-title associations.
+- Another 32 are provisional matches between original thumbnail appearance and
+  original name text (for example, the flag tank top -> Stars and Stripes).
+  Their description says Provisional match. This does not claim recovery of
+  the original server join table. Ambiguous variants remain numbered.
+- customize-labels.json records each association's kind, observation, thumbnail
+  hash and previous label, separately from verified_names. The original name
+  strings themselves are not rewritten. Only numeric name references change.
+- Existing item IDs, models, colours, thumbnails, inventory and profile remain
+  unchanged by this name-only follow-up. Two short evidence descriptions use
+  additional untranslated placeholder cells; old allocations remain untouched.
+- The full catalogue, especially other characters and accessories, is NOT fully
+  remapped yet. Applying this package does not turn pending mappings into verified
+  originals merely because original name strings exist.

@@ -1,0 +1,63 @@
+{
+  "build": "Original Windows client 2.06",
+  "exe_sha256": "34a46fbc9e2ea6c6c9eebfddd0d6e4bef388a3eea5088838dd134588225cedbb",
+  "native_builders_found": 108,
+  "named_call_builders": 106,
+  "distinct_calls": 80,
+  "documented_variants": 107,
+  "format": "data/body values are type descriptors; numeric literals are fixed values. request_type and builder are documentation metadata, not wire fields. Empty objects are fixed empty objects. Array templates show one element; notes describe known counts.",
+  "transport": {
+    "authorize": "POST /Dragon/authorize",
+    "calls": "POST /Dragon/game",
+    "master_loads": "POST /Dragon/game; same load constructor at 0x140048d40, caller 0x140109ac0"
+  },
+  "scalar_types": {
+    "int32": "JSON integer from signed 32-bit input",
+    "uint64": "JSON integer from unsigned 64-bit input",
+    "integer": "JSON integer array element; input width not asserted",
+    "string": "JSON string",
+    "object": "Caller-supplied JSON object",
+    "int32(-1) or uint64": "Signed -1 for locked cells; unsigned 64-bit nonnegative cell values."
+  },
+  "example_warning": "Companion requests use synthetic values and placeholders; they are shapes, not live credentials or promises that all-zero IDs will be accepted.",
+  "source": "Original binary matched by SHA-256; constructor string xrefs, JSON node tags, primitive writers and manual nesting review. No runtime logs, credentials or profiles read. This is static reconstruction, not an original server specification.",
+  "primitive_writers": {
+    "int32": "0x140040f40",
+    "uint64": "0x140041030",
+    "string": "0x140040e40",
+    "array": "0x1400406b0",
+    "object": "0x140040790"
+  },
+  "native_master_load_names": [
+    "chara_master",
+    "customize_master",
+    "playerlevel_master",
+    "charalevel_master",
+    "skillcube_master",
+    "skillcubelevel_master",
+    "rank_master",
+    "matching_range_master",
+    "store_item_master",
+    "stage_master",
+    "banner_master",
+    "const",
+    "bg_master",
+    "item_master",
+    "gift_item_master",
+    "chara_rote_schedule_master",
+    "event_schedule_master",
+    "message_master",
+    "video_card_master",
+    "stageStatus",
+    "skillcube_mutation_master"
+  ],
+  "generic_forwarder": {
+    "builder": "0x14007fa70",
+    "path": "/Dragon/game",
+    "input": "Caller-provided raw JSON and a request-type selector; no fixed call name.",
+    "limitation": "A finite constructor list cannot enumerate arbitrary script-supplied JSON. This is not a claim to recover the retired server implementation or every possible dynamic call."
+  },
+  "response_contracts": "Response contracts are excluded from these request-only files. ROI-Client-API.json pairs the native requests with current revival response examples and explicitly unknown original contracts.",
+  "enum_semantics": "Numeric enum values, optionality and original server validation are left unspecified unless a note gives a directly checked mapping.",
+  "unresolved_fixed_call_builders": []
+}

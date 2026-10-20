@@ -1,0 +1,70 @@
+COMPLETE CLIENT REFRESH - 20261020-circle-subleaders-v22
+
+This is the complete current client patch, not the earlier four-file hotfix.
+It includes all launcher sessions/dependencies, the shared TLS keepalive fix,
+the getItemMail response correction, audio safeguards and current metadata.
+It also includes the local/direct-discovery result-ready handler and trace.
+Public-mode players receive that handoff fix on the shared server instead.
+Lobby names now use fresh published profiles before Steam lookup or fallback.
+See LOBBY-NAMES-FIX.txt; the native Online Lobby heading is not a mode bug.
+Character Select form headings use full original quote IDs; see
+CHARACTER-PANEL-TITLES.txt. Existing clients need no executable rebuild for that.
+Default peer outfits are explicit instead of borrowing local customization;
+see DEFAULT-OUTFITS.txt. Restart both clients/rejoin to refresh cached profiles.
+Later fixes include skill-grid grades/removal, tutorial resource retention,
+recovered character HP, durable commendations, consumable thumbnails and partial
+Circle support with bounded invite-menu profile loading. See the corresponding
+feature notes for evidence, deployment requirements and unimplemented behavior.
+Circle search now uses native one-based pages, leaders have the correct wire
+role, and the local HTTP dispatcher no longer races module reloads during
+simultaneous requests. See CIRCLES.txt. Both client and shared server need updating.
+Leader-only member-capacity purchases now reserve 10,000 LP for 5 slots with
+durable retry receipts and recovery. See CIRCLES.txt for the revival policy.
+Sub Leader allowance purchases now cost 10,000 LP for one slot with independent
+retry receipts. Buying allowance does not appoint a player; assignment is unfinished.
+No game files, profiles, config.json, account credentials or private keys ship.
+It does not claim the newly reported native lobby-join failure is solved.
+
+RECOMMENDED: CLEAN REBUILD (rules out older executable/script patches too)
+1. Close your old game and its launcher. Keep the old installation untouched.
+2. Extract this ZIP into a NEW empty folder, not inside another patch's tools.
+3. Start Steam, logged in to your own licensed account. Run Setup.bat.
+   Select your NORMAL Steam game install when asked for roi.exe, NOT an old
+   patched copy. The full historical Steam depot is selected separately.
+   Setup needs about 11 GB of space for a new game copy. It verifies the package
+   and source executable, copies your assets, installs metadata and rebuilds.
+4. Run Online - Steam.bat from THIS new folder. It selects the public service
+   and starts the game; do not start the old shortcut or Steam Discovery.
+5. For the host on the server's LAN, use Online - Steam (LAN).bat instead.
+   These two launchers reach the same shared room list. Try a newly created room.
+
+KEEPING YOUR EXISTING PROFILE (optional, after both launchers are closed)
+Back up tools/player_profile.json from your old patch. After the new Setup
+completes, copy ONLY your own player_profile.json into the new tools folder.
+Then run Apply Update.bat there to migrate it. Do not copy old Python scripts,
+game executables, config.json, libs or someone else's profile/Steam identity.
+Retain the backup. Grid migrations retain existing levels/loadouts; the initial
+revival grid allowance is not a reconstruction of authentic progression.
+
+IN-PLACE UPDATE (less conclusive for diagnosing mixed older installs)
+Back up your existing patch, close its game/local services, then extract all ZIP
+contents into that patch's ROOT, replacing included files and merging folders.
+Never delete tools or overwrite player_profile.json/config.json with a friend's.
+Apply Update.bat verifies package hashes and updates metadata, but does NOT
+rebuild roi.exe or reapply extracted scripts/overlay. Run Setup.bat as well if
+you need executable/script parity; it must use the supported original Steam EXE.
+
+VERIFICATION
+Setup/Apply Update must print:
+  Client package verified: 20261020-circle-subleaders-v22
+Each shipped file has a SHA-256 in PACKAGE-MANIFEST.json. A missing/changed
+file fails verification rather than silently accepting a partial update.
+This detects accidental mixing/corruption, not a maliciously replaced manifest.
+Python 3.10+ is required. Launcher failures now stay visible instead of closing.
+
+This refresh does not restart or modify the shared Rocky Linux server.
+The user confirmed timely multiplayer results after the results-ready handoff
+update. This is not a guarantee for every session or character. Circle invitation
+delivery, consumable activation, working cube synthesis and original XP rewards
+remain incomplete. The last invite-menu fix still needs an in-game network-stable
+retest. No account-specific consumable grants or levels are included in this patch.

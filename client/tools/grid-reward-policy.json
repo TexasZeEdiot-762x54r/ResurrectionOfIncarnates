@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "skill_system_unlock_player_level": 5,
+  "documented_initial_open_cells": 4,
+  "documented_level_earned_open_cells": 13,
+  "native_grid_cells": 16,
+  "native_loadout_capacity": 5,
+  "exact_level_reward_schedule_recovered": false,
+  "level_rewards": [],
+  "sources": [
+    {
+      "kind": "original_client_text",
+      "resource": "text/common_text",
+      "quote_ids": [240076, 240077, 540012, 630018],
+      "supports": "Player level 5 unlocks the system; expansion rights are spent by choosing Add Block and a cell. These quotes do not specify later reward levels."
+    },
+    {
+      "kind": "firsthand_contemporary_player_guide",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=417813369",
+      "section": "Notes about Cubes",
+      "updated": "2015-10-10",
+      "supports": "Leveling increases available cells from four to thirteen. Author reports using four loadouts plus a blank fifth. Exact reward levels are not listed."
+    },
+    {
+      "kind": "native_code",
+      "addresses": ["0x140054890", "0x1404b29b0", "0x14034a1e0"],
+      "supports": "extendSkillGrid/openGrids transmits chosen cells; per-grid remaining rights control Expand; profile storage and UI index checks allow five grids."
+    }
+  ]
+}

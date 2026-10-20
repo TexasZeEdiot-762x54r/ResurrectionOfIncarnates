@@ -1,0 +1,1270 @@
+{
+  "authorize": {
+    "os": "steam",
+    "api_version": "0.8",
+    "steamId": 1,
+    "region": "<string>",
+    "login": 1,
+    "ticket": "<STEAM_TICKET>"
+  },
+  "calls": [
+    {
+      "version": 0.8,
+      "call": "registerProfile",
+      "data": {
+        "charaId": 0,
+        "name": "<string>",
+        "sv_onlineId": 1,
+        "sv_gameRegion": "<string>"
+      }
+    },
+    {
+      "call": "getLobbyList",
+      "data": {}
+    },
+    {
+      "call": "enterLobby",
+      "data": {
+        "aid": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "player",
+        "query": {
+          "_id": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "_id": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "$in": [
+            {
+              "_id": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "itemBook",
+        "query": {
+          "sv_uid": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "itemBook",
+        "query": {
+          "sv_uid": 1,
+          "sv_itemId": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "circle",
+        "fields": {
+          "sv_circleIcon": 0,
+          "sv_leaveMembers": 0,
+          "sv_comment": 0
+        },
+        "query": {
+          "sv_invitings.sv_uid": 1,
+          "sv_status": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "<string>",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "sv_onlineId": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "_id": 1
+        },
+        "fields": {
+          "sv_skillcubes": 0,
+          "sv_skillgrids": 0
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "sv_onlineId": 1
+        },
+        "fields": {
+          "sv_skillcubes": 0,
+          "sv_skillgrids": 0
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "_id": 1
+        },
+        "fields": {
+          "_id": 1,
+          "sv_onlineId": 1,
+          "sv_characters": 1,
+          "sv_rankId": 1,
+          "sv_rankPoint": 1,
+          "sv_gamePoint": 1,
+          "sv_skillcubes": 1,
+          "sv_skillgrids": 1,
+          "sv_activeCharaId": 1,
+          "sv_playerExp": 1
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadPlayer",
+      "data": {
+        "query": {
+          "_id": 1
+        },
+        "fields": {
+          "_id": 1,
+          "sv_onlineId": 1,
+          "sv_gamePoint": 1,
+          "sv_skillcubes": 1
+        }
+      }
+    },
+    {
+      "call": "updateCustomize",
+      "data": {
+        "sv_charaId": 0,
+        "sv_slotNum": 0,
+        "sv_customItemHoldIds": [
+          1
+        ]
+      }
+    },
+    {
+      "call": "updateSupLamCustomize",
+      "data": {
+        "sv_supLamId": 0,
+        "sv_slotNum": 0,
+        "sv_customItemHoldIds": [
+          1
+        ]
+      }
+    },
+    {
+      "call": "changeActiveCustomizeSlot",
+      "data": {
+        "sv_charaId": 0,
+        "sv_activeCustomSlotNum": 0
+      }
+    },
+    {
+      "call": "changeSupLamActiveCustomizeSlot",
+      "data": {
+        "sv_supLamId": 0,
+        "sv_activeCustomSlotNum": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateProfile",
+      "data": {
+        "name": "<string>",
+        "steamRegion": "<string>",
+        "steamLang": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateProfile",
+      "data": {
+        "charaId": 1,
+        "sv_tutorialMap": {
+          "chara": 0
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateProfile",
+      "data": {
+        "stageId": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateProfile",
+      "data": {
+        "supLamId": 1
+      }
+    },
+    {
+      "call": "getItemMail",
+      "data": {
+        "sv_isReadOnly": 1
+      }
+    },
+    {
+      "call": "getItemMail",
+      "data": {
+        "sv_isReadOnly": 0
+      }
+    },
+    {
+      "call": "composeSkillCube",
+      "data": {
+        "stackNum": 0,
+        "mode": 0,
+        "mainMaterial": 1,
+        "subMaterials": [
+          1
+        ],
+        "recipe": 1,
+        "isTest": 0
+      }
+    },
+    {
+      "call": "verifyComposing",
+      "data": {
+        "sv_stackNum": 0
+      }
+    },
+    {
+      "call": "cutCompositeTime",
+      "data": {
+        "sv_isQuery": 0,
+        "sv_stackNum": 0
+      }
+    },
+    {
+      "call": "removeSkillcubes",
+      "data": {
+        "sv_skillcubeHoldIds": [
+          1
+        ]
+      }
+    },
+    {
+      "call": "removeSkillcubes",
+      "data": {
+        "sv_skillcubeHoldIds": [
+          1
+        ]
+      }
+    },
+    {
+      "call": "extendSkillGrid",
+      "data": {
+        "openGrids": [
+          {
+            "sv_sgridId": 0,
+            "sv_slotKeys": [
+              "sv_x0y1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "call": "updateSkillGrid",
+      "data": {
+        "sv_grids": [
+          {
+            "sv_sgridId": 0,
+            "sv_openedSlot": 0,
+            "sv_unlockedSlotItem": 0,
+            "sv_x0y0": 0,
+            "sv_x1y0": 0,
+            "sv_x2y0": 0,
+            "sv_x3y0": 0,
+            "sv_x0y1": 0,
+            "sv_x1y1": 0,
+            "sv_x2y1": 0,
+            "sv_x3y1": 0,
+            "sv_x0y2": 0,
+            "sv_x1y2": 0,
+            "sv_x2y2": 0,
+            "sv_x3y2": 0,
+            "sv_x0y3": 0,
+            "sv_x1y3": 0,
+            "sv_x2y3": 0,
+            "sv_x3y3": 0,
+            "sv_skillcubeHoldIds": [
+              1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_userTutorial": 0,
+        "sv_tutorialMap": {
+          "management": 0
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_tutorialMap": {
+          "tutorial_second": 0
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_tutorialMap": {
+          "management": 0
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_charaTutorial": {
+          "sv_charaId": 0,
+          "sv_tutorialValue": 0
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_tutorialMap": {
+          "chara": 0
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_tutorialMap": {
+          "help": 0
+        }
+      }
+    },
+    {
+      "call": "sendTutorialResult",
+      "data": {
+        "sv_tutorialMap": {
+          "stateFlag": 0
+        }
+      }
+    },
+    {
+      "call": "updateGameOption",
+      "data": {
+        "sv_optDisplayMode": 0,
+        "sv_optWindowSize": 0,
+        "sv_optBrightness": 0,
+        "sv_optVSync": 0,
+        "sv_optShadow": 0,
+        "sv_optSSAO": 0,
+        "sv_optPostEffect": 0,
+        "sv_optParticleEffect": 0,
+        "sv_optMasterVol": 0,
+        "sv_optBgmVol": 0,
+        "sv_optSEVol": 0,
+        "sv_optVoiceVol": 0,
+        "sv_optVoiceChat": 0,
+        "sv_optVoiceTXVol": 0,
+        "sv_optVoiceRXVol": 0,
+        "sv_optAudioCh": 0,
+        "sv_optAudioOffOnInactive": 0,
+        "sv_os": "<string>",
+        "sv_ram": 1,
+        "sv_cpuSpeed": 1,
+        "sv_cpuNum": 1,
+        "sv_vram": 1,
+        "sv_graphicCard": "<string>",
+        "sv_existsMic": 0,
+        "sv_lang": "<string>",
+        "sv_cpuName": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "logWorstPing",
+      "data": {
+        "srcAddr": "<string>",
+        "disconnectCode": 0,
+        "pings": [
+          {
+            "destAddr": "<string>",
+            "sv_onlineId": 1,
+            "maxTime": 0,
+            "relay": 0,
+            "connect": 0
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "logClientAction",
+      "data": {
+        "sv_logs": [
+          {
+            "sv_actionTime": 1,
+            "sv_actionId": 0,
+            "sv_place": "<string>",
+            "sv_remark": {
+              "battleId": "<string>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "logClientAction",
+      "data": {
+        "sv_logs": [
+          {
+            "sv_actionTime": 0,
+            "sv_actionId": 0,
+            "sv_place": "<string>",
+            "sv_remark": {
+              "battleId": "<string>",
+              "tagComboCount": 0,
+              "dashCancelCount": 0,
+              "attackPoint": 1,
+              "damagePoint": 1,
+              "killCount": 0,
+              "deadCount": 0,
+              "targetChangeCount": 0,
+              "cancelComboCount": 0,
+              "awakeCount": 0,
+              "isTag": 0,
+              "playerRank": 0,
+              "playerLevel": 0,
+              "charaId": 0,
+              "charaLevel": 0,
+              "isFriend": 0,
+              "battleResult": 0,
+              "shotCount": 0,
+              "grapCount": 0,
+              "specialOneCount": 0,
+              "specialTwoCount": 0,
+              "nativeSkillCount": 0,
+              "guardCount": 0,
+              "isVoiceChat": 0,
+              "awakeAttackPoint": 0,
+              "awakeDamagePoint": 0,
+              "tagComboChance": 0,
+              "doubleLockCount": 0,
+              "cutDamage": 0,
+              "cutCount": 0,
+              "shotHitCount": 0,
+              "grapHitCount": 0,
+              "guardDoingCount": 0,
+              "overHeatCount": 0,
+              "chainAttack": 0,
+              "vsBotBattleId": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "logClientAction",
+      "data": {
+        "sv_logs": [
+          {
+            "sv_actionTime": 0,
+            "sv_actionId": 0,
+            "sv_place": "stop error",
+            "sv_remark": 0
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "saveReplay",
+      "data": {
+        "sv_stageId": 0,
+        "sv_roomType": 0,
+        "sv_entries": [
+          {
+            "sv_uid": 1,
+            "sv_playerLv": 0,
+            "sv_charaId": 0,
+            "sv_userName": "<string>",
+            "sv_rankId": 0,
+            "sv_circleName": "<string>",
+            "sv_side": 0,
+            "sv_tagName": "<string>"
+          }
+        ],
+        "sv_replayData": "<string>",
+        "sv_replayVer": "<string>",
+        "sv_flag": 1
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "findReplay",
+      "data": {
+        "sv_replayVer": "<string>",
+        "sv_stageId": 0,
+        "sv_roomType": 0,
+        "sv_uids": [
+          1
+        ],
+        "sv_minRankId": 0,
+        "sv_maxRankId": 0,
+        "sv_allyCharaIds": [
+          1
+        ],
+        "sv_foeCharaIds": [
+          1
+        ],
+        "sv_circleName": "<string>",
+        "sv_beginTime": 1,
+        "sv_endTime": 1
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "loadReplay",
+      "data": {
+        "sv_replayId": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getPurchaseItemList",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "beginPurchase",
+      "data": {
+        "sv_purchaseItemId": 1,
+        "sv_purchaseDescString": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "endPurchase",
+      "data": {
+        "sv_cancel": 0,
+        "sv_orderId": 1
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "queryPurchase",
+      "data": {
+        "sv_orderId": 1
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getStoreItemList",
+      "data": {
+        "sv_type": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "addToCart",
+      "data": {
+        "sv_type": 0,
+        "sv_storeItems": [
+          {
+            "sv_storeItemId": 1,
+            "sv_storeItemCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getMyCart",
+      "data": {
+        "sv_type": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateCart",
+      "data": {
+        "sv_type": 0,
+        "sv_storeItems": [
+          {
+            "sv_storeItemId": 1,
+            "sv_storeItemCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateCart",
+      "data": {
+        "sv_type": 0,
+        "sv_storeItems": [
+          {
+            "sv_storeItemId": 1,
+            "sv_storeItemCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "removeFromCart",
+      "data": {
+        "sv_type": 0,
+        "sv_storeOrderIds": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "buyItem",
+      "data": {
+        "sv_type": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "exchangeProductItem",
+      "data": {
+        "code": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "findPlayerByName",
+      "data": {
+        "sv_name": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "setMyState",
+      "data": {
+        "sv_playerState": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getPlayerState",
+      "data": {
+        "sv_uids": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "findCircle",
+      "data": {
+        "sv_name": "<string>",
+        "sv_inviteOnly": 0,
+        "sv_minRank": 0,
+        "sv_circleAreaId": 0,
+        "sv_page": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "findCircle",
+      "data": {
+        "sv_circleIds": [
+          1
+        ],
+        "sv_page": 0,
+        "sv_enableMaxMember": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getCircleName",
+      "data": {
+        "sv_circleIds": [
+          1
+        ],
+        "sv_enableMaxMember": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "setupCircle",
+      "data": {
+        "sv_name": "<string>",
+        "sv_circleIcon": "<string>",
+        "sv_inviteOnly": 0,
+        "sv_minRank": 0,
+        "sv_circleAreaId": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getCircleMemberList",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "getCircleInfo",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "joinCircle",
+      "data": {
+        "sv_circleId": 1,
+        "sv_cancel": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "replyToJoinCircle",
+      "data": {
+        "sv_uid": 1,
+        "sv_accept": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "inviteCircle",
+      "data": {
+        "sv_uid": 1,
+        "sv_cancel": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "replyToInviteCircle",
+      "data": {
+        "sv_circleId": 1,
+        "sv_accept": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "leaveCircle",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "breakUpCircle",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "kickCircleMember",
+      "data": {
+        "sv_uids": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "changeCircleIcon",
+      "data": {
+        "sv_circleIcon": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "changeComment",
+      "data": {
+        "sv_comment": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "changeEntryQualifications",
+      "data": {
+        "sv_inviteOnly": 0,
+        "sv_minRank": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "incMaxNumOfSubLeaders",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "incMaxNumOfMembers",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "assignLeader",
+      "data": {
+        "sv_uid": 1
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "changeSubLeader",
+      "data": {
+        "sv_assignUids": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "changeSubLeader",
+      "data": {
+        "sv_castDownUids": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "changeCircleArea",
+      "data": {
+        "sv_circleAreaId": 1
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "updateFriends",
+      "data": {
+        "sv_onlineIds": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "sync",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "changeTagName",
+      "data": {
+        "sv_partnerUid": 1,
+        "sv_isCircle": 0,
+        "sv_tagName": "<string>"
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getTagName",
+      "data": {
+        "sv_uids": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getGiftItemList",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "addToGiftCart",
+      "data": {
+        "sv_giftItems": [
+          {
+            "sv_storeItemId": 1,
+            "sv_storeItemCount": 0,
+            "sv_toUid": 1,
+            "sv_message": "<string>"
+          }
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "removeFromGiftCart",
+      "data": {
+        "sv_storeOrderIds": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getMyGiftCart",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "buyGift",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "beginBotBattle",
+      "data": {
+        "sv_botBattleId": 0,
+        "sv_partnerCharaId": 0,
+        "sv_enemyCharaIds": [
+          1
+        ],
+        "sv_partnerUid": 1,
+        "sv_sessionId": "<string>",
+        "sv_stageId": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "endBotBattle",
+      "data": {
+        "sv_botBattleId": 0,
+        "sv_partnerCharaId": 0,
+        "sv_enemyCharaIds": [
+          1
+        ],
+        "sv_battleResult": 0,
+        "sv_myReg": 1,
+        "sv_myCombo": 1,
+        "sv_enemyReg": 1,
+        "sv_enemyCombo": 1,
+        "sv_comboCount": 1,
+        "sv_charaDamage": 1,
+        "sv_kill": 1,
+        "sv_dead": 1,
+        "sv_atBonus": 1,
+        "sv_tagBonus": 1,
+        "sv_niceCut": 1,
+        "sv_wLockAt": 1,
+        "sv_battleId": "<string>",
+        "sv_partnerUid": 1,
+        "sv_sessionId": "<string>",
+        "sv_stageId": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "tag",
+        "query": {
+          "_id": "1T2"
+        }
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "unlockAchievement",
+      "data": {
+        "sv_achievementIds": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "useItem",
+      "data": {
+        "sv_holdIds": [
+          1
+        ]
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getRankmatchRanking",
+      "data": {
+        "sv_type": 0,
+        "sv_filter": 0,
+        "sv_charaIdFilter": 0,
+        "sv_start": 0,
+        "sv_range": 0,
+        "sv_period": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getCharaUsageRanking",
+      "data": {
+        "sv_period": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getCharaRanking",
+      "data": {
+        "sv_charaId": 0,
+        "sv_filter": 0,
+        "sv_start": 0,
+        "sv_range": 0,
+        "sv_period": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getCircleRanking",
+      "data": {
+        "sv_type": 0,
+        "sv_filter": 0,
+        "sv_start": 0,
+        "sv_range": 0,
+        "sv_period": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getTagRanking",
+      "data": {
+        "sv_filter": 0,
+        "sv_start": 0,
+        "sv_range": 0,
+        "sv_period": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getGoodRanking",
+      "data": {
+        "sv_filter": 0,
+        "sv_start": 0,
+        "sv_range": 0,
+        "sv_period": 0
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "getSupLamRates",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "logout",
+      "data": {}
+    },
+    {
+      "version": 0.8,
+      "call": "getIpLog",
+      "data": {
+        "sv_start": 0,
+        "sv_range": 0
+      }
+    }
+  ],
+  "master_loads": [
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "chara_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "customize_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "playerlevel_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "charalevel_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "skillcube_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "skillcubelevel_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "rank_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "matching_range_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "store_item_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "stage_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "banner_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "const",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "bg_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "item_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "gift_item_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "chara_rote_schedule_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "event_schedule_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "message_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "video_card_master",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "stageStatus",
+        "query": {}
+      }
+    },
+    {
+      "version": 0.8,
+      "call": "load",
+      "data": {
+        "name": "skillcube_mutation_master",
+        "query": {}
+      }
+    }
+  ]
+}

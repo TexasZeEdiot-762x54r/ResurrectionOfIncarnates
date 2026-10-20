@@ -1,0 +1,2886 @@
+{
+  "format": "roi-local-library",
+  "version": 1,
+  "language": "en",
+  "source": {
+    "title": "Rise of Incarnates [1080p, 60fps and No Commentary]",
+    "interval_seconds": [
+      355,
+      1449
+    ],
+    "frame_size": [
+      1920,
+      1080
+    ]
+  },
+  "scope": {
+    "credits": "Native client screen preserved; not opened in the supplied interval.",
+    "howtoplay": "Not opened in the supplied interval; original web content unrecovered.",
+    "move_lists": "Mephistopheles human command table captured; transformed-form lists and other character move lists not shown.",
+    "videos": "Original embedded character movies not recovered.",
+    "languages": "English captures only; other supported client languages use these English pages.",
+    "cursor_cleanup": "24 recorded arrow cursors removed from 21 assets using matching pixels in neighboring video frames; no generated artwork/text."
+  },
+  "characters": [
+    {
+      "id": "mephistopheles",
+      "title": "Mephistopheles",
+      "human": "Jedrek Tyler",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Jedrek Tyler",
+          "assets": [
+            {
+              "file": "mephistopheles-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                359
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "mephistopheles-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                367
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ],
+              "cursor_repairs": [
+                {
+                  "seconds": 365,
+                  "destination": [
+                    195,
+                    20,
+                    220,
+                    56
+                  ],
+                  "source_crop": [
+                    505,
+                    315,
+                    530,
+                    351
+                  ],
+                  "context_mean_error": 0.5144
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Mephistopheles",
+          "assets": [
+            {
+              "file": "mephistopheles-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                417
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon-bio",
+          "title": "Daimon Biography",
+          "assets": [
+            {
+              "file": "mephistopheles-daimon-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                419
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ],
+              "cursor_repairs": [
+                {
+                  "seconds": 421,
+                  "destination": [
+                    20,
+                    29,
+                    45,
+                    65
+                  ],
+                  "source_crop": [
+                    330,
+                    324,
+                    355,
+                    360
+                  ],
+                  "context_mean_error": 1.2076
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "moves",
+          "title": "Move List (Human)",
+          "assets": [
+            {
+              "file": "mephistopheles-moves.jpg",
+              "width": 840,
+              "height": 993,
+              "seconds": [
+                377,
+                381
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "mephistopheles-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          359
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "mephistopheles-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          359
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        359,
+        419
+      ]
+    },
+    {
+      "id": "ares",
+      "title": "Ares",
+      "human": "Terrence Blake",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Terrence Blake",
+          "assets": [
+            {
+              "file": "ares-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                393
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ],
+              "cursor_repairs": [
+                {
+                  "seconds": 395,
+                  "destination": [
+                    189,
+                    46,
+                    214,
+                    82
+                  ],
+                  "source_crop": [
+                    476,
+                    317,
+                    501,
+                    353
+                  ],
+                  "context_mean_error": 0.0412
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "ares-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                399
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Ares",
+          "assets": [
+            {
+              "file": "ares-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                403
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon-bio",
+          "title": "Daimon Biography",
+          "assets": [
+            {
+              "file": "ares-daimon-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                409
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "ares-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          393
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "ares-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          393
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        393,
+        409
+      ]
+    },
+    {
+      "id": "lilith",
+      "title": "Lilith",
+      "human": "Mireia Valentin",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Mireia Valentin",
+          "assets": [
+            {
+              "file": "lilith-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                425
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "lilith-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                431
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Lilith",
+          "assets": [
+            {
+              "file": "lilith-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                433
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "lilith-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          425
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "lilith-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          425
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        425,
+        433
+      ]
+    },
+    {
+      "id": "grim-reaper",
+      "title": "Grim Reaper",
+      "human": "Dr. Gaspard Watteau",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Dr. Gaspard Watteau",
+          "assets": [
+            {
+              "file": "grim-reaper-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                435
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "grim-reaper-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                441
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Grim Reaper",
+          "assets": [
+            {
+              "file": "grim-reaper-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                443
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "grim-reaper-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          435
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "grim-reaper-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          435
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        435,
+        443
+      ]
+    },
+    {
+      "id": "brynhildr",
+      "title": "Brynhildr",
+      "human": "Erendira Quinn",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Erendira Quinn",
+          "assets": [
+            {
+              "file": "brynhildr-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                447
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "brynhildr-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                451
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Brynhildr",
+          "assets": [
+            {
+              "file": "brynhildr-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                455
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "brynhildr-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          447
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "brynhildr-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          447
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        447,
+        455
+      ]
+    },
+    {
+      "id": "odin",
+      "title": "Odin",
+      "human": "Reinhold Kruger",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Reinhold Kruger",
+          "assets": [
+            {
+              "file": "odin-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                459
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "odin-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                463
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Odin",
+          "assets": [
+            {
+              "file": "odin-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                467
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "odin-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          459
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "odin-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          459
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        459,
+        467
+      ]
+    },
+    {
+      "id": "ra",
+      "title": "Ra",
+      "human": "Ricardo Abascal",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Ricardo Abascal",
+          "assets": [
+            {
+              "file": "ra-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                469
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "ra-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                475
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Ra",
+          "assets": [
+            {
+              "file": "ra-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                481
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "ra-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          469
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "ra-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          469
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        469,
+        481
+      ]
+    },
+    {
+      "id": "fenrir",
+      "title": "Fenrir",
+      "human": "Brad Burrell",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Brad Burrell",
+          "assets": [
+            {
+              "file": "fenrir-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                485
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "fenrir-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                491
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Fenrir",
+          "assets": [
+            {
+              "file": "fenrir-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                495
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "fenrir-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          485
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "fenrir-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          485
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        485,
+        495
+      ]
+    },
+    {
+      "id": "slayer",
+      "title": "Slayer",
+      "human": "Fernando Duran",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Fernando Duran",
+          "assets": [
+            {
+              "file": "slayer-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                499
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "slayer-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                503
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ],
+              "cursor_repairs": [
+                {
+                  "seconds": 505,
+                  "destination": [
+                    680,
+                    22,
+                    705,
+                    58
+                  ],
+                  "source_crop": [
+                    990,
+                    317,
+                    1015,
+                    353
+                  ],
+                  "context_mean_error": 0.9982
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Slayer",
+          "assets": [
+            {
+              "file": "slayer-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                507
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "slayer-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          499
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "slayer-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          499
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ],
+        "cursor_repairs": [
+          {
+            "seconds": 501,
+            "destination": [
+              369,
+              21,
+              394,
+              57
+            ],
+            "source_crop": [
+              659,
+              202,
+              684,
+              238
+            ],
+            "context_mean_error": 0.7037
+          }
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        499,
+        507
+      ]
+    },
+    {
+      "id": "loki",
+      "title": "Loki",
+      "human": "Zaur Miljkovic",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Zaur Miljkovic",
+          "assets": [
+            {
+              "file": "loki-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                511
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "loki-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                517
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Loki",
+          "assets": [
+            {
+              "file": "loki-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                521
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "loki-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          511
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "loki-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          511
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        511,
+        521
+      ]
+    },
+    {
+      "id": "kali",
+      "title": "Kali",
+      "human": "Asha Mehta",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Asha Mehta",
+          "assets": [
+            {
+              "file": "kali-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                525
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "kali-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                531
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Kali",
+          "assets": [
+            {
+              "file": "kali-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                535
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "kali-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          525
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "kali-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          525
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        525,
+        535
+      ]
+    },
+    {
+      "id": "zeus",
+      "title": "Zeus",
+      "human": "Gordon Matthew Sanders",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Gordon Matthew Sanders",
+          "assets": [
+            {
+              "file": "zeus-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                539
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "zeus-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                545
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Zeus",
+          "assets": [
+            {
+              "file": "zeus-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                551
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "zeus-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          539
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "zeus-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          539
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        539,
+        551
+      ]
+    },
+    {
+      "id": "utsutahime",
+      "title": "Utsutahime",
+      "human": "Yuki Himuro",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Yuki Himuro",
+          "assets": [
+            {
+              "file": "utsutahime-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                555
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "utsutahime-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                561
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Utsutahime",
+          "assets": [
+            {
+              "file": "utsutahime-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                569
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "utsutahime-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          555
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "utsutahime-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          555
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        555,
+        569
+      ]
+    },
+    {
+      "id": "red-dragon",
+      "title": "Red Dragon",
+      "human": "Unknown",
+      "variants": [
+        {
+          "id": "human",
+          "title": "Unknown",
+          "assets": [
+            {
+              "file": "red-dragon-human.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                575
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bio",
+          "title": "Biography",
+          "assets": [
+            {
+              "file": "red-dragon-bio.jpg",
+              "width": 816,
+              "height": 713,
+              "seconds": [
+                581
+              ],
+              "crop": [
+                310,
+                295,
+                1126,
+                1008
+              ]
+            }
+          ]
+        },
+        {
+          "id": "daimon",
+          "title": "Red Dragon",
+          "assets": [
+            {
+              "file": "red-dragon-daimon.jpg",
+              "width": 840,
+              "height": 758,
+              "seconds": [
+                591
+              ],
+              "crop": [
+                286,
+                270,
+                1126,
+                1028
+              ]
+            }
+          ]
+        }
+      ],
+      "portrait": {
+        "file": "red-dragon-portrait.jpg",
+        "width": 92,
+        "height": 92,
+        "seconds": [
+          575
+        ],
+        "crop": [
+          144,
+          164,
+          236,
+          256
+        ]
+      },
+      "metadata": {
+        "file": "red-dragon-metadata.jpg",
+        "width": 674,
+        "height": 61,
+        "seconds": [
+          575
+        ],
+        "crop": [
+          290,
+          181,
+          964,
+          242
+        ]
+      },
+      "status": "captured",
+      "reference_seconds": [
+        575,
+        591
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "new-york-city",
+      "title": "New York City",
+      "status": "captured",
+      "assets": [
+        {
+          "file": "stage-new-york-city.jpg",
+          "width": 1032,
+          "height": 742,
+          "seconds": [
+            607
+          ],
+          "crop": [
+            94,
+            286,
+            1126,
+            1028
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paris",
+      "title": "Paris",
+      "status": "captured",
+      "assets": [
+        {
+          "file": "stage-paris.jpg",
+          "width": 1032,
+          "height": 742,
+          "seconds": [
+            613
+          ],
+          "crop": [
+            94,
+            286,
+            1126,
+            1028
+          ]
+        }
+      ]
+    },
+    {
+      "id": "london",
+      "title": "London",
+      "status": "captured",
+      "assets": [
+        {
+          "file": "stage-london.jpg",
+          "width": 1032,
+          "height": 742,
+          "seconds": [
+            619
+          ],
+          "crop": [
+            94,
+            286,
+            1126,
+            1028
+          ]
+        }
+      ]
+    },
+    {
+      "id": "washington-d-c",
+      "title": "Washington D.C.",
+      "status": "captured",
+      "assets": [
+        {
+          "file": "stage-washington-d-c.jpg",
+          "width": 1032,
+          "height": 742,
+          "seconds": [
+            625
+          ],
+          "crop": [
+            94,
+            286,
+            1126,
+            1028
+          ]
+        }
+      ]
+    },
+    {
+      "id": "san-francisco",
+      "title": "San Francisco",
+      "status": "unrecovered",
+      "assets": []
+    }
+  ],
+  "story": [
+    {
+      "id": "the-era-of-incarnates",
+      "title": "The Era of Incarnates",
+      "assets": [
+        {
+          "file": "story-the-era-of-incarnates.jpg",
+          "width": 868,
+          "height": 961,
+          "seconds": [
+            685,
+            691
+          ]
+        }
+      ],
+      "reference_seconds": [
+        683,
+        693
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "685": 0,
+        "691": 362
+      }
+    },
+    {
+      "id": "incarnates",
+      "title": "\"Incarnates\"",
+      "assets": [
+        {
+          "file": "story-incarnates.jpg",
+          "width": 868,
+          "height": 1301,
+          "seconds": [
+            653,
+            669
+          ]
+        }
+      ],
+      "reference_seconds": [
+        645,
+        681
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "653": 0,
+        "669": 599
+      }
+    },
+    {
+      "id": "daimones",
+      "title": "\"Daimones\"",
+      "assets": [
+        {
+          "file": "story-daimones.jpg",
+          "width": 868,
+          "height": 1148,
+          "seconds": [
+            695,
+            703
+          ]
+        }
+      ],
+      "reference_seconds": [
+        695,
+        709
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "695": 0,
+        "703": 439
+      }
+    },
+    {
+      "id": "the-birth-of-an-incarnate",
+      "title": "The Birth of an Incarnate",
+      "assets": [
+        {
+          "file": "story-the-birth-of-an-incarnate.jpg",
+          "width": 868,
+          "height": 1064,
+          "seconds": [
+            711,
+            719
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 713,
+              "destination": [
+                787,
+                246,
+                812,
+                282
+              ],
+              "source_crop": [
+                1045,
+                354,
+                1070,
+                390
+              ],
+              "context_mean_error": 1.4705
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        711,
+        723
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "711": 0,
+        "719": 378
+      }
+    },
+    {
+      "id": "life-as-an-incarnate",
+      "title": "Life as an Incarnate",
+      "assets": [
+        {
+          "file": "story-life-as-an-incarnate.jpg",
+          "width": 868,
+          "height": 1066,
+          "seconds": [
+            727,
+            735
+          ]
+        }
+      ],
+      "reference_seconds": [
+        725,
+        739
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "727": 0,
+        "735": 464
+      }
+    },
+    {
+      "id": "the-phantom-unit",
+      "title": "The Phantom Unit",
+      "assets": [
+        {
+          "file": "story-the-phantom-unit.jpg",
+          "width": 868,
+          "height": 1081,
+          "seconds": [
+            745,
+            751
+          ]
+        }
+      ],
+      "reference_seconds": [
+        741,
+        753
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "745": 0,
+        "751": 471
+      }
+    },
+    {
+      "id": "the-global-restoration-effort",
+      "title": "The Global Restoration Effort",
+      "assets": [
+        {
+          "file": "story-the-global-restoration-effort.jpg",
+          "width": 868,
+          "height": 1190,
+          "seconds": [
+            757,
+            763
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 755,
+              "destination": [
+                713,
+                473,
+                738,
+                509
+              ],
+              "source_crop": [
+                971,
+                354,
+                996,
+                390
+              ],
+              "context_mean_error": 1.8145
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        755,
+        765
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "757": 0,
+        "763": 415
+      }
+    },
+    {
+      "id": "skill-cubes",
+      "title": "Skill Cubes",
+      "assets": [
+        {
+          "file": "story-skill-cubes.jpg",
+          "width": 868,
+          "height": 1275,
+          "seconds": [
+            773,
+            785
+          ]
+        }
+      ],
+      "reference_seconds": [
+        767,
+        789
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "773": 0,
+        "785": 597
+      }
+    },
+    {
+      "id": "the-wild-hunt",
+      "title": "The Wild Hunt",
+      "assets": [
+        {
+          "file": "story-the-wild-hunt.jpg",
+          "width": 868,
+          "height": 1025,
+          "seconds": [
+            793,
+            799
+          ]
+        }
+      ],
+      "reference_seconds": [
+        791,
+        803
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "793": 0,
+        "799": 387
+      }
+    },
+    {
+      "id": "the-cube-phenomenon-and-the-chain-of-disasters",
+      "title": "The Cube Phenomenon and the Chain of Disasters",
+      "assets": [
+        {
+          "file": "story-the-cube-phenomenon-and-the-chain-of-disasters.jpg",
+          "width": 868,
+          "height": 1315,
+          "seconds": [
+            811,
+            825
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 823,
+              "destination": [
+                705,
+                1092,
+                730,
+                1128
+              ],
+              "source_crop": [
+                963,
+                734,
+                988,
+                770
+              ],
+              "context_mean_error": 1.4964
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        805,
+        827
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "811": 0,
+        "825": 549
+      }
+    },
+    {
+      "id": "laminae",
+      "title": "Laminae",
+      "assets": [
+        {
+          "file": "story-laminae.jpg",
+          "width": 868,
+          "height": 1000,
+          "seconds": [
+            835,
+            847
+          ]
+        }
+      ],
+      "reference_seconds": [
+        829,
+        847
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "835": 0,
+        "847": 472
+      }
+    },
+    {
+      "id": "incarnates-in-turmoil",
+      "title": "Incarnates in Turmoil",
+      "assets": [
+        {
+          "file": "story-incarnates-in-turmoil.jpg",
+          "width": 868,
+          "height": 1101,
+          "seconds": [
+            855,
+            861
+          ]
+        }
+      ],
+      "reference_seconds": [
+        849,
+        865
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "855": 0,
+        "861": 486
+      }
+    },
+    {
+      "id": "the-were-legion",
+      "title": "The Were-Legion",
+      "assets": [
+        {
+          "file": "story-the-were-legion.jpg",
+          "width": 868,
+          "height": 1026,
+          "seconds": [
+            871,
+            875
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 877,
+              "destination": [
+                469,
+                798,
+                494,
+                834
+              ],
+              "source_crop": [
+                727,
+                591,
+                752,
+                627
+              ],
+              "context_mean_error": 2.7047
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        867,
+        879
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "871": 0,
+        "875": 359
+      }
+    },
+    {
+      "id": "a-call-to-awakening",
+      "title": "A Call to Awakening",
+      "assets": [
+        {
+          "file": "story-a-call-to-awakening.jpg",
+          "width": 868,
+          "height": 930,
+          "seconds": [
+            887,
+            891
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 889,
+              "destination": [
+                591,
+                891,
+                616,
+                927
+              ],
+              "source_crop": [
+                850,
+                923,
+                875,
+                959
+              ],
+              "context_mean_error": 0.7002
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        881,
+        895
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "887": 0,
+        "891": 279
+      }
+    },
+    {
+      "id": "akohr",
+      "title": "Akohr",
+      "assets": [
+        {
+          "file": "story-akohr.jpg",
+          "width": 868,
+          "height": 1251,
+          "seconds": [
+            905,
+            911
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 909,
+              "destination": [
+                821,
+                909,
+                846,
+                945
+              ],
+              "source_crop": [
+                1079,
+                609,
+                1104,
+                645
+              ],
+              "context_mean_error": 0.4012
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        897,
+        915
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "905": 0,
+        "911": 529
+      }
+    },
+    {
+      "id": "the-asakura-detective-agency",
+      "title": "The Asakura Detective Agency",
+      "assets": [
+        {
+          "file": "story-the-asakura-detective-agency.jpg",
+          "width": 868,
+          "height": 1195,
+          "seconds": [
+            923,
+            929
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 931,
+              "destination": [
+                796,
+                998,
+                821,
+                1034
+              ],
+              "source_crop": [
+                1054,
+                642,
+                1079,
+                678
+              ],
+              "context_mean_error": 0.3378
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        917,
+        953
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "923": 0,
+        "929": 508
+      }
+    },
+    {
+      "id": "the-coleman-incident",
+      "title": "The Coleman Incident",
+      "assets": [
+        {
+          "file": "story-the-coleman-incident.jpg",
+          "width": 868,
+          "height": 1084,
+          "seconds": [
+            967,
+            979
+          ]
+        }
+      ],
+      "reference_seconds": [
+        955,
+        985
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "967": 0,
+        "979": 363
+      }
+    },
+    {
+      "id": "the-vikarala-corporation-and-the-domesticated-human-project",
+      "title": "The Vikarala Corporation and the Domesticated-Human Project",
+      "assets": [
+        {
+          "file": "story-the-vikarala-corporation-and-the-domesticated-human-project.jpg",
+          "width": 868,
+          "height": 1326,
+          "seconds": [
+            991,
+            1007
+          ]
+        }
+      ],
+      "reference_seconds": [
+        987,
+        1015
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "991": 0,
+        "1007": 531
+      }
+    },
+    {
+      "id": "the-unknown-prophet",
+      "title": "The Unknown Prophet",
+      "assets": [
+        {
+          "file": "story-the-unknown-prophet.jpg",
+          "width": 868,
+          "height": 1156,
+          "seconds": [
+            1021,
+            1041
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1018.3,
+              "destination": [
+                844,
+                23,
+                868,
+                59
+              ],
+              "source_crop": [
+                1102,
+                152,
+                1126,
+                188
+              ],
+              "context_mean_error": 2.8374
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1017,
+        1055
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1021": 0,
+        "1041": 394
+      }
+    },
+    {
+      "id": "the-heralds",
+      "title": "The Heralds",
+      "assets": [
+        {
+          "file": "story-the-heralds.jpg",
+          "width": 868,
+          "height": 1060,
+          "seconds": [
+            1065,
+            1069
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1075,
+              "destination": [
+                691,
+                908,
+                716,
+                944
+              ],
+              "source_crop": [
+                949,
+                625,
+                974,
+                661
+              ],
+              "context_mean_error": 2.4888
+            },
+            {
+              "seconds": 1059,
+              "destination": [
+                834,
+                57,
+                859,
+                93
+              ],
+              "source_crop": [
+                1092,
+                173,
+                1117,
+                209
+              ],
+              "context_mean_error": 2.1577
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1057,
+        1083
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1065": 0,
+        "1069": 435
+      }
+    },
+    {
+      "id": "a-world-on-loop",
+      "title": "A World on Loop",
+      "assets": [
+        {
+          "file": "story-a-world-on-loop.jpg",
+          "width": 868,
+          "height": 1219,
+          "seconds": [
+            1089,
+            1107
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1085,
+        1123
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1089": 0,
+        "1107": 504
+      }
+    },
+    {
+      "id": "the-prophet-s-message",
+      "title": "The Prophet's Message",
+      "assets": [
+        {
+          "file": "story-the-prophet-s-message.jpg",
+          "width": 868,
+          "height": 1408,
+          "seconds": [
+            1129,
+            1149
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1131,
+              "destination": [
+                837,
+                836,
+                862,
+                872
+              ],
+              "source_crop": [
+                1095,
+                846,
+                1120,
+                882
+              ],
+              "context_mean_error": 0.6759
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1125,
+        1167
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1129": 0,
+        "1149": 533
+      }
+    },
+    {
+      "id": "lamina-a-substance-smuggled-through-time",
+      "title": "Lamina: A Substance Smuggled Through Time",
+      "assets": [
+        {
+          "file": "story-lamina-a-substance-smuggled-through-time.jpg",
+          "width": 868,
+          "height": 1234,
+          "seconds": [
+            1173,
+            1185
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1169,
+        1195
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1173": 0,
+        "1185": 506
+      }
+    },
+    {
+      "id": "transform-deuteros-and-servant-master",
+      "title": "Transform, Deuteros, and Servant-Master",
+      "assets": [
+        {
+          "file": "story-transform-deuteros-and-servant-master.jpg",
+          "width": 868,
+          "height": 1519,
+          "seconds": [
+            1199,
+            1225,
+            1217
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1197,
+              "destination": [
+                831,
+                60,
+                856,
+                96
+              ],
+              "source_crop": [
+                1089,
+                166,
+                1114,
+                202
+              ],
+              "context_mean_error": 1.6412
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1197,
+        1243
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1199": 0,
+        "1225": 609,
+        "1217": 930
+      }
+    },
+    {
+      "id": "odin-s-eye",
+      "title": "Odin's Eye",
+      "assets": [
+        {
+          "file": "story-odin-s-eye.jpg",
+          "width": 868,
+          "height": 964,
+          "seconds": [
+            1249,
+            1265
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1251,
+              "destination": [
+                768,
+                559,
+                793,
+                595
+              ],
+              "source_crop": [
+                1027,
+                623,
+                1052,
+                659
+              ],
+              "context_mean_error": 0.0475
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1245,
+        1277
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1249": 0,
+        "1265": 389
+      }
+    },
+    {
+      "id": "clifford-mcgregor",
+      "title": "Clifford McGregor",
+      "assets": [
+        {
+          "file": "story-clifford-mcgregor.jpg",
+          "width": 868,
+          "height": 1186,
+          "seconds": [
+            1287,
+            1291
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1285,
+              "destination": [
+                641,
+                540,
+                666,
+                576
+              ],
+              "source_crop": [
+                900,
+                693,
+                925,
+                729
+              ],
+              "context_mean_error": 0.0486
+            },
+            {
+              "seconds": 1293,
+              "destination": [
+                768,
+                792,
+                793,
+                828
+              ],
+              "source_crop": [
+                1026,
+                533,
+                1051,
+                569
+              ],
+              "context_mean_error": 1.2856
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1279,
+        1301
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1287": 0,
+        "1291": 311
+      }
+    },
+    {
+      "id": "gordon-matthew-sanders-the-sovereign",
+      "title": "Gordon Matthew Sanders, \"The Sovereign\"",
+      "assets": [
+        {
+          "file": "story-gordon-matthew-sanders-the-sovereign.jpg",
+          "width": 868,
+          "height": 1042,
+          "seconds": [
+            1305,
+            1311
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1303,
+        1321
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1305": 0,
+        "1311": 475
+      }
+    },
+    {
+      "id": "the-washington-incident",
+      "title": "The Washington Incident",
+      "assets": [
+        {
+          "file": "story-the-washington-incident.jpg",
+          "width": 868,
+          "height": 856,
+          "seconds": [
+            1331
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1329,
+              "destination": [
+                674,
+                550,
+                699,
+                586
+              ],
+              "source_crop": [
+                933,
+                703,
+                958,
+                739
+              ],
+              "context_mean_error": 0.1008
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1323,
+        1345
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1331": 0
+      }
+    },
+    {
+      "id": "emily",
+      "title": "Emily",
+      "assets": [
+        {
+          "file": "story-emily.jpg",
+          "width": 868,
+          "height": 1099,
+          "seconds": [
+            1357,
+            1361
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1359,
+              "destination": [
+                716,
+                521,
+                741,
+                557
+              ],
+              "source_crop": [
+                974,
+                450,
+                999,
+                486
+              ],
+              "context_mean_error": 0.1164
+            },
+            {
+              "seconds": 1359,
+              "destination": [
+                838,
+                955,
+                863,
+                991
+              ],
+              "source_crop": [
+                1096,
+                882,
+                1121,
+                918
+              ],
+              "context_mean_error": 0.1753
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1347,
+        1377
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1357": 0,
+        "1361": 324
+      }
+    },
+    {
+      "id": "mephistopheles",
+      "title": "Mephistopheles",
+      "assets": [
+        {
+          "file": "story-mephistopheles.jpg",
+          "width": 868,
+          "height": 911,
+          "seconds": [
+            1393,
+            1399
+          ],
+          "cursor_repairs": [
+            {
+              "seconds": 1401,
+              "destination": [
+                737,
+                852,
+                762,
+                888
+              ],
+              "source_crop": [
+                995,
+                553,
+                1020,
+                589
+              ],
+              "context_mean_error": 1.3262
+            }
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1379,
+        1420
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1393": 0,
+        "1399": 451
+      }
+    },
+    {
+      "id": "the-herald-of-reinhold-kruger",
+      "title": "The Herald of Reinhold Kruger",
+      "assets": [
+        {
+          "file": "story-the-herald-of-reinhold-kruger.jpg",
+          "width": 868,
+          "height": 1012,
+          "seconds": [
+            1427,
+            1431
+          ]
+        }
+      ],
+      "reference_seconds": [
+        1421,
+        1437
+      ],
+      "status": "captured",
+      "reconstruction": "Page-only raster strips joined using shared heading/text scroll coordinates; wording is not OCR rewritten.",
+      "scroll_offsets": {
+        "1427": 0,
+        "1431": 337
+      }
+    }
+  ],
+  "asset_sha256": {
+    "ares-bio.jpg": "623322a39422b5c9637fbd7075f81f904c1d6bfd3ffc062aa0b7e19f298df670",
+    "ares-daimon-bio.jpg": "96ae4dbbd95579db28b05cddc29fb9760cda1d0a0334f2176ea0d9f27c569534",
+    "ares-daimon.jpg": "284eaf00428170f7ef949740303a2956c019e60aca607385eb65383bd2c9cc44",
+    "ares-human.jpg": "a8c12baa16afa427495628b742ded16c6a7f2760dd97009daa364c35f14b76f2",
+    "ares-metadata.jpg": "65db2b57765730dcbe0d68a608c73d13e464f78f5f7ada442650b8be911e467f",
+    "ares-portrait.jpg": "6241596dc42281205b3b94335b134456bf9905a08059b318af4e4db41a867742",
+    "brynhildr-bio.jpg": "75c56c6eaf9a1e80c0477b00df03b2ccbe590a45e108075d75b5f4c83870b697",
+    "brynhildr-daimon.jpg": "6c00b924857be8e423a41c197e3a254f9350ff77e5c5ee21566898ff5216fa11",
+    "brynhildr-human.jpg": "8fcf33082a6f24e3340f2e2718f7e6e07822bf32c6ee22db12325f521dc528f7",
+    "brynhildr-metadata.jpg": "9141e08110f779520ede3c6a3f5334150e1f4e49ad228eb57d1411aa867ac4f6",
+    "brynhildr-portrait.jpg": "986e9fe09f2f2f5cdd248af91acbe8cb7e5722a08ba90192bdfe8620d482f071",
+    "fenrir-bio.jpg": "b4abbeca1990cbb361b99633ce835a5dbb3c7b85e8e177eb26943ee6d10205f4",
+    "fenrir-daimon.jpg": "7f365cdfe16501204169e5a6804788cb770949f77e90c40c6f4863d47590b3d9",
+    "fenrir-human.jpg": "e0380f5dbccf9caaf38878b1862ceba36a58121f9d5d06b8f01fc0a3dbd3370a",
+    "fenrir-metadata.jpg": "f48206838049f030f99e2c0f0956296c6ab4be5fdf0fbbcd148a401640138f88",
+    "fenrir-portrait.jpg": "7565a15a1cf2a4e73eb8a71fe052488565c6765796f3bbd1026ff91769af29db",
+    "grim-reaper-bio.jpg": "383d88021efae905d79c3a6dcd4a225e154a566e8f5ecd0b3b11b146a11183d7",
+    "grim-reaper-daimon.jpg": "910458c538d2f9eb4147c73a91bbd2f91ceedb4ee09bc9839e158926ac03490e",
+    "grim-reaper-human.jpg": "7850a11e95c7eed848b1e09dc6693a006a27e2fab5c36fb567b1409f2a87cef5",
+    "grim-reaper-metadata.jpg": "8964d270ca163673fa4bd60d2e9312fa820f2b2b5be3228670f712832de050ea",
+    "grim-reaper-portrait.jpg": "edcd10bf9a227de64d535fcce2c8a69fe9123e0e712804334820cf05a631119c",
+    "kali-bio.jpg": "84e2d6c39acd3a1682da058a0e2c048bec0b2012aab0fd38634e138329e2ef4a",
+    "kali-daimon.jpg": "932481fc562e157bb84e25969e268ebe5e968f490f266ecb52b73cb28b5eb066",
+    "kali-human.jpg": "de37dbac3567b1ce0676c355177af6e5a219dc050525177768e0b73c6116aa2c",
+    "kali-metadata.jpg": "0201961f872b97c3c536dac6a9d61daa5133ee9bb2103191c43c78ae7a72ec36",
+    "kali-portrait.jpg": "53d8f923b61796a64df7c70c1b281a6133dc896d1c902575c4d9099bf73a4ba8",
+    "lilith-bio.jpg": "214672889da1334e5d7ef21e0a6323dab79feb0767266606e326c76571ce39f8",
+    "lilith-daimon.jpg": "9266e4c0715f1c1e11783f1214c43ba46e4f9c1e887dd474ec2fae4dc2d741a6",
+    "lilith-human.jpg": "c15a58065cd42a86695d4ba8ceed5d7624a59096566eb34f192c3f26d5b1ef40",
+    "lilith-metadata.jpg": "0b8c996675542f6f8ae03aa9106adfaab56b73c83dbf0ccb6ff2ece4339226c6",
+    "lilith-portrait.jpg": "e1f5c7c1f7898373f69e9441115fe7450924ba3758a7a490da01626a7abffa97",
+    "loki-bio.jpg": "4f5833061811f986307954168658c5f9d791d3ff8e40e397e8b6fd9ad66d85eb",
+    "loki-daimon.jpg": "8a5b4c487b2a4166deacd091197d6c16efb29fdca9f57e983939c3a9547550aa",
+    "loki-human.jpg": "e540df31264738173578d7a4c6c016c6b99374db8c89dc7a491a2ddebcc68674",
+    "loki-metadata.jpg": "c531c8ee768af2b1fe628769734c8583c55104d4be5fdd4766ef5e4de8df4541",
+    "loki-portrait.jpg": "da0c61302d47715653f76b6f9344184854ad966e70465b6708a597b78e24b4b2",
+    "mephistopheles-bio.jpg": "724b01ad52a2f26e7ee22c74a292c9c86949bcc4325693ba2b7355f810c2169c",
+    "mephistopheles-daimon-bio.jpg": "36d1bea45eb37e158c32ef7e610a2f95be17d2cfb739925fc77ee7626ef57cdd",
+    "mephistopheles-daimon.jpg": "d05f77ed7336f0b3aa47d4fb95dcf20e714748a492be8f9446427bc07e29fe6a",
+    "mephistopheles-human.jpg": "eabad7eb29d6efbf02d0120cdbb8763c01dc6f58dc9ae02a85ed43571a49bef8",
+    "mephistopheles-metadata.jpg": "67ad21ef6c91ec22cffc7e9f17dfdd8c081ac129ded51cb5193d685433c59582",
+    "mephistopheles-moves.jpg": "62b82c304f08426efe89f6ac4b9fe8cecf87b0f7fe1fd453635bb0b68d988ca9",
+    "mephistopheles-portrait.jpg": "6bd066a34756dc20bd65e81c3f2aa27b4ec3018600ec62fe942713ee9395680d",
+    "odin-bio.jpg": "fe7dd7840779e60699ffeeb09429401ee3aa29a651b03a9eeb9b248da83c7a46",
+    "odin-daimon.jpg": "cc907eaafdf335a4028cd40ddc59accc6c8f9149b181155cac47d332d9a8b89e",
+    "odin-human.jpg": "69d8e6c29db68badd9fcec32e042bacf6a36d7fa5d07f896b55d9ce2135f5948",
+    "odin-metadata.jpg": "c271c9ac386321bf9af7daafd10705ec9e3b90c69784f03868d2c42ae7b206bc",
+    "odin-portrait.jpg": "35d958a4fc6d1a7937a1a5a2cbe07bec33081be79f92adfd5e58a459030ca0e4",
+    "ra-bio.jpg": "f16ec0ca4f77c80c125e29b81639277fbeebc2fdb8a77eb169fe7b6fda156546",
+    "ra-daimon.jpg": "16f7bf47245e7bc8fc70a4fc3eba2b3b8f36f1937d7a1123767611b712210cf4",
+    "ra-human.jpg": "4a6e9dd173b6dd400ae04d0005121b4a3e9f8d8c89c9961afc4cf40638526e91",
+    "ra-metadata.jpg": "9e1310821291174ead3c38df49a76ffb6e858230a9730845d15a9adeab98eb3e",
+    "ra-portrait.jpg": "d3a234c0c931b12f6a0647811dba830d794145bd01ab78c137d09f8ab514fb07",
+    "red-dragon-bio.jpg": "2f960cfefeb5f75f2a5aeae49d2fca889566e53964880e3ad50876cb3c077c19",
+    "red-dragon-daimon.jpg": "8bbb3fc14b185624e078ba66c62c645c9e85a01360d91c67262d3fd5b22eafe7",
+    "red-dragon-human.jpg": "4f9689f0bb010f049169032bafe7db4a23e409e1c808c7462855c0e01045c9ff",
+    "red-dragon-metadata.jpg": "33931f4e95effc46eb41e3620b86b552f705c17429fe3b5a6ba7ca3e06cf0cd7",
+    "red-dragon-portrait.jpg": "fe5316beedc42a0fe6b243c3ee40c41798191cb6fce05c2821e1c298321e07e2",
+    "slayer-bio.jpg": "d2af1827799a184e7c9c9b0d0df1d42dcae0f75870be06d3c2bc084d5c19fe1d",
+    "slayer-daimon.jpg": "bf1ac2630f4c59f73114c4ba68618f4087a7afeead78c191ecaf7205e9b19eef",
+    "slayer-human.jpg": "c3a320b4d0e6a41bc98bbace80e146f919fdeb4bad97eec66a63eccfa1189ae7",
+    "slayer-metadata.jpg": "5725a971a2663d184793c9916ce00bcc5a6143dfd3c5778003ba1cdd526c4bcf",
+    "slayer-portrait.jpg": "e4fa16a2f18cacf88b58921ea99abd608577614aab584d71465db0ba7dd1fbf4",
+    "stage-london.jpg": "3153255fa69aabca23aca3c5c5b97a2207d1aa558eb5910061df6c23a9c0b38f",
+    "stage-new-york-city.jpg": "10b550875c4ed28b61061f74ecf3bcc80a286f905112203bdc5cafc7641273c7",
+    "stage-paris.jpg": "5ee7fc97ade67308b1405e0817b137a12bb531eb7594432e8c773d38c4791b68",
+    "stage-washington-d-c.jpg": "cc254309eaf2131a2fbc1d5f4eeea75fdf3e31ac18b35cb6dac3a85b6074c820",
+    "story-a-call-to-awakening.jpg": "2ac3c931aaaa0b1261aaa99d3ad9dd3a93ec563a8394fd92e595c8193aeed07b",
+    "story-a-world-on-loop.jpg": "74f356ea51b954206ecf78f1ec0a3fd47220872b80034d9749b880e1b5386598",
+    "story-akohr.jpg": "5eb52a710af558459a8279311ca9030bc2bf83ce40aca9788148537f6e0e2c65",
+    "story-clifford-mcgregor.jpg": "53255e3155309df9ca22227281be3075c2f9f357e0acea314ac687b0f4765f11",
+    "story-daimones.jpg": "ae2ab450272080ce97ecfbf19251a4a5f8b091f32473bf2b9a6729521c22e8a4",
+    "story-emily.jpg": "e5e4777e485eebe54f0e93d5f2f3fa11b372efd2fd5df5a222d373c1912f75c7",
+    "story-gordon-matthew-sanders-the-sovereign.jpg": "87dc18d1b058b88d1f88ecaaa9b205449c5f9ecf5da3aee0df7b78ab4a9ba7ef",
+    "story-incarnates-in-turmoil.jpg": "62bffc382fba7f2b92165898b565d10eaae1697eb5aad8f7f2a6b4a20cf3f06f",
+    "story-incarnates.jpg": "74fca46a9c608eb5fbd648fc35c202258d4949b8efa6d20e52212f942b2b29fb",
+    "story-lamina-a-substance-smuggled-through-time.jpg": "748511c2ff8500b67c565b55208b473fcddda5874c78ba5d4cbe24c60ff8e1cf",
+    "story-laminae.jpg": "5f0caea89ad12333696b94161f3ba1b9faace9a9cbc5fc07d04c17b4263b9b27",
+    "story-life-as-an-incarnate.jpg": "59c0d960743a19acb30b4998801cf2832c566f177bc94fc50e09627e4eaec171",
+    "story-mephistopheles.jpg": "cce46800df1937d0ede3a58750f830b113c2cbfe83dbd70b96bcb847a5b5d9b3",
+    "story-odin-s-eye.jpg": "33329231ca4d2e5da824761bb2c3bbbc2a11ad451a7d4400f1144ef5d64e504c",
+    "story-skill-cubes.jpg": "1f4f8dc5ae908ab8d5209eae3bbfef0687539bb3236a5176a89c64e7ab7b8667",
+    "story-the-asakura-detective-agency.jpg": "e3cecc90ead383227b278a215f83b691fc9806d77f1ac87cd47f5c5dbb52afd1",
+    "story-the-birth-of-an-incarnate.jpg": "4caafb9c9238c71e0e58b934ce970cf662be649d3c7939123a2251d3dd6097d2",
+    "story-the-coleman-incident.jpg": "0b7e55688acd7f39ef7c568c389ff68f23c75ab603cab7adbcacd31ef8863fda",
+    "story-the-cube-phenomenon-and-the-chain-of-disasters.jpg": "3b7c974e61386c774f8ea571bc95a4e2ca340079fc34adefcb63eee770fa13d4",
+    "story-the-era-of-incarnates.jpg": "6b8f180c67be04f5dff96e8496e8c532062caacd35ce0cf1ab0b883d740bcb46",
+    "story-the-global-restoration-effort.jpg": "de056025c040999c64b844bd2742e2a2d96655ab7422298e9acaeafc2b115bba",
+    "story-the-herald-of-reinhold-kruger.jpg": "94a2f20b8b80299ff5c34b6a536351e1bcd8cac7d836cc7c66be2b9c788a229c",
+    "story-the-heralds.jpg": "664ff5c0734ab58b8cf6bd33fb954b4585a0233959b4b72ecbcefdaf60f22af3",
+    "story-the-phantom-unit.jpg": "65aeb6b74e0c2abf999f33a851c6cc9e3eea249fae41fd5c566e5bb36a60ec64",
+    "story-the-prophet-s-message.jpg": "2d4a19c228bf7c0d38e73c9d08adcad1724d29786e7b78a56227567ac03df506",
+    "story-the-unknown-prophet.jpg": "93eb968ae658cea1c045492bedf3e14ec1e419708b79e60774cb581991b7f953",
+    "story-the-vikarala-corporation-and-the-domesticated-human-project.jpg": "205486f39d6ee05d1a68241a994f37d7ccb62e737756d2452b4b386b6a0c10b9",
+    "story-the-washington-incident.jpg": "c7decfb299b6a13c66c7cd5b91e8ce4dd724c35b2a6953b1ce75223bdb4b1cfc",
+    "story-the-were-legion.jpg": "2ff7a763b4de8dea39e9504eb6866f16373e704b4a1314be7569631c1b7afd7f",
+    "story-the-wild-hunt.jpg": "7a326bcf08a37b73ec9fc8dd321a7c1a2e4b689964ed52cfbf615f92daf7d0ec",
+    "story-transform-deuteros-and-servant-master.jpg": "70555b3a14f6e56ffcc17b7fb10c3e2decb1f037c6ddda21f67a16dcd60c11d9",
+    "utsutahime-bio.jpg": "1593a6e23829fefd9bc30ebfd385cca7327cb0a0c7845b525d153a18efe230cb",
+    "utsutahime-daimon.jpg": "aed86e87d182b69f264e421028a866a6b5b0ecd8772dc728f3011d63f24bbbb4",
+    "utsutahime-human.jpg": "c531b2fcc9fc9dbb87a1a51f4c2ca0f7306c0cb6acc90302272417eb58f00cb1",
+    "utsutahime-metadata.jpg": "10380fe918202cf1dcf2cf07f65b7e51f28ae07d4760bf7001b0e9539abf5e13",
+    "utsutahime-portrait.jpg": "7a6be7b0a130fbefc19cc2ed470499687c7d10f9bd4d5cad35e67aabb9025f08",
+    "zeus-bio.jpg": "c5d6753dd8ad4b55a6b9dd95d7604079a21eb482c89da444dfea264568e2a360",
+    "zeus-daimon.jpg": "4cfc932965f7de2486f62fd7a8c7567743d1d219a0aec4615eb0c4319748fa26",
+    "zeus-human.jpg": "d0efacadc602c4fe07c09833272723795771ead70c5036d34f04f14ad91e802c",
+    "zeus-metadata.jpg": "2735cda946d28788605efd524f53cfa21c34331ff1f8ecea2a7494c3ed855301",
+    "zeus-portrait.jpg": "511d65b6a2efddeec30e992696b97ef68476baf866bed69b8b86fb71b19f41cb"
+  }
+}

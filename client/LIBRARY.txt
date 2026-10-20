@@ -1,0 +1,71 @@
+LOCAL LIBRARY RECOVERY - 2026-10-20 / v25
+
+Character, Stage, How to Play and Story normally load pages from the retired
+live.game.riseofincarnates.com site. Normal Play launches now redirect only
+those four Library URL strings in process memory to loopback:52710/library/.
+The original pointer table and all original strings are checked before writes.
+The on-disk game executable, system hosts file, DNS and Credits are unchanged.
+Credits already works and remains the client's native screen.
+
+RECOVERED FROM THE USER-SUPPLIED VIDEO, 05:55-24:09
+- All 14 character profiles: recorded human/daimon renders, biographies and
+  original demographic headings. Red Dragon has the same recorded render in
+  both forms; no unseen alternative model is supplied.
+- Mephistopheles' human-form command table, joining the two visible scroll views.
+- Four stage descriptions and illustrations: New York City, Paris, London and
+  Washington D.C. San Francisco is explicitly unrecovered.
+- 31 illustrated Story articles, including scroll continuations. The last is
+  The Herald of Reinhold Kruger.
+
+This is a local reconstruction of captured pages, not the retired website's
+original HTML or downloaded original web assets. v25 transcribes the captured
+reading content into actual reflowing HTML text: 31 Story articles,
+16 biography views, 14 demographic headers, four stage descriptions and the
+11-row Mephistopheles human move table. text.json contains the transcription,
+source references and limitations. Local OCR supplied the draft; recurring
+letter confusions and punctuation were corrected against the captures.
+Separate art-only crops keep illustrations free of duplicate pictured prose.
+Text selection works in browser tests; the game's embedded viewer does not
+currently support dragging to select a sentence in the user's native test.
+The user confirmed that the in-game text is crisp and wraps correctly.
+The original raster captures remain as provenance, not rendered reading text.
+The Washington D.C. description runs below the recording's visible area: its
+visible continuation is transcribed with an ellipsis, not an invented ending.
+Small recording/compression artifacts remain in artwork. Arrow cursors were removed
+using matching pixels from neighboring video frames, with the user's approval;
+no artwork or words were AI-redrawn. The
+native game UI, player sidebar, friends and account information are cropped out.
+catalogue.json records timestamps/crop bounds/scroll offsets and asset hashes.
+v24 corrects two Mephistopheles daimon capture timestamps that accidentally
+pointed into Story pages. Every character capture is now checked against the
+Character video segment; all 16 captured biographies fit their complete visible
+text. Reference-interval end times are also corrected and validated.
+Only English was recorded; all supported client language routes use English.
+
+NOT RECOVERED
+How to Play, character embedded movies, transformed-form move lists and the
+other characters' move-list pages were not opened in the supplied interval.
+They are not fabricated. How to Play shows an unavailable-content state.
+Credits is intentionally not redirected or replaced. Finding the missing
+original pages/recordings is a separate follow-up, not a claim of this release.
+
+INSTALLATION
+Use the complete client source/ZIP; retain tools/library, text.json and catalogue.
+An existing installation needs the new local server, Library handler/assets,
+play session and Library session module, then a normal client restart.
+No shared-server/container restart or account/profile changes are needed.
+Apply Update/Setup also verifies exe/bin/cefserver.exe and its dependencies.
+If missing, setup_library.py copies only hash-verified files from the player's
+supported original Steam installation, refusing different existing binaries.
+The browser binaries themselves are not distributed. The original browser is
+obsolete: the supplied pages use only local HTML/CSS/images, not remote scripts.
+The first native test remained black because this helper directory was absent;
+URL changes alone cannot render pages without that separate browser process.
+Do not change firewall rules or forward port 52710. Library assets are served
+only by the launcher's existing loopback HTTP service; no Internet access is
+needed to browse them. Normal Steam/game services retain their requirements.
+
+The Library HTTP routes are read-only and do not invoke profile/game handlers.
+Only explicit catalogue assets are accessible; traversal, arbitrary files,
+external URLs, unsupported languages and unsafe queries are rejected.
+The pages use plain HTML/CSS and same-origin images with no scripts or trackers.

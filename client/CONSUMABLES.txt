@@ -1,0 +1,38 @@
+Recovered consumable inventory
+
+12 distinct types have original names/descriptions in text/common_text:
+  LP Boost: 1, 3, 7, 14, 30 days (quotes 460484..460488 / 460501..460505)
+  EXP Boost: 1, 3, 7, 14, 30 days (460489..460493 / 460506..460510)
+  Tournament Ticket (460494 / 460511)
+  Team Name Ticket (460496 / 460513)
+The pack-of-five entries are shop bundles of the same ticket, not additional
+consumable types. Other named event tickets do not establish active supported
+consumable inventory entries; this is not proof of a complete live catalogue.
+
+Original server IDs were not recovered. roi_consumables.py assigns explicit
+revival identifiers using the client's decimal descriptor format, inspected
+at 0x1400fdc60. These identifiers are not authentic original database IDs.
+Names and descriptions use the original common_text quotes without rewriting
+any localization resource. All twelve thumbnails now resolve to shipped
+Other/Store_Thumbnail_Other_* textures: LP_001..005, Exp_001..005,
+Tournament_001 and Teamname_001 (capitalization is significant).
+The ten boost images explicitly show 1/3/7/14/30 days. Ticket _002 images
+are bundles rather than single tickets.
+
+Freeze correction: the native detail panel at 0x140339060 synchronously
+loads the selected thumbnail. An empty list produces the bare Thumbnail/
+directory and can strand the resource wait at 0x1407bc9a0. Captured on the
+live frozen client, not inferred solely from an absent picture. The original
+archive paths are verified by hash and texture decoding; no exe change or
+inventory deletion is needed. Activation remains unimplemented as below.
+
+Owned rows use sv_itemHoldId, sv_itemId and sv_itemNum (numeric strings),
+as parsed at 0x1400fa555..0x1400fa84a. Stock is persisted in consumableItems
+inside the local player profile. No inventory is automatically granted to
+other accounts. Master rows alone do not imply ownership.
+
+This change restores inventory/display, NOT activation, tournament entry,
+team naming, original award rates or boost reward multiplication. useItem
+remains unimplemented; do not assume the Use button activates a boost.
+Adding inventory never activates timers, awards XP/LP, changes currency,
+or grants grid/character unlocks. Existing no-invented-awards policy remains.

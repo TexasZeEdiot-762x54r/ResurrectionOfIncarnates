@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "enabled": false,
+  "player_levels": [],
+  "character_levels": {},
+  "bot_rewards": [],
+  "notes": "No authentic XP rates or curves recovered. Empty by design; synthetic tests do not ship as balance data. Grid reward levels remain in grid-reward-policy.json."
+}

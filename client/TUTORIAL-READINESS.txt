@@ -1,0 +1,42 @@
+Tutorial Loading and Menu Readiness - 2026-10-19
+
+The native profile cache marks an account pending while requests run. Several
+revival handlers returned OK with empty data, leaving that cache pending even
+after successful saves. InitialBattle then waited indefinitely for the profile;
+tutorial completion could also leave menu transitions waiting on the same gate.
+
+updateSkillGrid and extendSkillGrid now return data.sv_grids as an array of the
+validated, saved layouts. sendTutorialResult returns the current profile after
+merging the supported tutorial-map flags. No scene-ready checks are bypassed.
+
+Native evidence in the supported shutdown executable:
+- extendSkillGrid request 12: parser 0x1400e07a8 requires an sv_grids array.
+- updateSkillGrid request 13: parser 0x1400e0829 requires an sv_grids array.
+- Tutorial requests 98 through 103 use profile parser arm 0x1400e052c.
+- Scene entry 0x140142070 waits while the local profile cache state is 2.
+
+No XP, currency, levels, expansion rights or cube placements are granted or
+reset. This does not recover unsupported tutorial-result fields or award rates.
+
+Close the client before applying this client update, then use the normal
+launcher. The shared lobby server does not need a restart. A client already
+stuck with its old pending state needs a restart. In-game tutorial entry and
+completion timings still require playtest confirmation.
+
+Follow-up: Tutorial Index Resource Retention
+User testing confirmed tutorial entry works, but the completion animation was
+followed by another 10-20 seconds of busy cursor. A bounded replay trace showed
+the check-mark sequence finished while more than 1,300 of 1,903 battle assets
+were still reloading. The legacy between-round memory-cleanup patch discarded
+the tutorial's ready resource cache each time it returned to the index.
+
+sessions/tutorial_resources.py now selects the native retention branch only
+inside an active loaded system tutorial script with a ready cache, no active VS Bot
+session, and the battle's full-exit flag unset. Full exits, bot rounds, unknown
+contexts, character-specific tutorials and unfinished caches retain the previous cleanup behavior. The
+existing menu input/readiness checks and completion animation remain intact.
+
+This guard runs once at battle exit, not every frame. It verifies the installed
+cleanup thunk before arming and fails closed on unexpected code. The normal
+debugger-backed launcher loads it; the executable on disk is not modified.
+Close the game before applying this package. No shared-server restart needed.

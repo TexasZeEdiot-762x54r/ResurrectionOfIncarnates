@@ -1,0 +1,47 @@
+SKILL GRID SUMMARY GRADES - 2026-10-19
+
+Cause and correction
+  The original cube table has three positional effect entries. The executable
+  parses entries 0 and 1 as combat effects, but entry 2 as summary category and
+  score endpoints. Our old export removed zero-ID entries and shifted summary
+  data into a combat slot. This left all eight summary categories at zero and
+  could supply a spurious second combat effect. The old "three-effect cubes
+  overflow two slots" conclusion was incorrect: the third slot has its own arm.
+
+  All original slot positions now survive, including the empty second combat
+  entry on ordinary cubes. Six formerly excluded dual-combat-effect cubes are
+  appended after the original 340 entries, preserving every existing hold ID.
+  All 346 released rows retain their shipped values. Disabled rows remain out.
+
+Original native behavior
+  Parser: 0x1400a2870; positional branch at 0x1400a32dc.
+  Master summary category: byte +0x94; score min/max: floats +0x98/+0x9c.
+  Parser scales source endpoints by 0.1, including summary scores.
+  Selected-grid aggregation: 0x140349900. Only equipped, usable cubes contribute.
+  Cube score interpolation: 0x1404db240, using native rank/level buckets.
+  Summary display: 0x14034b900. Zero is '-'; positive scores below 20 are D;
+  20..39 C, 40..59 B, 60..79 A, 80+ S. These are rating points, not percentages.
+  Ordinary level-one ranged-damage I has 2% starting combat damage and 10
+  starting attack-category rating points. The rating is not a 10% damage bonus.
+  The native UI retains responsibility for recalculation, switching and removal.
+
+Native removal/save compatibility
+  An in-game removal test exposed a separate pre-existing validation error:
+  remaining original cubes can serialize the same zero cell tag on every block
+  (for example, 200 and 200 for hold 2). Those tags are not unique part IDs.
+  The validator now accepts this observed all-zero encoding, with complete cube
+  block counts, ownership, hold-list consistency and locked cells still checked.
+  It does not allow partial cubes, extra blocks or new/unowned loadouts. Mixed
+  nonzero legacy tags retain their uniqueness check pending further evidence.
+
+Upgrade an existing recent client
+  Close the game, overlay the complete client patch ZIP in the patch root,
+  replacing included files, then launch normally. No Setup, executable rebuild,
+  asset copying, profile migration or public-lobby restart is needed for this fix.
+  Keep your own config and profile. Both players should update their own clients.
+
+Scope
+  No account levels, currencies, saved placements, unlock rights, XP policy or
+  synthesis rules are changed. This restores shipped catalogue interpretation,
+  not proof of final live-service balance or every combat-effect implementation.
+  Automated source/layout tests do not replace an in-game visual check.

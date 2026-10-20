@@ -1,0 +1,29 @@
+LOBBY DISPLAY NAMES / ORIGINAL HEADING - 2026-10-19
+
+Player #### was a fallback in player_names.py. Rocky has no native Steam client,
+but the profile relay already holds each player's published sv_userName. Room
+records now prefer that fresh claimed display name, without a network lookup.
+Late asynchronous publication overrides an earlier cached fallback immediately;
+subsequent name changes are reflected in newly serialized records. Stale or
+identity-mismatched profiles do not supply names. Empty/invalid names retain the
+existing fallback, control characters are removed, and UTF-8 names are bounded
+to 255 bytes as required by the native parser. These are untrusted cosmetic
+names, NOT verified Steam identities. Public anonymous authentication is unchanged.
+
+This needs player_names.py and profile_relay.py on the shared server. No game
+executable, account profile or room setting changes are needed. The native client
+may retain a previously fetched row; search again or recreate/rejoin after updating.
+
+The Online Lobby heading is ORIGINAL CLIENT BEHAVIOR. English text/common_text
+quote 380015 contains Online Lobby. Unmodified EXE 34a46fbc...25cedbb loads that
+quote directly in both lobby layout constructors: 0x1403a3aa0 (solo/list layout)
+at 0x1403a3cc1 and 0x1403a84d0 (team layout) at 0x1403a85b5. The latter loads
+lobbyTagBase/lobbyTagSetting, matching the supplied Team/Stage/Room Conditions
+panel. Custom Match is separate quote 380025 for the Play/menu title. No text
+substitution is made, and the heading alone does not mean ranked matchmaking.
+
+Friend Lobby visibility resumed without an additional discovery patch. Both
+clients used the public directory and the server had returned room records even
+while the friend-filtered UI hid them. Do not claim the exact transient filter
+cause recovered or that the results-ready change caused it. No search/presence
+behavior is changed by this name-only patch.

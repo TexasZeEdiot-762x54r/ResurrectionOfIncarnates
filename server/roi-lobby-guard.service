@@ -1,0 +1,16 @@
+[Unit]
+Description=WireGuard-only ingress guard for Rise of Incarnates lobby
+After=docker.service firewalld.service
+Requires=docker.service firewalld.service
+Before=roi-lobby.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=ROI_DEPLOYMENT_FILE=/etc/roi-lobby/deployment.local.json
+ExecStart=/usr/bin/python3 /opt/roi-lobby/firewall_guard.py start
+ExecReload=/usr/bin/python3 /opt/roi-lobby/firewall_guard.py start
+ExecStop=/usr/bin/python3 /opt/roi-lobby/firewall_guard.py stop
+
+[Install]
+WantedBy=multi-user.target

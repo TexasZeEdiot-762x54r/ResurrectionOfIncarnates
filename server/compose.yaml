@@ -1,0 +1,44 @@
+# Shared lobby server for Rise of Incarnates revival players on a WireGuard network.
+# Run configure.py --mode vpn after filling deployment.local.json.
+# Ports are published only on the configured VPN address, never implicitly on all interfaces.
+services:
+  lobby:
+    build:
+      context: .
+      args:
+        PYTHON_BASE: "${PYTHON_BASE:?Set an official Python image digest}"
+    image: localhost/roi-lobby
+    container_name: roi-lobby
+    restart: unless-stopped
+    ports:
+      - "${ROI_VPN_BIND_HOST:?Run configure.py --mode vpn}:52711:52711/tcp"
+      - "${ROI_VPN_BIND_HOST:?Run configure.py --mode vpn}:52713:52713/tcp"
+    environment:
+      ROI_QUIET: "1"  # debug mode logs counts, never raw tokens or payloads
+      ROI_AUTH_MODE: "invite"  # New Steam IDs may join with a valid invitation key; no ID allowlist.
+    init: true
+    user: "10001:10001"
+    read_only: true
+    volumes:
+      - lobby-data:/app/data
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    memswap_limit: 256m
+    cpus: "1.0"
+    pids_limit: 64
+    tmpfs:
+      - /app/logs:rw,noexec,nosuid,nodev,size=16m,mode=0700,uid=10001,gid=10001
+    secrets:
+      - source: roi-lobby-auth
+        target: roi-lobby-auth.json
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+secrets:
+  roi-lobby-auth:
+    file: ./private/lobby-auth.json
+volumes:
+  lobby-data:

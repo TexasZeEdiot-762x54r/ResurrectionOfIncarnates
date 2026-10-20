@@ -1,0 +1,81 @@
+Rise of Incarnates: private WireGuard lobby deployment, 2026-10-17
+
+PUBLIC MODE UPDATE (2026-10-19): PUBLIC-LOBBY.txt supersedes the online-launch
+instructions below for the new public TLS service. Online - Steam.bat now uses
+that service. Online - Steam Discovery.bat retains direct Steam discovery.
+The rest of this document describes the SEPARATE private WireGuard deployment.
+Do not forward its raw ports or distribute its invitation files.
+
+This is a modified third-party experimental revival package, not an official release.
+Two-PC battles have been user-tested. Remaining recovery and balance limits are
+documented in SKILL-GRIDS.txt; this is not a complete recreation of the live service.
+
+Topology
+  Rocky Linux: authenticated lobby on <vpn_bind_host>:52711 (TCP), reachable over wg0.
+  Windows PCs: each player's own game, Steam, and loopback profile server (52710).
+  Battles still use the game's native Steam connectivity, not this lobby as a relay.
+
+Security changes
+  Compose now uses invitation admission: new Steam IDs need no preapproval, but
+  must have a valid 128-bit invitation key and WireGuard access. Existing player
+  keys still work. ROI_AUTH_MODE=bound restores the older explicit ID allowlist.
+  Provisioned IDs retain their keys; new ID/key bindings use first-use memory.
+  Neither mode verifies Steam tickets or proves ownership of a claimed new ID.
+  Invalid credentials, duplicate sessions and packet identity changes are rejected.
+  Only the room owner may change its endpoint. Rooms have a four-player limit.
+  Invalid frames disconnect; partial-frame, login and idle timeouts are enforced.
+  Connections, per-address connections, request rate and room counts are bounded.
+  Raw packet histories are removed. File/container logs rotate and tokens are redacted.
+  Steam metadata must fit uint64 fields and match the actual lobby owner.
+  Local diagnostic caches use JSON instead of pickle.
+  Patcher dependencies come from explicit PyPI, wheel-only, pinned versions.
+  External Windows host mode is disabled in this private deployment.
+  Container runs non-root, read-only, without capabilities, with 256 MiB RAM,
+  one CPU, 64 PIDs, bounded logs, and a digest-pinned official Python base image.
+
+Important limits
+  Native lobby tokens are bearer credentials. Use ONLY over WireGuard; do not expose
+  the native unencrypted protocol on public TCP. Shared invitation holders share
+  that key's trust; never publish it. Bindings for new IDs reset after a restart.
+  WireGuard encrypts the transport but does not verify a Steam account identity.
+  A compromised permitted player can still disrupt gameplay or its own lobby. This
+  is not a production-grade public service or a complete network-protocol audit.
+
+Client installation
+  Use a separate copy of your own Steam game and full depot, as in the original patch.
+  Python 3.10+ and Steam are required. Download full assets in Steam's console:
+    download_depot 258160 258162 1099989411347492672
+  Extract the public client ZIP to its own directory and run Setup.bat once.
+  Separately receive a private invitation or a player-bound access file. Put it beside
+  Import Lobby Access.bat as lobby-access.json, then run Import Lobby Access.bat.
+  Keep that file and tools/config.json private. Share invitations only with trusted players.
+  Run Play Rise of Incarnates.bat with Steam and WireGuard connected.
+  Both players use the Rocky address, not Windows Online - Host mode.
+  Play -> Custom Match -> Create Lobby; the other player uses Search Lobby ->
+  Advanced Search -> Search and joins. Online - Steam changes to public Steam discovery;
+  it is optional, experimental, and not necessary for this private server.
+
+Existing O-drive client
+  Installation preserves config paths, player_profile.json, game resources and exe.
+  Apply Update.bat preserves the executable; Setup.bat builds a fresh patched copy.
+  The skill-grid update backs up and migrates the local profile without changing XP.
+  Only source/launch files are replaced after a timestamped rollback backup.
+
+Server deployment
+  Use the hardened Dockerfile and compose.yaml, not the original archive's instructions.
+  PYTHON_BASE must identify an official docker.io/library/python image by sha256 digest.
+  Provide private/lobby-auth.json (SteamID -> 32-hex-character token) as a read-only
+  Compose secret. Host file owner 10001, group 10001, mode 0400; private directory 0700.
+  The secret is excluded from the Docker build context and public release archives.
+  Do not put wg0 in trusted or change any existing WireGuard zones just for this app.
+  Apply the separately reviewed port-specific guard for Docker forwarded traffic.
+  Keep SELinux enabled; no host-home mounts, privileged mode or Docker socket mounts.
+
+Backups and rollback
+  Windows: restore only files from the timestamped multiplayer-update backup into the
+  same test installation, with the client/profile server stopped first.
+  Rocky: stop roi-lobby.service and its container; disable the dedicated guard service
+  and remove only the rules with the roi-lobby-only comment. Other apps/firewall rules
+  are outside the deployment's scope. Private access files are not in public releases.
+
+Do not post local profile/config/server logs or access JSON files publicly.

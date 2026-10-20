@@ -1,0 +1,23 @@
+BRIEFING / RESULTS CANNED PARTNER MESSAGES
+
+The old shared server acknowledged E662 but never sent E663 to the target.
+The sender's local bubble could show while the partner never received anything.
+
+E662: u64 partner ID, u64 canned-message ID. E663: u64 sender ID, u64 message ID.
+Native IDs 1..8 display messages; 9 is a separate readiness signal and is preserved.
+No executable patch or new client payload format is required on the public service.
+
+Delivery is targeted, not broadcast: sender and target must be connected members
+of the same room and current server round. The native client selects its teammate;
+the replacement server does not yet independently recover pre-battle team ownership.
+The recipient socket thread drains the bounded queue, normally within about one
+second. A teammate entering briefing later receives it only after matching E608.
+Queue limit16, expiry30 seconds. Old-round/left-room/disconnected messages are dropped.
+No free-text chat, persistent message history, XP/currency or profile changes.
+
+This fixes the shared-server path used by Online - Steam / Online - Steam (LAN).
+Separate Steam Discovery servers cannot relay to a participant connected elsewhere;
+that cross-server messaging path is not implemented by this update.
+
+Source evidence: builder 0x1400e9be0, parser 0x1400e913f, receive UI 0x1402fb550.
+Synthetic protocol/TLS tests do not confirm a real teammate's screen rendering.

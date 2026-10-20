@@ -1,0 +1,250 @@
+{
+  "cef.pak": {
+    "sha256": "ef9956a46c88c8bf6db3341f5329a81d8be912b40f398503bda4e4933f3fdac9",
+    "bytes": 1445573
+  },
+  "cefserver.exe": {
+    "sha256": "39a5499b14aac78463642552b717fb1cfce36485508ae04cecd84a89aee2c77c",
+    "bytes": 221184
+  },
+  "d3dcompiler_43.dll": {
+    "sha256": "2f23182ec6f4889397ac4bf03d62536136c5bdba825c7d2c4ef08c827f3a8a1c",
+    "bytes": 2106216
+  },
+  "d3dcompiler_46.dll": {
+    "sha256": "6cb007e8a426d758f54ced9b7d390ecaca1c20785607ea7ddf95efa6af06c810",
+    "bytes": 3873232
+  },
+  "ffmpegsumo.dll": {
+    "sha256": "08253ecce12a40e726d64795e0143bd72b00ee97c810d9b3d8b4db5c729d0c14",
+    "bytes": 971264
+  },
+  "icudt.dll": {
+    "sha256": "da594a9a10498f71b5229132440809c522cbca9d936bdaca7f8402a986054b22",
+    "bytes": 9994752
+  },
+  "libcef.dll": {
+    "sha256": "9fb0aa0111a28539d5ca8c291fa03abd4052b22e987f056ee3c93a0a5ef4c92c",
+    "bytes": 53280768
+  },
+  "libEGL.dll": {
+    "sha256": "31aaacbd634f03b756478cd3992ce4eaee82d639ad7aa2fb451eb2bb32655a8a",
+    "bytes": 161280
+  },
+  "libGLESv2.dll": {
+    "sha256": "9334b3a461d49f5c07de40fdcc15829cc4103958b440f8e554a76e95ceb3aced",
+    "bytes": 1160704
+  },
+  "locales/am.pak": {
+    "sha256": "04015f2247261c3b40af5cb3dd0fd1f70792d3542dacef5e0d2a18884404fd6a",
+    "bytes": 10541
+  },
+  "locales/ar.pak": {
+    "sha256": "4f932064e54a842b3b6f428c97a2089a3b543aad3aeb79e53b881fd409b2ed39",
+    "bytes": 12054
+  },
+  "locales/bg.pak": {
+    "sha256": "550379dc7eff1d236df2b9ea9d2744b4b17120a4775c1dc71bae1e052157253f",
+    "bytes": 11355
+  },
+  "locales/bn.pak": {
+    "sha256": "8944f95c087c005e5219c23f42d5c8282ebd0bbc2d27667cf61e7ab3eb76e65f",
+    "bytes": 14628
+  },
+  "locales/ca.pak": {
+    "sha256": "b9db50a78d8bbf23354817edb4ecd5a672dfc4503177e10bbf2885252f62e1ec",
+    "bytes": 7570
+  },
+  "locales/cs.pak": {
+    "sha256": "a8d86d8bb3f1bd0a6e61035d5514be016b1cfcc19ea82fd06c5da9483026b61b",
+    "bytes": 7457
+  },
+  "locales/da.pak": {
+    "sha256": "4b95572984155ab143b677352ebad745bc4f0050b405ced0b90db9189917c35d",
+    "bytes": 6722
+  },
+  "locales/de.pak": {
+    "sha256": "af0caf55f570d3ec6d44ccd0630a162112c66a6a303966096caee6272b3294d4",
+    "bytes": 7519
+  },
+  "locales/el.pak": {
+    "sha256": "d869eb6b78d6b41e538e882c7e9d7caab7276a1f29310076c7e5b91af03a9a49",
+    "bytes": 12458
+  },
+  "locales/en-GB.pak": {
+    "sha256": "7f8d359d6ca92663bb8e14586f1dfd7ad9c7500f7f6b3380461f0a554a7f4e14",
+    "bytes": 6443
+  },
+  "locales/en-US.pak": {
+    "sha256": "57b02e587ef8ecb7d0cfef6a0d571a6862c363d21bfa6d0164fd16201690cc4a",
+    "bytes": 6450
+  },
+  "locales/es-419.pak": {
+    "sha256": "6b6bcffcd0baea317ebbc5ac00d1c66a47f972db4159280eb3412640aa100ff8",
+    "bytes": 7662
+  },
+  "locales/es.pak": {
+    "sha256": "63db6bf30df1cda3fc4ebd77af1c75605f6439398596443d145565e36950b1d9",
+    "bytes": 7816
+  },
+  "locales/et.pak": {
+    "sha256": "3773e879c63b71b4f3ab1fb61bd52710186ff6750e1eb5aeec6d4161eadebeaa",
+    "bytes": 6951
+  },
+  "locales/fa.pak": {
+    "sha256": "f8d003ac70536063a140f9e752d73c19aacf738033c62997cc010c1578ef43ef",
+    "bytes": 10023
+  },
+  "locales/fi.pak": {
+    "sha256": "9e39c73c8f905a018fdb2c6c8dad390cdc5da01f392b47a8293f5b78f4d7306b",
+    "bytes": 7192
+  },
+  "locales/fil.pak": {
+    "sha256": "403690475e4901eeb25f2a2479188490df1f3260446f052b449d0d9438824cef",
+    "bytes": 7892
+  },
+  "locales/fr.pak": {
+    "sha256": "3a812ceda401d5ca06ba85f460889797dbaee8afd09e4cca380f2b5f0b039d7c",
+    "bytes": 8032
+  },
+  "locales/gu.pak": {
+    "sha256": "52f9daddaeeb09528de681d971e1a2685305df3af2539b65e14d4aafec6c1d02",
+    "bytes": 13714
+  },
+  "locales/he.pak": {
+    "sha256": "0e2b7e289b660159634af5a245d68998d4132ebfff43c85c77ceccd0a19e986d",
+    "bytes": 8295
+  },
+  "locales/hi.pak": {
+    "sha256": "562e630143d5b2aa460a3aa237a6b550cf3040204713664b1a132410d78fc70a",
+    "bytes": 13511
+  },
+  "locales/hr.pak": {
+    "sha256": "d1aa5015c61d7ca503e4bc0fc7da67dde8c7879a887095f888decb08e0604cff",
+    "bytes": 7544
+  },
+  "locales/hu.pak": {
+    "sha256": "732bedbf6e245febb761cd96770257a607d5dbfbbe24943cd2db7c4d5131f0b2",
+    "bytes": 7758
+  },
+  "locales/id.pak": {
+    "sha256": "11218a39c584ff240b32d634a832cf8e4dc85df6563532ad6c9311ce7d893bfd",
+    "bytes": 6820
+  },
+  "locales/it.pak": {
+    "sha256": "2ae78b9d46e8394d1a749a0612e1a49b7891238d1389b51fcad4c55172b83b48",
+    "bytes": 7276
+  },
+  "locales/ja.pak": {
+    "sha256": "905e0dcf4f44f98087c82036aaf9df1222a65b70f33901e763346ebb551005f6",
+    "bytes": 8464
+  },
+  "locales/kn.pak": {
+    "sha256": "7d4ba68aada78ee34f1634bd1a5e11f2d9ee722b39f47c61d65a392ebc57ad63",
+    "bytes": 15619
+  },
+  "locales/ko.pak": {
+    "sha256": "ae2df54d6a2105b429946c2df4c5abc6c5c7ce4c069432587f4059d6c42ca9e2",
+    "bytes": 7382
+  },
+  "locales/lt.pak": {
+    "sha256": "f4c0aef32e087bde19186bc4da0055ff3c20efc88b260bbb05ff3faa4b329018",
+    "bytes": 7806
+  },
+  "locales/lv.pak": {
+    "sha256": "b53014c5674872660bad50c288cb634976eacc0a206bfc640ce36abc183d1cc6",
+    "bytes": 7883
+  },
+  "locales/ml.pak": {
+    "sha256": "4bc4563ddb6c3455bd185725f86ce90f91194ae8e94787909f1c5aad6c2a9081",
+    "bytes": 18146
+  },
+  "locales/mr.pak": {
+    "sha256": "116463b5339f7bdc797b51e9263f7f4dd823171958048314d08e7f3b620401c6",
+    "bytes": 13310
+  },
+  "locales/ms.pak": {
+    "sha256": "edb0f4d84c1091c359de891fe32e3bb3ad2740ab4f761b7dad8163d24107b2c1",
+    "bytes": 7008
+  },
+  "locales/nb.pak": {
+    "sha256": "ce0be56df2b75e3c10796b1d6826ddd10612bc266e1136a7dd76a2f944276312",
+    "bytes": 6763
+  },
+  "locales/nl.pak": {
+    "sha256": "380812ba0cef985c09a2026cc911bc125b5fb7a00ccd5a708e8fb482101a1aa6",
+    "bytes": 7166
+  },
+  "locales/pl.pak": {
+    "sha256": "3594db53391fdfae50571c51861bde6d71204a87e2e303b36d7783c2189f232f",
+    "bytes": 7310
+  },
+  "locales/pt-BR.pak": {
+    "sha256": "5348ff998fae951d63d02f496c2a342190040a76ba4ae5b928342327809e14c9",
+    "bytes": 7303
+  },
+  "locales/pt-PT.pak": {
+    "sha256": "e8aa5a511ff92ef1aa87467b90acfe14953ed325c2bb6615c52d14f73d8e18f9",
+    "bytes": 7369
+  },
+  "locales/ro.pak": {
+    "sha256": "de3ce8f4f0228c531a574fe5c0c168d713c2042afb871fe527dd52b2de5a27e0",
+    "bytes": 8224
+  },
+  "locales/ru.pak": {
+    "sha256": "edee72103dbf44bf3a8704a530d700288ab1c8bac2561280bf067bfabdfbac11",
+    "bytes": 10505
+  },
+  "locales/sk.pak": {
+    "sha256": "f5f6af3177f8aa51b71d5ad1d46f17564301185b9c818f59ab2867b380d5649a",
+    "bytes": 7751
+  },
+  "locales/sl.pak": {
+    "sha256": "076186b30576fd37773432a374ba1991a707d426e9268b9d7bd420408f58223c",
+    "bytes": 7052
+  },
+  "locales/sr.pak": {
+    "sha256": "15d3b442e34943f736bfb59db4dbd30bbfea4fe85716371de7c59e02db5b7637",
+    "bytes": 10948
+  },
+  "locales/sv.pak": {
+    "sha256": "e4b0f48708e46c55d9cce3ca5367fe9fd3d9d4dc4794063c6a7aeab02d20d900",
+    "bytes": 6722
+  },
+  "locales/sw.pak": {
+    "sha256": "3bc14d8fc702ff862bfbb4c35ebfacead07c9d0c33f36796b3b1558fadca3996",
+    "bytes": 7178
+  },
+  "locales/ta.pak": {
+    "sha256": "afdd8eeddf0d6e571ab7f2bf17d779696efafaf7fbddf646349ccf591495c619",
+    "bytes": 16845
+  },
+  "locales/te.pak": {
+    "sha256": "a564a99bba5c2eef7af81b4c4eab91bb9f591ebc801d2d68c8a0e05fc8c02bad",
+    "bytes": 16337
+  },
+  "locales/th.pak": {
+    "sha256": "4aa246d1123831834c29be0e75a172a5e6eaee1117a681645a5c37d56a4b48fa",
+    "bytes": 13863
+  },
+  "locales/tr.pak": {
+    "sha256": "2e306d72621dca5e6a77232997c8cdf349b2bf4435553d2b0b36a28eeb30251f",
+    "bytes": 7038
+  },
+  "locales/uk.pak": {
+    "sha256": "2b3137bb5b160e422f8b25c7a7ba34528e63cd80ca0df986f4a2a7784bf0e19d",
+    "bytes": 11249
+  },
+  "locales/vi.pak": {
+    "sha256": "f616b655cd62b2405f9a43c8108820f6d6f0b8c222380900b7820f762cb78e16",
+    "bytes": 8119
+  },
+  "locales/zh-CN.pak": {
+    "sha256": "cc5318e6b21b12274bb8d3781e41330c31576a533b4f6ef8d38598d2be378a0a",
+    "bytes": 6489
+  },
+  "locales/zh-TW.pak": {
+    "sha256": "bc2da8e9c828c98e24b6121daa07d605f85ce2421ceee801c1c72a605c4a9160",
+    "bytes": 6609
+  }
+}

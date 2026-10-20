@@ -1,0 +1,19 @@
+[Unit]
+Description=Rise of Incarnates private lobby
+After=docker.service roi-lobby-guard.service network-online.target
+Requires=docker.service roi-lobby-guard.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=roi
+Group=roi
+WorkingDirectory=/opt/roi-lobby
+ExecStart=/usr/bin/docker compose up -d --no-build
+ExecStop=/usr/bin/docker compose stop
+TimeoutStartSec=60
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
