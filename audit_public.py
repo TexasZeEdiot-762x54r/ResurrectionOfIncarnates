@@ -19,6 +19,16 @@ PATTERNS={
 }
 
 
+def strict_json_loads(raw):
+    def object_from_pairs(pairs):
+        value={}
+        for key,item in pairs:
+            if key in value:raise ValueError('Duplicate JSON object key: '+key)
+            value[key]=item
+        return value
+    return json.loads(raw,object_pairs_hook=object_from_pairs)
+
+
 def digest(raw):
     return hashlib.sha256(raw.replace(b'\r\n',b'\n')).hexdigest()
 
@@ -55,7 +65,7 @@ def scan(files):
 
 def audit(root=ROOT):
     root=Path(root)
-    manifest=json.loads((root/'PUBLIC-MANIFEST.json').read_text(encoding='utf-8'))
+    manifest=strict_json_loads((root/'PUBLIC-MANIFEST.json').read_text(encoding='utf-8'))
     files={}
     for name,expected in manifest['sha256'].items():
         path=root/name

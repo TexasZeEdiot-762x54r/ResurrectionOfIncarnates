@@ -1,16 +1,38 @@
 {
   "format": "roi-publication-audit",
   "version": 1,
+  "prepared_on": "2026-10-21",
   "source_baseline": "library-text-v25",
+  "source_update": "reviewed-source-safety-and-grid-regressions",
   "literal_ip_findings": 0,
   "private_value_findings": 0,
+  "operator_specific_findings": 0,
   "image_metadata_findings": 0,
-  "configuration_tests_passed": 25,
+  "configuration_tests_passed": 29,
+  "public_source_tests": {
+    "run": 91,
+    "passed": 90,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1,
+    "skip_reasons": [
+      "file symlinks are unavailable on this system"
+    ],
+    "configuration_tests_passed": 29
+  },
+  "test_boundary": "Public-file-only snapshot; synthetic profiles/stores, mocked transports and clocks, help/parser/config-only subprocesses.",
+  "progression_selectors": "Schema-only; no new-profile startup effects, grants, migration or reward activation.",
   "history_copied": false,
+  "git_history_reviewed": false,
+  "git_history_rewritten": false,
+  "real_profiles_modified": false,
   "services_started": false,
+  "game_launched": false,
   "limitations": [
-    "Pattern scanning is not a guarantee against every possible secret.",
+    "Pattern scanning is not a guarantee against every possible secret or personal detail.",
+    "Working-tree checks do not inspect or rewrite existing commits or Git author metadata.",
     "Third-party game artwork/text redistribution rights require separate review.",
-    "No real container was deployed and no game was launched from this snapshot."
+    "Source/mock success does not establish native gameplay/debugger acceptance or original production rules.",
+    "No container was deployed, game launched or real profile modified from this snapshot."
   ]
 }

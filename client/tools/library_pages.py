@@ -105,7 +105,7 @@ def render(language, tab, query, data, text):
                 content.append(image(entry['illustration'],selected['title']))
                 content.append('<article class="prose">')
                 if tab=='story':
-                    content.append('<h1>'+escape(entry['title'])+'</h1>')
+                    content.append('<h1 class="story-title">'+escape(entry['title'])+'</h1>')
                 else:
                     content.append(details(entry['details']))
                 content.append(paragraphs(entry)+'</article>')

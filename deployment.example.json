@@ -1,5 +1,8 @@
 {
-  "version": 1,
+  "version": 2,
+  "policy": {
+    "progression_mode": ""
+  },
   "client": {
     "steam_path": "",
     "depot_path": "",

@@ -2,13 +2,13 @@
 import json
 from pathlib import Path
 
-from audit_public import digest,scan
+from audit_public import digest,scan,strict_json_loads
 
 ROOT=Path(__file__).resolve().parent
 
 
 def main():
-    inventory=json.loads((ROOT/'PUBLIC-MANIFEST.json').read_text(encoding='utf-8'))['sha256']
+    inventory=strict_json_loads((ROOT/'PUBLIC-MANIFEST.json').read_text(encoding='utf-8'))['sha256']
     files={name:(ROOT/name).read_bytes() for name in inventory}
     issues=scan(files)
     if issues:raise ValueError('Resolve publication findings before refreshing hashes: '+repr(issues))

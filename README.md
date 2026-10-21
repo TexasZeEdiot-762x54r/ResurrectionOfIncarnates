@@ -1,8 +1,12 @@
 # Rise of Incarnates Revival Sources
 
-An anonymized source snapshot based on the Library text update. No configured
+An anonymized source snapshot including the Library text update and subsequent
+source-safety and regression-test corrections. No configured
 server address, personal account, certificate pin, game executable, Steam DLL,
 runtime profile, credential, log or Git history is included.
+
+See [STATUS.md](STATUS.md) for the current implementation boundaries and verified
+source changes. Source tests do not establish native-game acceptance or deployment.
 
 ## Local Settings
 
@@ -36,7 +40,30 @@ or `ROI_DEPLOYMENT_FILE`. The command does not permanently select it for other t
 
 | Option | Type / Default | Meaning |
 | --- | --- | --- |
-| `version` | Integer `1` | Configuration format version. Keep this at `1`; it is not the game, patch or API version. |
+| `version` | Integer `2` in the example; version `1` remains supported | Configuration format version. It is not the game, patch or API version. Version 2 adds the required progression selector below. |
+
+### Progression Policy
+
+Version 2 requires `policy.progression_mode`; an empty or unknown value fails
+validation. The available values record the intended policy, but the local
+profile and battle-award handlers do not yet consume this selector. Selecting a
+mode does **not** currently grant levels, cubes, grid cells, XP, LP, or change
+battle drops. Do not treat a valid config as proof that the gameplay policy is
+implemented or deploy this setting as an active progression choice.
+
+| `policy.progression_mode` | Meaning |
+| --- | --- |
+| `faithful` | Intended evidence-backed behavior without operator grants. Original starter entitlements and award curves remain unresolved. |
+| `fully_unlocked` | Proposed revival target: account starts at level 15, characters at level 1, skill-cube pieces fully upgraded and all 16 cells of the native 4x4 grid unlocked. Player and character XP would continue, item drops would be disabled and LP would remain awarded. This intentionally remains selector-only: even the startup subset is not enabled. Cube caps, level curves and settlement integration remain unresolved. |
+| `match_xp` | Proposed revival target: 8 XP for a loss, 10 XP for a win, or 16 XP for a win with highest damage, applied to both player/account and character XP. Level curves and award integration remain separate and are not active. |
+
+Version 1 deployment files remain accepted without policy fields and retain
+their prior behavior. They are not migrated or rewritten by loading a version
+2 configuration.
+
+The selected revival LP targets and their remaining input/authority gaps are
+listed in [STATUS.md](STATUS.md). They are not verified original rules or enabled
+runtime rewards. Do not use the selector as a substitute for implementation.
 
 ### Client Settings
 
@@ -118,8 +145,9 @@ These protocol-local bindings are not user-configurable or public listeners.
    are roughly 9 GB; do not run Setup while the download is incomplete. Steam's
    completion message shows the actual destination, normally
    `<Steam folder>/steamapps/content/app_258160/depot_258162`.
-5. Copy `deployment.example.json` to ignored `deployment.local.json`. Fill in
-   the networking fields for your chosen mode and, optionally, the local paths.
+5. Copy `deployment.example.json` to ignored `deployment.local.json`. Choose an
+   explicit `policy.progression_mode`; it remains selector-only as described above.
+   Fill in the networking fields for your chosen mode and, optionally, the local paths.
    If the depot is in another Steam library or on another drive, set
    `client.depot_path` to the exact folder reported by Steam. Do not use the depot
    as `client.steam_path`; the normal install and historical assets have different roles.
@@ -182,14 +210,19 @@ variables explicitly; running it without configured values fails.
 ```sh
 python -m unittest discover -s tests
 python audit_public.py
+python client/tools/check_launch.py --package
 ```
 
-The audit checks the public inventory, literal IPv4/IPv6 strings, personal-name
-patterns, private paths, full account identifiers, secret-like values and generated
-files. It checks image metadata and manifests too. Do not force-add ignored files.
+The audit checks the public inventory, literal IPv4/IPv6 strings, private paths,
+email addresses, full account identifiers, secret-like values and image metadata.
+The separate package check verifies client component hashes and launcher dependencies.
+Review names and other free text as well: pattern scanning cannot identify every
+possible secret or personal detail. Do not force-add ignored files.
 If you have previously committed private files, ignoring them does not remove
 them from Git history; clean that history and rotate exposed credentials before
-publishing. This snapshot was created without copying another checkout's history.
+publishing. Source updates copy only the reviewed file inventory, not another
+checkout's Git metadata. These working-tree checks do not inspect or rewrite
+existing commits, author information or other historical metadata.
 
 API evidence in `api/` describes the recovered baseline, not an original live
 server. The loopback response example uses a placeholder instead of a literal

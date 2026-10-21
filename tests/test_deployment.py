@@ -1,17 +1,31 @@
 import copy
+import asyncio
 import importlib.util
 from ipaddress import IPv4Address
 import json
 import os
+import ssl
 from pathlib import Path
 import shutil
 import subprocess
 import sys
+import struct
 import tempfile
 import unittest
 from unittest.mock import patch
+from io import BytesIO
+from types import SimpleNamespace
 
 ROOT=Path(__file__).resolve().parents[1]
+_ORIGINAL_WAIT_FOR=asyncio.wait_for
+
+
+class FastAsyncio:
+    def __getattr__(self,name):return getattr(asyncio,name)
+    async def wait_for(self,awaitable,timeout):
+        return await _ORIGINAL_WAIT_FOR(awaitable,min(timeout,.02))
+
+
 sys.path.insert(0,str(ROOT/'client/tools'))
 sys.path.insert(0,str(ROOT/'server'))
 import deployment_config as config
@@ -21,12 +35,16 @@ import network_defaults as network
 import tls_transport
 import public_tunnel
 import provision_players
+import nrt_logic as realtime_logic
+import nrt_security as realtime_security
 sys.path.insert(0,str(ROOT))
 import audit_public
 
 
 def example():
-    return json.loads((ROOT/'deployment.example.json').read_text(encoding='utf-8'))
+    value=json.loads((ROOT/'deployment.example.json').read_text(encoding='utf-8'))
+    value['policy']['progression_mode']='faithful'
+    return value
 
 
 def configured():
@@ -69,6 +87,45 @@ class DeploymentTests(unittest.TestCase):
             with self.assertRaises(ValueError):config.load()
         self.path.write_text('{"version":1,"version":1,"client":{}}')
         with self.assertRaises(ValueError):config.load()
+
+    def test_version_one_config_remains_compatible_without_policy(self):
+        value=example();value['version']=1;value.pop('policy')
+        self.save(value)
+        loaded=config.load()
+        self.assertEqual(loaded['version'],1)
+        self.assertNotIn('policy',loaded)
+
+    def test_version_two_policy_requires_explicit_supported_choice(self):
+        template=json.loads((ROOT/'deployment.example.json').read_text(encoding='utf-8'))
+        self.save(template)
+        with self.assertRaisesRegex(ValueError,'progression_mode'):
+            config.load()
+        for mode in ('faithful','fully_unlocked','match_xp'):
+            value=example();value['policy']['progression_mode']=mode;self.save(value)
+            self.assertEqual(config.load()['policy']['progression_mode'],mode)
+        value=example();value['policy']['extra']='x';self.save(value)
+        with self.assertRaises(ValueError):config.load()
+
+    def test_policy_selection_does_not_rewrite_existing_profile(self):
+        profile=self.folder/'profile.json'
+        before=b'{"gamePoint":321,"consumableItems":[{"sv_itemId":"7","sv_itemHoldId":"8","sv_itemNum":"2"}],"skillGrids":[{"sv_sgridId":"0"}]}'
+        profile.write_bytes(before)
+        for mode in ('faithful','fully_unlocked','match_xp'):
+            value=example();value['policy']['progression_mode']=mode;self.save(value)
+            config.load()
+            self.assertEqual(profile.read_bytes(),before)
+
+    def test_version_two_policy_rejects_non_string_modes_in_both_copies(self):
+        for number, path in enumerate((ROOT/'client/tools/deployment_config.py',
+                                       ROOT/'server/deployment_config.py')):
+            spec=importlib.util.spec_from_file_location('policy_validation_'+str(number),path)
+            module=importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            for mode in (None,True,1,[],{},['faithful'],{'mode':'faithful'}):
+                with self.subTest(source=number,mode=mode):
+                    value=example();value['policy']['progression_mode']=mode;self.save(value)
+                    with self.assertRaisesRegex(ValueError,'progression_mode'):
+                        module.load(self.path)
 
     def test_rejects_invalid_ports_types_and_control_characters(self):
         for bad in (0,65536,True,'52714',52714.5):
@@ -232,6 +289,176 @@ class DeploymentTests(unittest.TestCase):
         runtime.write_text(json.dumps({'lobby_transport':'tls-public','public_lobby_host':''}))
         with patch.object(public_tunnel,'HERE',self.folder):
             with self.assertRaises(ValueError):public_tunnel.settings()
+
+
+class LocalRequestFailureTests(unittest.TestCase):
+    def setUp(self):
+        import server
+        self.service = server
+
+    def test_oversized_length_is_rejected_before_read(self):
+        handler = SimpleNamespace(headers={'Content-Length': str(self.service.MAX_BODY + 1)}, rfile=None)
+        with self.assertRaises(self.service.RequestTooLarge):
+            self.service.Handler._body(handler)
+
+    def test_short_body_and_invalid_lengths_are_rejected(self):
+        for length, body in (('5', b'x'), ('-1', b''), ('invalid', b'')):
+            handler = SimpleNamespace(headers={'Content-Length': length}, rfile=BytesIO(body))
+            with self.subTest(length=length), self.assertRaises(ValueError):
+                self.service.Handler._body(handler)
+
+    def test_zero_length_body_is_accepted(self):
+        handler = SimpleNamespace(headers={}, rfile=None)
+        self.assertEqual(self.service.Handler._body(handler), b'')
+
+    def test_body_failures_return_bounded_errors_and_close_connection(self):
+        for error, expected in ((self.service.RequestTooLarge(), 413),
+                                (TimeoutError(), 408), (ValueError('sensitive value'), 400)):
+            handler = SimpleNamespace(command='POST', path='/Dragon/game', close_connection=False)
+            def fail(error=error):
+                raise error
+            handler._body = fail
+            handler._reply = lambda status, headers, body, quiet=False: (status, body, quiet)
+            fake_library = SimpleNamespace(respond=lambda *args: None)
+            with self.subTest(status=expected), patch.dict(sys.modules, {'library_pages': fake_library}):
+                status, body, quiet = self.service.Handler._handle(handler)
+            self.assertEqual(status, expected)
+            self.assertLess(len(body), 80)
+            self.assertNotIn(b'sensitive', body)
+            self.assertTrue(quiet and handler.close_connection)
+
+
+class TransportFailureTests(unittest.IsolatedAsyncioTestCase):
+    class Writer:
+        def __init__(self, ssl_object=None, block_drain=False):
+            self.data=bytearray()
+            self.closed=False
+            self.ssl_object=ssl_object
+            self.block_drain=block_drain
+            self.transport=self
+        def write(self,data):self.data.extend(data)
+        def set_write_buffer_limits(self,**_kwargs):pass
+        def get_extra_info(self,name):return self.ssl_object if name=='ssl_object' else None
+        async def drain(self):
+            if self.block_drain:await asyncio.Event().wait()
+        def close(self):self.closed=True
+        async def wait_closed(self):pass
+
+    async def test_bridge_preserves_partial_reads_in_order(self):
+        left,right=asyncio.StreamReader(),asyncio.StreamReader()
+        left.feed_data(b'first-')
+        left.feed_data(b'second')
+        left.feed_eof()
+        inbound,outbound=self.Writer(),self.Writer()
+        result=await tls_transport.bridge(left,inbound,right,outbound)
+        self.assertEqual(outbound.data,b'first-second')
+        self.assertEqual(result['left_to_right_bytes'],12)
+        self.assertEqual(result['reason'],'left-eof')
+        self.assertTrue(outbound.closed and inbound.closed)
+
+    async def test_peer_disconnect_closes_both_sides_promptly(self):
+        left,right=asyncio.StreamReader(),asyncio.StreamReader()
+        left.feed_eof()
+        outbound,inbound=self.Writer(),self.Writer()
+        result=await asyncio.wait_for(tls_transport.bridge(left,outbound,right,inbound),.5)
+        self.assertEqual(result['reason'],'left-eof')
+        self.assertTrue(outbound.closed and inbound.closed)
+
+    async def test_blocked_drain_times_out_and_closes_both_sides(self):
+        left,right=asyncio.StreamReader(),asyncio.StreamReader()
+        left.feed_data(b'bounded')
+        inbound,outbound=self.Writer(),self.Writer(block_drain=True)
+        with patch.object(tls_transport,'asyncio',FastAsyncio()):
+            result=await tls_transport.bridge(left,inbound,right,outbound)
+        self.assertEqual(result['reason'],'left-TimeoutError')
+        self.assertTrue(outbound.closed and inbound.closed)
+
+    async def test_gateway_connect_timeout_is_bounded_without_network_access(self):
+        async def never_connect(*_args,**_kwargs):await asyncio.Event().wait()
+        fake_asyncio=FastAsyncio()
+        fake_asyncio.open_connection=never_connect
+        with patch.object(tls_transport,'asyncio',fake_asyncio):
+            with self.assertRaises(asyncio.TimeoutError):
+                await tls_transport.pinned_connection('gateway.example.invalid',52714,'a'*64)
+
+    async def test_certificate_mismatch_closes_writer_before_forwarding(self):
+        class SSLPeer:
+            def getpeercert(self,binary_form=False):return b'synthetic-untrusted-certificate'
+        writer=self.Writer(SSLPeer())
+        calls=[]
+        async def synthetic_connection(*_args,**_kwargs):
+            calls.append(1)
+            return asyncio.StreamReader(),writer
+        with patch.object(tls_transport.asyncio,'open_connection',synthetic_connection):
+            with self.assertRaises(ssl.SSLError):
+                await tls_transport.pinned_connection('gateway.example.invalid',52714,'a'*64)
+        self.assertEqual(len(calls),1)
+        self.assertTrue(writer.closed)
+        self.assertEqual(writer.data,b'')
+
+    async def test_failed_gateway_health_check_does_not_retry(self):
+        reader=asyncio.StreamReader()
+        reader.feed_data(b'NOT-HEALTHY\n')
+        writer=self.Writer()
+        calls=[]
+        async def synthetic_connection(*_args):
+            calls.append(1)
+            return reader,writer
+        with patch.object(public_tunnel,'pinned_connection',synthetic_connection):
+            with self.assertRaises(ValueError):
+                await public_tunnel.check(('gateway.example.invalid',52714,'a'*64))
+        self.assertEqual(len(calls),1)
+        self.assertTrue(writer.closed)
+        self.assertEqual(writer.data,tls_transport.CHANNELS['health'])
+
+
+class RealtimeFrameTests(unittest.TestCase):
+    @staticmethod
+    def client_packet(seq=7, session=3, uid=0x123456789ABCDEF0, payload=b'\xa5\x5a'):
+        body=struct.pack('<QHHQ',seq,session,0xE609,uid)+payload
+        return struct.pack('<HH',len(body)+4,len(body))+body+b'\x00\x00'
+
+    def test_complete_e609_frame_preserves_fields_and_opaque_payload(self):
+        raw=self.client_packet()
+        messages,rest=realtime_logic.parse(raw)
+        self.assertEqual(rest,b'')
+        self.assertEqual(messages,[(7,3,0xE609,0x123456789ABCDEF0,b'\xa5\x5a')])
+
+    def test_every_fragment_boundary_is_retained_until_complete(self):
+        raw=self.client_packet()
+        for end in range(1,len(raw)):
+            with self.subTest(end=end):
+                messages,rest=realtime_logic.parse(raw[:end])
+                self.assertEqual(messages,[])
+                self.assertEqual(rest,raw[:end])
+        messages,rest=realtime_logic.parse(raw)
+        self.assertEqual(len(messages),1)
+        self.assertEqual(rest,b'')
+
+    def test_coalesced_frames_are_split_without_socket_io(self):
+        first=self.client_packet(seq=1,payload=b'')
+        second=self.client_packet(seq=2,session=4,payload=b'opaque')
+        messages,rest=realtime_logic.parse(first+second)
+        self.assertEqual([entry[0] for entry in messages],[1,2])
+        self.assertEqual(rest,b'')
+
+    def test_truncated_body_waits_for_remaining_bytes(self):
+        raw=self.client_packet()
+        messages,rest=realtime_logic.parse(raw[:-1])
+        self.assertEqual(messages,[])
+        self.assertEqual(rest,raw[:-1])
+
+    def test_invalid_and_oversized_outer_lengths_are_rejected(self):
+        for length in (0,1,23,realtime_security.MAX_FRAME-1,0xFFFF):
+            with self.subTest(length=length):
+                with self.assertRaises(realtime_security.ProtocolError):
+                    realtime_logic.parse(struct.pack('<H',length))
+
+    def test_inconsistent_body_length_is_rejected(self):
+        raw=bytearray(self.client_packet())
+        struct.pack_into('<H',raw,2,19)
+        with self.assertRaises(realtime_security.ProtocolError):
+            realtime_logic.parse(raw)
 
 
 if __name__=='__main__':unittest.main()

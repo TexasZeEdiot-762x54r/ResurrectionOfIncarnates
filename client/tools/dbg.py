@@ -209,21 +209,99 @@ class Debugger:
         return self.read(a, n).split(b"\0")[0].decode("latin-1")
 
     def write(self, a, data):
+        size = len(data)
         old = wt.DWORD()
-        k32.VirtualProtectEx(self.hproc, ctypes.c_void_p(a), len(data), 0x40, ctypes.byref(old))
-        got = ctypes.c_size_t()
-        ok = k32.WriteProcessMemory(self.hproc, ctypes.c_void_p(a), data, len(data), ctypes.byref(got))
-        k32.VirtualProtectEx(self.hproc, ctypes.c_void_p(a), len(data), old.value, ctypes.byref(old))
-        k32.FlushInstructionCache(self.hproc, ctypes.c_void_p(a), len(data))
-        return ok
+        try:
+            protected = k32.VirtualProtectEx(
+                self.hproc, ctypes.c_void_p(a), size, 0x40, ctypes.byref(old)
+            )
+        except Exception as exc:
+            raise OSError(f"VirtualProtectEx at 0x{a:X} raised: {exc}") from exc
+        if not protected:
+            error = ctypes.get_last_error()
+            raise OSError(error, f"VirtualProtectEx at 0x{a:X} failed")
+
+        original_protection = old.value
+        write_error = None
+        write_cause = None
+        restore_error = None
+        restore_cause = None
+        complete_write = False
+        try:
+            got = ctypes.c_size_t()
+            try:
+                written = k32.WriteProcessMemory(
+                    self.hproc, ctypes.c_void_p(a), data, size, ctypes.byref(got)
+                )
+            except Exception as exc:
+                write_error = OSError(f"WriteProcessMemory at 0x{a:X} raised: {exc}")
+                write_cause = exc
+            else:
+                if not written:
+                    error = ctypes.get_last_error()
+                    write_error = OSError(error, f"WriteProcessMemory at 0x{a:X} failed")
+                elif got.value != size:
+                    write_error = OSError(
+                        f"WriteProcessMemory at 0x{a:X} wrote {got.value} of {size} bytes"
+                    )
+                else:
+                    complete_write = True
+        finally:
+            restored = wt.DWORD()
+            try:
+                restore_ok = k32.VirtualProtectEx(
+                    self.hproc,
+                    ctypes.c_void_p(a),
+                    size,
+                    original_protection,
+                    ctypes.byref(restored),
+                )
+            except Exception as exc:
+                restore_error = OSError(
+                    f"VirtualProtectEx restoration at 0x{a:X} raised: {exc}"
+                )
+                restore_cause = exc
+            else:
+                if not restore_ok:
+                    error = ctypes.get_last_error()
+                    restore_error = OSError(
+                        error, f"VirtualProtectEx restoration at 0x{a:X} failed"
+                    )
+
+        if write_error and restore_error:
+            raise OSError(f"{write_error}; additionally, {restore_error}") from write_error
+        if write_error:
+            if write_cause:
+                raise write_error from write_cause
+            raise write_error
+        if restore_error:
+            if restore_cause:
+                raise restore_error from restore_cause
+            raise restore_error
+        if not complete_write:
+            raise OSError(f"WriteProcessMemory at 0x{a:X} did not complete")
+
+        try:
+            flushed = k32.FlushInstructionCache(self.hproc, ctypes.c_void_p(a), size)
+        except Exception as exc:
+            raise OSError(f"FlushInstructionCache at 0x{a:X} raised: {exc}") from exc
+        if not flushed:
+            error = ctypes.get_last_error()
+            raise OSError(error, f"FlushInstructionCache at 0x{a:X} failed")
+        return True
 
     def alloc(self, n):
         return k32.VirtualAllocEx(self.hproc, None, n, 0x3000, 0x40)
 
     # --- registration
     def bp(self, addr, handler):
-        self.bps[addr] = [None, handler]
-        if self.hproc:
+        record = self.bps.get(addr)
+        if record is None:
+            record = [None, handler]
+            self.bps[addr] = record
+        else:
+            record[1] = handler
+        if self.hproc and record[0] is None:
             self._arm(addr)
 
     def patch(self, addr, data):

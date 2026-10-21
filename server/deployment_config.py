@@ -7,6 +7,7 @@ import re
 CLIENT_KEYS={'steam_path','depot_path','game_path','internet_host','lan_host','port',
              'certificate_sha256','vpn_lobby_host','vpn_lobby_port'}
 SERVER_KEYS={'public_bind_host','public_port','vpn_bind_host','vpn_interface','vpn_network','python_base'}
+PROGRESSION_MODES={'faithful','fully_unlocked','match_xp'}
 
 
 def pairs(items):
@@ -30,8 +31,18 @@ def load(path=None, required=True):
     if selected.is_symlink() or selected.stat().st_size>32768:
         raise ValueError('Unsafe deployment settings file')
     value=json.loads(selected.read_text(encoding='utf-8-sig'),object_pairs_hook=pairs)
-    if not isinstance(value,dict) or value.get('version')!=1 or set(value)-{'version','client','server'}:
+    version=value.get('version') if isinstance(value,dict) else None
+    if type(version) is not int or version not in (1,2):
         raise ValueError('Unsupported deployment settings')
+    allowed={'version','client','server'} | ({'policy'} if version==2 else set())
+    if set(value)-allowed:
+        raise ValueError('Unsupported deployment settings')
+    if version==2:
+        policy=value.get('policy')
+        if (not isinstance(policy,dict) or set(policy)!={'progression_mode'}
+                or not isinstance(policy.get('progression_mode'),str)
+                or policy.get('progression_mode') not in PROGRESSION_MODES):
+            raise ValueError('Choose a supported policy.progression_mode in deployment.local.json')
     for section,keys in (('client',CLIENT_KEYS),('server',SERVER_KEYS)):
         fields=value.get(section,{})
         if not isinstance(fields,dict) or set(fields)-keys:

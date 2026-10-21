@@ -23,6 +23,7 @@ import pefile  # noqa: E402
 import roi_data  # noqa: E402
 import native_video  # noqa: E402
 import native_commendations  # noqa: E402
+from build_safety import ensure_distinct_output  # noqa: E402
 
 SRC = paths.STEAM_EXE
 SRC_SHA = "34a46fbc9e2ea6c6c9eebfddd0d6e4bef388a3eea5088838dd134588225cedbb"
@@ -123,6 +124,7 @@ MULTI_INSTANCE = False  # True: skip the single-instance check so two copies can
 
 
 def build(out, dry=False, server=False):
+    out = ensure_distinct_output(SRC, out)
     b = bytearray(SRC.read_bytes())
     assert hashlib.sha256(b).hexdigest() == SRC_SHA, "unexpected source roi.exe"
     pe = pefile.PE(data=bytes(b))

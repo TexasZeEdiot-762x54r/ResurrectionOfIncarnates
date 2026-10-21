@@ -8,13 +8,22 @@ import threading
 LOCK = threading.RLock()
 
 
+def _strict_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('Duplicate JSON object key: ' + key)
+        result[key] = value
+    return result
+
+
 def read(path):
     with LOCK:
         try:
             value = Path(path).read_text()
         except FileNotFoundError:
             return {}
-        result = json.loads(value)
+        result = json.loads(value, object_pairs_hook=_strict_object)
         if not isinstance(result, dict):
             raise ValueError('Saved profile is not an object')
         return result

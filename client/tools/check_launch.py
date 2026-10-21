@@ -7,6 +7,16 @@ import re
 import sys
 
 
+def strict_json_loads(raw):
+    def object_from_pairs(pairs):
+        value={}
+        for key,item in pairs:
+            if key in value:raise ValueError('Duplicate JSON object key: '+key)
+            value[key]=item
+        return value
+    return json.loads(raw,object_pairs_hook=object_from_pairs)
+
+
 def validate(root=None,session='play'):
     root=Path(root) if root is not None else Path(__file__).resolve().parent
     pending=['__init__',session]
@@ -42,7 +52,7 @@ def validate_package(root=None):
     manifest_path = root / 'PACKAGE-MANIFEST.json'
     if manifest_path.stat().st_size > 262144:
         raise ValueError('Unexpectedly large package manifest')
-    manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
+    manifest = strict_json_loads(manifest_path.read_text(encoding='utf-8-sig'))
     hashes = manifest.get('sha256')
     if manifest.get('kind') != 'client' or not isinstance(hashes, dict) or not 1 <= len(hashes) <= 500:
         raise ValueError('Invalid client package manifest')

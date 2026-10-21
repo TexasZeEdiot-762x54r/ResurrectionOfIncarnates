@@ -9,10 +9,10 @@ import json
 from logging.handlers import RotatingFileHandler
 import logging
 import pathlib
+import re
 import sys
 import threading
 import time
-import traceback
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -21,6 +21,11 @@ from network_defaults import LOOPBACK
 LOG = HERE / "logs" / "server.log"
 lock = threading.Lock()
 logger = logging.getLogger("roi-profile")
+MAX_BODY = 1024 * 1024
+
+
+class RequestTooLarge(ValueError):
+    pass
 
 
 def log(*a):
@@ -28,14 +33,56 @@ def log(*a):
     logger.info(line)
 
 
-def redact(value):
-    if isinstance(value, dict):
-        return {key: "<redacted>" if key.lower() in
-                {"ticket", "sv_token", "oauth_token", "oauth_token_secret", "lobby_token"}
-                else redact(item) for key, item in value.items()}
-    if isinstance(value, list):
-        return [redact(item) for item in value]
-    return value
+def safe_log_path(path):
+    """Omit query parameters and mask Steam IDs before logging a route."""
+    route = path.split("?", 1)[0]
+    route = re.sub(r"(?<!\d)7656119\d{10}(?!\d)", "<id>", route)
+    route = re.sub(r"(?i)(/)(profile|commendations|circle)/\d{1,20}(?=/|$)",
+                   r"\1\2/<id>", route)
+    return route[:256]
+
+
+def request_summary(body):
+    try:
+        value = json.loads(body)
+    except (ValueError, UnicodeError, RecursionError):
+        return "non-JSON omitted"
+    if not isinstance(value, dict):
+        return "JSON value omitted"
+    call = value.get("call")
+    if isinstance(call, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,80}", call):
+        return "call=" + call
+    return "JSON object omitted"
+
+
+def response_summary(body):
+    try:
+        value = json.loads(body)
+    except (ValueError, UnicodeError, RecursionError):
+        return "non-JSON omitted"
+    result = value.get("result") if isinstance(value, dict) else None
+    if isinstance(result, str) and result in {"OK", "NG", "ERROR"}:
+        return "result=" + result
+    return "JSON omitted"
+
+
+def exception_summary(error):
+    """Return bounded code location/type only; exception text may contain request data."""
+    tb = error.__traceback__
+    last = None
+    for _ in range(32):
+        if tb is None:
+            break
+        last = tb
+        tb = tb.tb_next
+    if last is None:
+        location = "unknown"
+    else:
+        frame = last.tb_frame
+        filename = pathlib.Path(frame.f_code.co_filename).name[:80]
+        function = frame.f_code.co_name[:80]
+        location = f"{filename}:{last.tb_lineno}:{function}"
+    return f"{type(error).__name__[:80]} at {location}"[:256]
 
 
 class BoundedHTTPServer(ThreadingHTTPServer):
@@ -71,34 +118,40 @@ class Handler(BaseHTTPRequestHandler):
 
     def _body(self):
         n = int(self.headers.get("Content-Length") or 0)
-        if not 0 <= n <= 1024 * 1024:
-            raise ValueError("Request body exceeds limit")
-        return self.rfile.read(n) if n else b""
+        if n > MAX_BODY:
+            raise RequestTooLarge
+        if n < 0:
+            raise ValueError("Invalid request length")
+        body = self.rfile.read(n) if n else b""
+        if len(body) != n:
+            raise ValueError("Truncated request body")
+        return body
 
     def _handle(self):
         from library_pages import respond as library_response
         local_page = library_response(self.command,self.path)
         if local_page is not None:
             if local_page[1].get('Content-Type','').startswith('text/html'):
-                log('LIBRARY',self.command,self.path.split('?',1)[0],local_page[0],len(local_page[2]))
+                log('LIBRARY', self.command[:16], safe_log_path(self.path), local_page[0], len(local_page[2]))
             if self.command not in ('GET','HEAD'):
                 self.close_connection = True
             return self._reply(*local_page, quiet=True)
-        body = self._body()
         try:
-            shown = json.dumps(redact(json.loads(body)), separators=(",", ":")).encode()
-        except (ValueError, UnicodeError):
-            shown = b"<non-JSON request body omitted>"
-        import re
-        if b'"ticket"' in shown:  # do not keep the Steam session ticket in the log
-            shown = re.sub(rb'"ticket":"[^"]*"', b'"ticket":"<redacted>"', shown)
-        # the client also sends the Steam IDs of the user's friends; keep other people's IDs out of the log
-        own = str(__import__("server_state").STATE.get("player_id", "")).encode()
-        shown = re.sub(rb"7656119\d{10}", lambda m: m.group() if m.group() == own else b"<friend>", shown)
-        if b'"call":"loadPlayer"' in shown and b"<friend>" in shown:
+            body = self._body()
+        except RequestTooLarge:
+            self.close_connection = True
+            return self._reply(413, {}, b'{"error":"Request body too large"}', quiet=True)
+        except TimeoutError:
+            self.close_connection = True
+            return self._reply(408, {}, b'{"error":"Request body timed out"}', quiet=True)
+        except ValueError:
+            self.close_connection = True
+            return self._reply(400, {}, b'{"error":"Invalid request body"}', quiet=True)
+        summary = request_summary(body)
+        if summary == "call=loadPlayer":
             return self._reply(*self._answer(body), quiet=True)
-        log(f">>> {self.command} {self.path}")
-        log(f">>> body[{len(body)}] {shown[:4000]!r}")
+        log(f">>> {self.command[:16]} {safe_log_path(self.path)}")
+        log(f">>> body[{len(body)}] {summary}")
         self._reply(*self._answer(body))
 
     def _answer(self, body):
@@ -107,8 +160,8 @@ class Handler(BaseHTTPRequestHandler):
             # Reloading this module clears CALLS while other request threads use it.
             # Import once; deploy handler changes with a local-server restart.
             status, headers, out = roi_server_data.respond(self.command, self.path, dict(self.headers), body)
-        except Exception:
-            log("handler error\n" + traceback.format_exc())
+        except Exception as error:
+            log("handler error", exception_summary(error))
             status, headers, out = 500, {}, b"{}"
         if isinstance(out, (dict, list)):
             out = json.dumps(out, separators=(",", ":")).encode()
@@ -119,10 +172,10 @@ class Handler(BaseHTTPRequestHandler):
     def _reply(self, status, headers, out, quiet=False):
         if not quiet:
             try:
-                shown = json.dumps(redact(json.loads(out)), separators=(",", ":")).encode()
+                summary = response_summary(out)
             except (ValueError, UnicodeError):
-                shown = b"<non-JSON response body omitted>"
-            log(f"<<< {status} body[{len(out)}] {shown[:3000]!r}")
+                summary = "non-JSON omitted"
+            log(f"<<< {status} body[{len(out)}] {summary}")
         self.send_response(status)
         for k, v in headers.items():
             self.send_header(k, v)
